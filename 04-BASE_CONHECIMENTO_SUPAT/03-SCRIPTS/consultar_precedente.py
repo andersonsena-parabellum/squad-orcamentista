@@ -1,110 +1,53 @@
-import sys
+#!/usr/bin/env python3
+"""Localiza precedentes sem promover inferências internas a regra oficial."""
+
+from __future__ import annotations
+
+import argparse
 import json
-import re
+import sys
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-DATA_FILE = BASE_DIR / "04-DADOS" / "precedentes.json"
-MAP_FILE = BASE_DIR / "MAPA_RESSALVAS.md"
+BASE_DIR = Path(__file__).resolve().parents[1]
+REGISTRY = BASE_DIR / "FONTES_PRECEDENTES.json"
 
-def load_precedents():
-    if not DATA_FILE.exists():
-        print(f"Erro: Arquivo de precedentes não encontrado em {DATA_FILE}")
-        sys.exit(1)
-    with open(DATA_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(encoding="utf-8")
 
-def print_help(precedents):
-    print("=" * 80)
-    print(" CONSULTA TOKEN-EFICIENTE DE PRECEDENTES E RESSALVAS SUPAT / SAEB")
-    print("=" * 80)
-    print(f"Base carregada: {len(precedents)} precedentes minerados.\n")
-    print("Uso:")
-    print("  python consultar_precedente.py <TEMA | PALAVRA-CHAVE> [--limit N]\n")
-    
-    # Count by theme
-    by_tema = {}
-    for p in precedents:
-        t = p.get("tema", "OUTROS")
-        by_tema[t] = by_tema.get(t, 0) + 1
-        
-    print("Temas Disponíveis:")
-    for tema, count in sorted(by_tema.items(), key=lambda x: x[1], reverse=True):
-        print(f"  - {tema:<20} ({count:>3} casos)")
-        
-    print("\nExemplos:")
-    print("  python consultar_precedente.py LI_AUSENTE")
-    print("  python consultar_precedente.py CPU_HORAS")
-    print("  python consultar_precedente.py 'ar-condicionado'")
-    print("  python consultar_precedente.py 'rack' --limit 3")
-    print("=" * 80)
 
-def search_precedents(query, limit=10):
-    precedents = load_precedents()
-    q_lower = query.lower().strip()
-    
-    # Check if query matches a theme exactly or as substring
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("consulta")
+    parser.add_argument("--limit", type=int, default=10)
+    parser.add_argument("--diagnostico", action="store_true")
+    args = parser.parse_args()
+    registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
+    status = str(registry.get("status", "AUSENTE")).upper()
+    if status != "LIBERADA" and not args.diagnostico:
+        print(f"BLOQUEADO: corpus com status {status}. {registry.get('motivo', '')}", file=sys.stderr)
+        return 2
+    data_path = BASE_DIR / registry["arquivo"]
+    records = json.loads(data_path.read_text(encoding="utf-8"))
+    if isinstance(records, dict):
+        records = records.get("casos", [])
+    query = args.consulta.casefold().strip()
     matches = []
-    for p in precedents:
-        tema = p.get("tema", "").lower()
-        ressalva = p.get("texto_ressalva", "").lower()
-        resposta = p.get("resposta_fpe", "").lower()
-        orgao = p.get("orgao", "").lower()
-        pcode = p.get("pcode", "").lower()
-        
-        # Match by theme
-        if q_lower == tema:
-            matches.append((p, 100)) # Exact theme match
-        elif q_lower in tema:
-            matches.append((p, 80))
-        elif q_lower in ressalva or q_lower in resposta:
-            matches.append((p, 50))
-        elif q_lower in orgao or q_lower in pcode:
-            matches.append((p, 30))
-            
-    # Sort matches by score
-    matches.sort(key=lambda x: x[1], reverse=True)
-    results = [m[0] for m in matches[:limit]]
-    
-    print("=" * 80)
-    print(f" RESULTADO DA CONSULTA SUPAT: '{query}' ({len(matches)} encontrados, exibindo {len(results)})")
-    print("=" * 80)
-    
-    if not results:
-        print(f"Nenhum precedente encontrado para o termo '{query}'.")
-        print("Tente buscar por um tema ou palavra-chave mais genérica.")
-        return
-        
-    for i, p in enumerate(results, 1):
-        print(f"\n--- [CASO {i:02d}] {p.get('orgao', 'ÓRGÃO')} ({p.get('pcode', 'N/A')}) | Rev: {p.get('revisao_analise', 'R00')} | Tema: {p.get('tema', 'GERAL')} ---")
-        print(f"• Item Checklist: {p.get('item_checklist', 'ITEM 02')}")
-        print(f"• Arquivo:        {p.get('arquivo_origem', 'N/A')}")
-        print(f"• Ressalva SUPAT: \"{p.get('texto_ressalva', '').strip()}\"")
-        print(f"• Resposta FPE:   {p.get('resposta_fpe', '').strip()}")
-        print(f"• Ação Auditor:   {p.get('acao_auditor', '').strip()}")
-        print(f"• Status Ciclo:   {p.get('status_ciclo', 'atendido_na_R_seguinte')}")
-        
-    print("\n" + "=" * 80)
+    for record in records:
+        fields = ("tema", "texto_ressalva", "resposta_fpe", "orgao", "pcode", "arquivo_origem")
+        haystack = " ".join(str(record.get(field, "")) for field in fields).casefold()
+        if query in haystack:
+            matches.append(record)
+    label = "DIAGNÓSTICO — CORPUS NÃO LIBERADO" if status != "LIBERADA" else "CORPUS LIBERADO"
+    print(f"[{label}] {len(matches)} resultado(s); exibindo {min(len(matches), max(args.limit, 0))}.")
+    for index, record in enumerate(matches[: max(args.limit, 0)], 1):
+        print(f"\n[{index}] {record.get('orgao', 'N/I')} | {record.get('pcode', 'N/I')} | {record.get('tema', 'N/I')}")
+        print(f"Fonte declarada: {record.get('arquivo_origem', 'N/I')} | revisão {record.get('revisao_analise', 'N/I')}")
+        print(f"ANALISTA (não verificado): {record.get('texto_ressalva', '')}")
+        print(f"RESPOSTA FPE (não é regra do órgão): {record.get('resposta_fpe', '')}")
+        print(f"INFERÊNCIA INTERNA (não oficial): {record.get('acao_auditor', '')}")
+    return 0 if status == "LIBERADA" else 2
 
-def main():
-    if len(sys.argv) < 2:
-        precedents = load_precedents()
-        print_help(precedents)
-        return
-        
-    limit = 10
-    args = sys.argv[1:]
-    if "--limit" in args:
-        idx = args.index("--limit")
-        if idx + 1 < len(args):
-            try:
-                limit = int(args[idx + 1])
-            except ValueError:
-                pass
-            args = args[:idx] + args[idx+2:]
-            
-    query = " ".join(args)
-    search_precedents(query, limit=limit)
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

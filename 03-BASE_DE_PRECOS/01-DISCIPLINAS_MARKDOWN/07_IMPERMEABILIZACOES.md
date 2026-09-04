@@ -1,4 +1,5 @@
 # Disciplina 07: IMPERMEABILIZAÇÕES E TRATAMENTOS
+> **ÍNDICE HISTÓRICO EM QUARENTENA — NÃO USAR PARA PRECIFICAÇÃO.** Consulte `../FONTES_DADOS.json`.
 
 > **Escopo:** Mantas asfálticas, argamassas poliméricas impermeabilizantes, hidrofugantes, pinturas asfálticas e tratamento de juntas.
 > **Data-Base SINAPI:** Bahia (BA) — 03/2025 (Com e Sem Desoneração)  

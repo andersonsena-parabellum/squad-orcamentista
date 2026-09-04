@@ -1,4 +1,5 @@
 # Disciplina 12: SPDA E COMBATE A INCÊNDIO
+> **ÍNDICE HISTÓRICO EM QUARENTENA — NÃO USAR PARA PRECIFICAÇÃO.** Consulte `../FONTES_DADOS.json`.
 
 > **Escopo:** Sistema de proteção contra descargas atmosféricas (para-raios), aterramentos, tubulações galvanizadas, hidrantes e extintores.
 > **Data-Base SINAPI:** Bahia (BA) — 03/2025 (Com e Sem Desoneração)  

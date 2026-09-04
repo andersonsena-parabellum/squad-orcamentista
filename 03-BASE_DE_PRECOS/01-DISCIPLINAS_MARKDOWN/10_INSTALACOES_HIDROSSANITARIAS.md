@@ -1,4 +1,5 @@
 # Disciplina 10: INSTALAÇÕES HIDRÁULICAS E SANITÁRIAS
+> **ÍNDICE HISTÓRICO EM QUARENTENA — NÃO USAR PARA PRECIFICAÇÃO.** Consulte `../FONTES_DADOS.json`.
 
 > **Escopo:** Tubulações de água fria/quente em PVC, CPVC, PPR e Cobre, esgoto predial, caixas sifonadas, louças, metais e bombas.
 > **Data-Base SINAPI:** Bahia (BA) — 03/2025 (Com e Sem Desoneração)  

@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "status": "QUARENTENADA",
+  "arquivo": "04-DADOS/precedentes.json",
+  "motivo": "O corpus legado mistura transcrição de analista, resposta FPE e ações inferidas por heurística sem revisão humana item a item. Não tratar ações inferidas como exigência oficial.",
+  "liberacao_exige": [
+    "hash do documento de origem por caso",
+    "localização por página, tabela ou parágrafo",
+    "classificação explícita ANALISTA, RESPOSTA_FPE ou INFERENCIA_INTERNA",
+    "revisão humana registrada"
+  ]
+}

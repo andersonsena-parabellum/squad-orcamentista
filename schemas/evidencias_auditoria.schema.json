@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpe.local/schemas/evidencias_auditoria.schema.json",
+  "title": "Checkpoints humanos da auditoria pré-exportação",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "checkpoints"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "checkpoints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ITEM 01", "ITEM 02", "ITEM 03", "ITEM 04", "ITEM 05", "ITEM 06", "ITEM 07", "ITEM 08", "ITEM 09", "ITEM 10"],
+      "properties": {
+        "ITEM 01": {"$ref": "#/$defs/checkpoint"},
+        "ITEM 02": {"$ref": "#/$defs/checkpoint"},
+        "ITEM 03": {"$ref": "#/$defs/checkpoint"},
+        "ITEM 04": {"$ref": "#/$defs/checkpoint"},
+        "ITEM 05": {"$ref": "#/$defs/checkpoint"},
+        "ITEM 06": {"$ref": "#/$defs/checkpoint"},
+        "ITEM 07": {"$ref": "#/$defs/checkpoint"},
+        "ITEM 08": {"$ref": "#/$defs/checkpoint"},
+        "ITEM 09": {"$ref": "#/$defs/checkpoint"},
+        "ITEM 10": {"$ref": "#/$defs/checkpoint"}
+      }
+    }
+  },
+  "$defs": {
+    "checkpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "responsavel", "evidencias"],
+      "properties": {
+        "status": {"const": "CONFORME"},
+        "responsavel": {"type": "string", "minLength": 3},
+        "evidencias": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+      }
+    }
+  }
+}

@@ -1,4 +1,5 @@
 # Disciplina 05: ESQUADRIAS, FERRAGENS E VIDROS
+> **ÍNDICE HISTÓRICO EM QUARENTENA — NÃO USAR PARA PRECIFICAÇÃO.** Consulte `../FONTES_DADOS.json`.
 
 > **Escopo:** Portas e janelas em alumínio, madeira, aço e PVC, vidros temperados/laminados, brises, fachadas pele de vidro e ferragens.
 > **Data-Base SINAPI:** Bahia (BA) — 03/2025 (Com e Sem Desoneração)  

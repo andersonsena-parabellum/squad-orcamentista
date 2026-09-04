@@ -1,4 +1,5 @@
 # Disciplina 09: PAVIMENTAÇÕES E PISOS
+> **ÍNDICE HISTÓRICO EM QUARENTENA — NÃO USAR PARA PRECIFICAÇÃO.** Consulte `../FONTES_DADOS.json`.
 
 > **Escopo:** Contrapisos, pisos cerâmicos, porcelanatos, pisos intertravados de concreto, paralelepípedos, granitina e pisos podotáteis.
 > **Data-Base SINAPI:** Bahia (BA) — 03/2025 (Com e Sem Desoneração)  

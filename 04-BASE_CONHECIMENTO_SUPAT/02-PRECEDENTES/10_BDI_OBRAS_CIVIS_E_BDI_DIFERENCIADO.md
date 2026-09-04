@@ -1,4 +1,5 @@
 # Precedentes SUPAT: BDI
+> **CORPUS LEGADO EM QUARENTENA.** Não aplique taxa universal; confirme parâmetros, edital e documento de origem.
 
 **Total de Casos Minerados:** 3  
 

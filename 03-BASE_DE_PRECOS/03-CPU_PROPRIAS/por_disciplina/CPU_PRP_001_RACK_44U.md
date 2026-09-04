@@ -1,12 +1,14 @@
 # Ficha Técnica: CPU PRP-001-TI — Rack 19" 44U Padrão Telecom
 
+> **STATUS: QUARENTENADA. NÃO UTILIZAR EM PACOTE OFICIAL.** A ficha não contém as três propostas com CNPJ, datas e condições comerciais que comprovem a mediana; a referência, os códigos, os coeficientes e os preços ainda precisam de validação contra fontes liberadas.
+
 - **Código:** `PRP-001-TI`
 - **Descrição:** Fornecimento e instalação de Rack fechado de 19 polegadas x 44U (dimensões 800x1000 mm), com portas perfuradas, réguas PDU e bandejas.
 - **Unidade:** `UN`
 - **Disciplina:** `11_INSTALACOES_ELETRICAS.md`
 - **Referência Paradigmática:** `REF. SINAPI 93565 / SUPAT`
 - **Data da Cotação:** `2026-06-15`
-- **Status do Preço:** `VIGENTE`
+- **Status do Preço:** `QUARENTENADO — SEM EVIDÊNCIA SUFICIENTE`
 
 ---
 

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "politica": "fail-closed",
+  "database": {
+    "arquivo": "base_precos.db",
+    "schema_version": "2.0.0",
+    "sha256": "2ea61ccbbc85a7a79d28645ad84eb2f3a6816e92655828b88eadca8285d71ec5",
+    "observacao": "O hash identifica o índice local; não substitui os hashes das publicações oficiais de origem."
+  },
+  "fontes": {
+    "SINAPI": {
+      "status": "NAO_VERIFICADA",
+      "uf": "BA",
+      "competencia": "2025-03",
+      "regimes": [
+        "DESONERADO",
+        "NAO_DESONERADO"
+      ],
+      "arquivo_origem": null,
+      "sha256_origem": null,
+      "motivo": "A base local possui registros plausiveis, mas o arquivo oficial de importacao e seu hash nao estao no repositorio. Precos ficam bloqueados ate reconciliacao com a publicacao mensal da CAIXA."
+    },
+    "ORSE": {
+      "status": "QUARENTENADA",
+      "uf": "SE",
+      "competencia": "2026-06",
+      "regimes": [],
+      "arquivo_origem": "../../ORSE_Tabela_2026_06.xml",
+      "sha256_origem": "8d89806b9d54889cbbb7a5198301fcd1768516b573c5d4ef3e5c9ee1a18a9441",
+      "motivo": "Os 1.050 registros apresentam descricoes parametrizadas genericas e referencias analiticas sem correspondencia por fonte. Nao utilizar como preco ou paradigma oficial."
+    }
+  }
+}

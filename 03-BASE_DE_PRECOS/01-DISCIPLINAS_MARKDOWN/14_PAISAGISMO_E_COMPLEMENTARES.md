@@ -1,4 +1,5 @@
 # Disciplina 14: SERVIÇOS COMPLEMENTARES E PAISAGISMO
+> **ÍNDICE HISTÓRICO EM QUARENTENA — NÃO USAR PARA PRECIFICAÇÃO.** Consulte `../FONTES_DADOS.json`.
 
 > **Escopo:** Plantio de gramas e mudas, cercas, gradis, alambrados, mobiliário urbano, quadras poliesportivas e limpeza final da obra.
 > **Data-Base SINAPI:** Bahia (BA) — 03/2025 (Com e Sem Desoneração)  

@@ -1,4 +1,5 @@
 # Disciplina 13: PINTURAS E ACABAMENTOS
+> **ÍNDICE HISTÓRICO EM QUARENTENA — NÃO USAR PARA PRECIFICAÇÃO.** Consulte `../FONTES_DADOS.json`.
 
 > **Escopo:** Pinturas internas e externas látex PVA/acrílica, esmaltes sintéticos sobre madeira/metal, vernizes, texturas e epóxi.
 > **Data-Base SINAPI:** Bahia (BA) — 03/2025 (Com e Sem Desoneração)  

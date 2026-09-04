@@ -1,4 +1,5 @@
 # Precedentes SUPAT: ESPEC_DIVERGENTE
+> **CORPUS LEGADO EM QUARENTENA.** Diferencie transcrição do analista, resposta FPE e inferência interna; confirme no documento de origem.
 
 **Total de Casos Minerados:** 252  
 

@@ -1,4 +1,5 @@
 # Disciplina 03: ESTRUTURAS DE CONCRETO, AÇO E MADEIRA
+> **ÍNDICE HISTÓRICO EM QUARENTENA — NÃO USAR PARA PRECIFICAÇÃO.** Consulte `../FONTES_DADOS.json`.
 
 > **Escopo:** Formas, escoramentos, armações em aço CA-50/60, concretagem usinada e moldada in loco, estruturas metálicas e lajes.
 > **Data-Base SINAPI:** Bahia (BA) — 03/2025 (Com e Sem Desoneração)  

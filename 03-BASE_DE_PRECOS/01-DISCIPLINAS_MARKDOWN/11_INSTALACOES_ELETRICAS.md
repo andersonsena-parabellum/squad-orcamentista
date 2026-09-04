@@ -1,4 +1,5 @@
 # Disciplina 11: INSTALAÇÕES ELÉTRICAS E TELECOMUNICAÇÕES
+> **ÍNDICE HISTÓRICO EM QUARENTENA — NÃO USAR PARA PRECIFICAÇÃO.** Consulte `../FONTES_DADOS.json`.
 
 > **Escopo:** Eletrodutos, cabos flexíveis, quadros de distribuição, disjuntores, tomadas, interruptores, luminárias LED, dados e subestações.
 > **Data-Base SINAPI:** Bahia (BA) — 03/2025 (Com e Sem Desoneração)  

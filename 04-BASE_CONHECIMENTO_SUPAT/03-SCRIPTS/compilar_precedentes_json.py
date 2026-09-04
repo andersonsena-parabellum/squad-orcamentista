@@ -1,65 +1,57 @@
-import os
-import re
+#!/usr/bin/env python3
+"""Compila apenas casos revisados, sem converter Markdown legado em evidência."""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
 import json
+import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
-base_dir = Path(r"g:\Meu Drive\DFE PROJETOS OFICIAL\CLIENTES\16. FABIO - FPE\squad-orcamentista\04-BASE_CONHECIMENTO_SUPAT")
-prec_dir = base_dir / "02-PRECEDENTES"
-out_dir = base_dir / "04-DADOS"
-out_file = out_dir / "precedentes.json"
 
-precedents = []
-if prec_dir.exists():
-    for f in sorted(prec_dir.glob("*.md")):
-        content = f.read_text(encoding="utf-8")
-        m_tema = re.search(r"#\s*Precedentes\s+SUPAT:\s*(\w+)", content)
-        tema = m_tema.group(1) if m_tema else f.stem
-        
-        cases = re.split(r"###\s+Caso\s+\d+:\s*", content)[1:]
-        for c in cases:
-            header_m = re.search(r"\[(.*?) - (.*?)\]\s*(.*?)\s*\(Rev:\s*(.*?)\)", c)
-            orgao = header_m.group(1).strip() if header_m else ""
-            pcode = header_m.group(2).strip() if header_m else ""
-            obra = header_m.group(3).strip() if header_m else ""
-            revisao = header_m.group(4).strip() if header_m else ""
-            
-            item_m = re.search(r"-\s*\*\*Item do Checklist:\*\*\s*`?(.*?)`?\n", c)
-            item_chk = item_m.group(1).strip("` ") if item_m else ""
-            
-            arq_m = re.search(r"-\s*\*\*Arquivo Origem:\*\*\s*`?(.*?)`?\n", c)
-            arq = arq_m.group(1).strip("` ") if arq_m else ""
-            
-            res_m = re.search(r'-\s*\*\*Texto da Ressalva do Analista:\*\*\s*\n\s*>\s*\*\"(.*?)\"\*', c, re.DOTALL)
-            ressalva = res_m.group(1).strip() if res_m else ""
-            if not ressalva:
-                res_m2 = re.search(r"-\s*\*\*Texto da Ressalva do Analista:\*\*\s*\n\s*>\s*(.*?)(?=\n-|\Z)", c, re.DOTALL)
-                ressalva = res_m2.group(1).strip() if res_m2 else ""
-                
-            resp_m = re.search(r"-\s*\*\*Resposta da FPE:\*\*\s*\n\s*>\s*(.*?)(?=\n-|\Z)", c, re.DOTALL)
-            resposta = resp_m.group(1).strip() if resp_m else ""
-            
-            acao_m = re.search(r"-\s*\*\*Ação Obrigatória do Auditor:\*\*\s*`?(.*?)`?\n", c)
-            acao = acao_m.group(1).strip("` ") if acao_m else ""
-            
-            status_m = re.search(r"-\s*\*\*Status do Ciclo:\*\*\s*`?(.*?)`?(?:\n|\Z)", c)
-            status = status_m.group(1).strip("` ") if status_m else ""
-            
-            precedents.append({
-                "tema": tema,
-                "orgao": orgao,
-                "pcode": pcode,
-                "obra": obra,
-                "revisao_analise": revisao,
-                "item_checklist": item_chk,
-                "arquivo_origem": arq,
-                "texto_ressalva": ressalva,
-                "resposta_fpe": resposta,
-                "acao_auditor": acao,
-                "status_ciclo": status
-            })
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
-out_dir.mkdir(parents=True, exist_ok=True)
-with open(out_file, "w", encoding="utf-8") as fp:
-    json.dump(precedents, fp, indent=2, ensure_ascii=False)
 
-print(f"Sucesso: {len(precedents)} precedentes exportados para {out_file}")
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--entrada", type=Path, required=True)
+    parser.add_argument("--saida", type=Path, required=True)
+    args = parser.parse_args()
+    try:
+        payload = json.loads(args.entrada.read_text(encoding="utf-8"))
+        cases = payload.get("casos", [])
+        if not cases:
+            raise ValueError("nenhum caso para compilar")
+        for case in cases:
+            review = case.get("revisao_humana", {})
+            if not isinstance(review, dict) or review.get("status") != "APROVADO" or not review.get("responsavel") or not review.get("data"):
+                raise ValueError(f"caso sem revisão humana aprovada: {case.get('id')}")
+            source = Path(case.get("arquivo_origem", "")).resolve()
+            if not source.is_file() or sha256(source) != case.get("sha256_origem"):
+                raise RuntimeError(f"fonte ausente ou alterada: {source}")
+            if case.get("classificacao") not in {"PAR_ANALISTA_RESPOSTA_FPE", "TEXTO_ANALISTA_CONFIRMADO"}:
+                raise ValueError(f"classificação não liberável: {case.get('classificacao')}")
+        output = {
+            "schema_version": "1.0.0",
+            "status": "LIBERADA",
+            "compilado_em": datetime.now(timezone.utc).isoformat(),
+            "casos": cases,
+        }
+        args.saida.parent.mkdir(parents=True, exist_ok=True)
+        args.saida.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    except Exception as exc:
+        print(f"BLOQUEADO: {exc}", file=sys.stderr)
+        return 2
+    print(f"Corpus revisado compilado: {args.saida}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

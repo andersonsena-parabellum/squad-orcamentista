@@ -1,4 +1,5 @@
 # Precedentes SUPAT: CPU_HORAS
+> **CORPUS LEGADO EM QUARENTENA.** Não há limite universal de horas; confirme o caso, o serviço e a evidência no documento de origem.
 
 **Total de Casos Minerados:** 23  
 
@@ -6,7 +7,7 @@
 
 ## 1. Diretriz e Padrão de Análise do Órgão
 
-Horas de mão de obra em composições próprias de áudio, cabeamento, CFTV e elétrica são calibradas rigorosamente (máximo de 1,50h para equipamentos maiores e 0,10h a 0,30h para módulos/conectores; ajudantes especializados cortados quando desnecessários).
+Horas de mão de obra em composições próprias de áudio, cabeamento, CFTV e elétrica devem ser verificadas caso a caso. Nenhum intervalo deste corpus constitui limite universal; exija caderno técnico, paradigma verificável ou memória de produtividade assinada.
 
 ## 2. Casos Reais Minerados do Corpus
 

@@ -5,3 +5,23 @@
 desktop.ini
 *.rar
 *.zip
+
+# Python / caches locais
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Artefatos transitórios do squad
+*.lock
+_squad/*.tmp
+_squad/auditoria-*.json
+_squad/auditoria-*.xlsx
+_squad/pacote-manifesto-*.json
+
+# Credenciais e configurações locais
+.env
+.env.*
+*.pem
+*.pfx
+*.p12
+validation-report.json

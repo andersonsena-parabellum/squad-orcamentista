@@ -1,41 +1,9 @@
-# CURSORRULES — CLIENTE 16. FABIO / FPE PROJETOS
+# Regras do Cursor
 
-Regras operacionais para o Cursor nesta pasta (`16. FABIO - FPE`).
+Leia e cumpra `AGENTS.md` integralmente. Ele é a única fonte normativa interna deste repositório.
 
-## 1. Identidade e Papel
-- Domínio: Orçamentos de obras públicas e privadas na Bahia (SUPAT/SAEB, PGE, SEC, SETRE, FUNDAC, ADAB, SECOM, Prefeituras) e contratos privados.
-- Empresa: FPE Projetos (Fábio Pereira). Apoio técnico: DFE Engenharia (Anderson).
-- Rigor métrico: Nunca inventar quantitativos, preços, códigos SINAPI/ORSE ou BDIs. Números auditáveis célula a célula (`openpyxl data_only=True`).
-
-## 2. Bases de Conhecimento Centralizadas (`squad-orcamentista/`)
-- **Preços e Composições:** `squad-orcamentista/03-BASE_DE_PRECOS/`
-  - Consulta CLI: `python "squad-orcamentista/03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py" <codigo>`
-- **Análises Críticas e Precedentes SUPAT:** `squad-orcamentista/04-BASE_CONHECIMENTO_SUPAT/`
-  - Índice: `MAPA_RESSALVAS.md` | Checklist: `02-CHECKLIST_OFICIAL_SUPAT.md` (ITEM 01 a 10)
-  - Precedentes: 463 casos em `04-DADOS/precedentes.json` e 15 cadernos em `02-PRECEDENTES/*.md`
-  - Consulta CLI: `python "squad-orcamentista/04-BASE_CONHECIMENTO_SUPAT/03-SCRIPTS/consultar_precedente.py" <TEMA>`
-
-## 3. Matriz Canônica de 10 Colunas ($A:$J) e Bastidores ($K:$L)
-- Faixa Oficial ($A:$J): Item | Código | Banco | Descrição | Und | Quant. (Líquida) | Valor Unit | Valor Unit c/ BDI (`ROUND`) | Total (`ROUND`) | Peso % (`ROUND`)
-- Faixa Interna ($K:$L): Status Interno | Observação Interna (Notas e dúvidas).
-- Veto absoluto a notas de processo na Descrição (Coluna D).
-
-## 4. Agentes Especializados do Squad FPE
-- **@sofia-squad:** Coordenação do loop, inventário tipologia/regime, `RELATORIO-SQUAD.docx` (interno Anderson).
-- **@levi-levantador:** Rota A (LI x Projeto), Rota B (takeoff), Rota C (delta de revisão). Quantidade líquida.
-- **@elias-eap:** WBS PMBOK 3 níveis (`_squad/eap.md`), obra além do desenho, demolições/remoções prévias.
-- **@orcamentista:** Fábrica de Preços (cascata 1-6), Matriz 10 colunas, De-Para funcional (anti-`DEFINIR_COMPOSICAO`).
-- **@carlos-cotacao:** Mapa DC-007, 3 cotações CNPJ mesma spec âncora, adoção estrita da **MEDIANA (FOB)**.
-- **@auditor:** Gatekeeper pré-ENVIO (Modo A: ITEM 01 a 10) e pós-análise (Modo B: `RT-001/RESPOSTAS.docx`).
-- **@eduardo-exportador:** 7 pastas oficiais (`01` a `07`), par XLSX+PDF, layout institucional FPE (`#1F4E79`).
-- **@estruturalista:** Parecer técnico estruturas, fundações e laudos SPT.
-
-## 5. Regras Duras e Protocolo de Envio
-1. Qtd na Planilha = Líquida (perdas técnicas só no coeficiente de CPU própria; SINAPI já embute perdas).
-2. Varredura 100% das disciplinas + Obra além do desenho (vergas, subleito 93680, trama, tutor 98511) + Remoções prévias em reformas.
-3. Regra Anti-Paralisia: Vetado classificar material comercial como `DEFINIR_COMPOSICAO`. Realizar De-Para funcional no SINAPI BA.
-4. Mapa de Cotação (DC-007): 3 fornecedores com CNPJ adotando estritamente a **MEDIANA (FOB)**.
-5. Cronograma (DC-004): Valor Total do Orçamento = Cronograma (diferença R$ 0,00 centavo a centavo).
-6. Curva ABC (DC-002): Calculada sobre o custo direto (sem BDI).
-7. Gate Pré-ENVIO: Nunca selar pasta `ENVIO/` com status `BLOQUEADO`.
-8. Preservação Histórica: Nunca sobrescrever envios datados anteriores; correções = revisão `R+1`.
+- Não invente números, códigos, fontes, BDI ou aceite de órgão.
+- Preserve revisões e evidências; nunca sobrescreva envio anterior.
+- Respeite os papéis e os gates definidos no estado da obra.
+- Fonte não `LIBERADA`, ausência de evidência ou falha mecânica bloqueia o fluxo.
+- Nunca publique ou envie material externo sem autorização humana explícita.

@@ -1,4 +1,5 @@
 # Disciplina 04: PAREDES, ALVENARIAS E PAINÉIS
+> **ÍNDICE HISTÓRICO EM QUARENTENA — NÃO USAR PARA PRECIFICAÇÃO.** Consulte `../FONTES_DADOS.json`.
 
 > **Escopo:** Alvenarias de vedação cerâmica e blocos de concreto, drywall, painéis termoacústicos, vergas e contravergas.
 > **Data-Base SINAPI:** Bahia (BA) — 03/2025 (Com e Sem Desoneração)  

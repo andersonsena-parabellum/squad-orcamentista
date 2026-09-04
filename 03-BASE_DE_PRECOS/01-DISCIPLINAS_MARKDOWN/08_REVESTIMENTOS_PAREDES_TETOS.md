@@ -1,4 +1,5 @@
 # Disciplina 08: REVESTIMENTOS DE PAREDES E TETOS
+> **ÍNDICE HISTÓRICO EM QUARENTENA — NÃO USAR PARA PRECIFICAÇÃO.** Consulte `../FONTES_DADOS.json`.
 
 > **Escopo:** Chapisco, emboço, reboco, massas, forros de gesso/PVC/mineral, placas cerâmicas, azulejos e pastilhas de fachada.
 > **Data-Base SINAPI:** Bahia (BA) — 03/2025 (Com e Sem Desoneração)  

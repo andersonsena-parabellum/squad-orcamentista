@@ -1,4 +1,5 @@
 # Disciplina 01: SERVIÇOS PRELIMINARES
+> **ÍNDICE HISTÓRICO EM QUARENTENA — NÃO USAR PARA PRECIFICAÇÃO.** Consulte `../FONTES_DADOS.json`.
 
 > **Escopo:** Demolições, remoções, locação de obra, instalações provisórias, canteiro e movimentação de terra preliminar.
 > **Data-Base SINAPI:** Bahia (BA) — 03/2025 (Com e Sem Desoneração)  

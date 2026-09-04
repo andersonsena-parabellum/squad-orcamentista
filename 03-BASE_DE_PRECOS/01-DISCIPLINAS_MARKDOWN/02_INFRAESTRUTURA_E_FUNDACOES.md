@@ -1,4 +1,5 @@
 # Disciplina 02: INFRAESTRUTURA E FUNDAÇÕES
+> **ÍNDICE HISTÓRICO EM QUARENTENA — NÃO USAR PARA PRECIFICAÇÃO.** Consulte `../FONTES_DADOS.json`.
 
 > **Escopo:** Escavações, sapatas, estacas, blocos de coroamento, vigas baldrame, radiers, contenções e rebaixamento de lençol.
 > **Data-Base SINAPI:** Bahia (BA) — 03/2025 (Com e Sem Desoneração)  

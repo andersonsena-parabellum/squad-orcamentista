@@ -2,7 +2,7 @@
 
 Regras locais para qualquer IA que trabalhe nesta pasta.  
 **Escopo:** `CLIENTES/16. FABIO - FPE/`  
-**Atualizado:** 2026-09-04 (Consolidação do repositório `squad-orcamentista`, Matriz Canônica de 10 Colunas A:J + Bastidores K:L, Regra Anti-Paralisia / De-Para Funcional, 463 precedentes SUPAT em JSON/MD, novas obras 43 UBS / 44 Praça / 45-46 CAB Formosa / Bikatto, Gate Pré-ENVIO e scripts validados)
+**Atualizado:** 2026-09-04 (arquitetura fail-closed, proveniência de fontes, segregação de funções, gate pré e pós-exportação e scripts versionados)
 
 As regras globais do Anderson (`~/.grok/AGENTS.md` ou equivalente) continuam valendo. Em conflito de detalhe operacional deste cliente, **este arquivo tem precedência**.
 
@@ -132,7 +132,7 @@ Base oficial consolidada: `squad-orcamentista/03-BASE_DE_PRECOS/`
 
 ## 5. Base Central de Conhecimento SUPAT e Precedentes
 
-Base oficial de inteligência e ressalvas: `squad-orcamentista/04-BASE_CONHECIMENTO_SUPAT/`
+Base histórica de inteligência e ressalvas: `squad-orcamentista/04-BASE_CONHECIMENTO_SUPAT/`. O checklist deve ser confrontado com a versão aplicável do órgão. O corpus legado está `QUARENTENADO` em `FONTES_PRECEDENTES.json` até revisão caso a caso; ele não prova, por si só, exigência ou aceite oficial.
 - **Índice Geral de Temas:** `MAPA_RESSALVAS.md`
 - **Checklist Oficial:** `02-CHECKLIST_OFICIAL_SUPAT.md` (ITEM 01 a ITEM 10)
 - **Precedentes Temáticos (15 cadernos):** `02-PRECEDENTES/*.md`
@@ -156,13 +156,21 @@ A elaboração, revisão e auditoria nesta pasta são operadas pelo **Squad de O
 | **`@elias-eap`** | **Elias EAP** | WBS PMBOK de 3 níveis no padrão Fábio (`_squad/eap.md` **antes** do Otávio). Capítulos de execução, não pasta BIM. Parede e≈15 cm → bloco 9 cm + chapisco + emboço. Implícitos: verga, subleito, trama, tutor, demolições prévias. | Não precifica, não usa `ARQ/EST` como N1, não solta Otávio sobre dump IFC bruto. |
 | **`@orcamentista`** | **Otávio Orçamentista** | Precificação pela cascata 1–6 da Fábrica de Preços. Dono do `DC-001` a `DC-006` e quadros OrçaFascio `EC-001`/`EC-002`. Aplica a Matriz Canônica de 10 Colunas. | Proibido lançar código de memória; não altera números sem rodar script de consulta. |
 | **`@carlos-cotacao`** | **Carlos Cotação** | Cotações fora de tabela (etapas 7 e 8), âncora técnica idêntica nos 3 fornecedores com CNPJ, Mapa `DC-007` adotando estritamente a **MEDIANA** em regime FOB. | Não pesquisa termos genéricos sem spec âncora; não envia e-mails sozinhos; não usa média aritmética. |
-| **`@auditor`** | **Ana Auditora** | Gate de auditoria: **Modo A** (simulação SUPAT ITEM 01 a 10 com `amostrar_codigos.py` e deep review na Faixa A da Curva ABC sem BDI) e **Modo B** (redige o `RT-001/RESPOSTAS.docx`). | Não orça, não altera preços, não aceita "CORRIGIDO" sem abrir célula e recusa descrições contaminadas. |
-| **`@eduardo-exportador`** | **Eduardo Exportador** | Montagem das 7 pastas oficiais de envio (`01` a `07`) em par XLSX+PDF no layout institucional FPE. Sanitiza a coluna Descrição contra termos de processo. Remove ou oculta colunas de bastidores. | Não sela envio com Gate `BLOQUEADO` ou com anotações de processo entre parênteses na descrição. |
+| **`@auditor`** | **Ana Auditora** | Gate de auditoria somente leitura: **Modo A** (simulação SUPAT ITEM 01 a 10 com `amostrar_codigos.py` e deep review na Faixa A da Curva ABC sem BDI) e **Modo B** (redige o `RT-001/RESPOSTAS.docx`). | Não orça, não edita planilhas ou preços, não corrige o que audita, não aceita "CORRIGIDO" sem abrir célula e recusa descrições contaminadas. |
+| **`@eduardo-exportador`** | **Eduardo Exportador** | Montagem das 7 pastas oficiais em **área de staging**, em par XLSX+PDF no layout institucional FPE. Sanitiza a coluna Descrição e remove/oculta bastidores. | Não declara o pacote final liberado e não publica em `ENVIO/`; aguarda verificação independente pós-exportação. |
+| **`@verificador-exportacao`** | **Verificador de Pacote** | Confere os 7 pares XLSX/PDF já exportados, conteúdo, contagem de páginas, descrições e hashes; emite o gate pós-exportação. | Não altera planilhas, PDFs, preços ou quantitativos e não aprova pacote sem hash e autorização humana registrada. |
 | **`@estruturalista`** | **Engenheiro Estrutural** | Apoio especializado em projetos de estruturas, contenções, fundações e laudos SPT vs sapatas/estacas. | Não precifica itens civis gerais. |
 
 ### Anti-Alucinação Mecânica de Códigos
-1. **Validação Mecânica 100% via SQLite:** O script `amostrar_codigos.py` valida contra `base_precos.db` a existência do código SINAPI/ORSE e se o corpo da descrição corresponde exatamente à base oficial.
+1. **Validação Mecânica 100% via SQLite:** O script `amostrar_codigos.py` valida por `fonte + código` contra `base_precos.db`, exige correspondência normalizada exata de descrição e unidade e bloqueia fonte não liberada.
 2. **Deep Review na Faixa A:** O auditor inspeciona 100% das falhas apontadas pelo script, 100% dos serviços na Faixa A da Curva ABC sem BDI e até 5 CPUs próprias sorteadas.
+
+### Proveniência das Bases
+
+- `03-BASE_DE_PRECOS/FONTES_DADOS.json` registra competência, UF, regime, arquivo bruto, hash e status de cada fonte.
+- Somente fonte com status `LIBERADA`, arquivo bruto verificável e hash correspondente pode sustentar preço oficial.
+- `QUARENTENADA`, `NAO_VERIFICADA`, arquivo ausente ou divergência de hash bloqueiam a transição do orçamento.
+- A SQLite é índice de consulta; não substitui o arquivo bruto oficial nem sua cadeia de custódia.
 
 ---
 
@@ -234,8 +242,8 @@ Toda planilha sintética oficial (`DC-001` / `EC-001`) DEVE conter exatamente es
 ## 10. BDI, Cronograma e Curva ABC sem BDI
 
 ### BDI de Obras Civis vs. Diferenciado
-- **BDI de Obras Civis:** Calculado pela fórmula paramétrica do **Acórdão 2622/2013-TCU** (taxa padrão de 23,54% a 25,00%, conforme edital).
-- **BDI Diferenciado (Reduzido):** Taxa padrão de ~15,60%, aplicada **apenas e exclusivamente** se houver mero fornecimento de materiais/equipamentos de alta relevância desmembrados da montagem (Súmula 253 TCU: geradores, nobreaks, ar-condicionado, transformadores).
+- **BDI de Obras Civis:** Não existe taxa universal. Deve ser calculado pela fórmula paramétrica aplicável, com parâmetros rastreáveis do edital, regime tributário, localidade, riscos e justificativas, observando o **Acórdão 2622/2013-TCU**.
+- **BDI Diferenciado (Reduzido):** Também não possui percentual automático. Só pode ser calculado e aplicado quando houver mero fornecimento de materiais/equipamentos de alta relevância desmembrados da montagem e quando os pressupostos jurídicos e econômicos estiverem documentados, à luz da Súmula 253 do TCU.
 - Se a obra **não** possuir fornecimento relevante de equipamentos, **não** criar coluna extra nem citar BDI diferenciado no `DC-001`.
 
 ### Curva ABC sem BDI (Custo Direto)
@@ -291,10 +299,11 @@ Ao gerar, reexportar ou formatar pacotes oficiais de envio de orçamentos (pasta
 | **`orcamentista-obras`** | `@orcamentista` | Elaboração de planilhas sintéticas/analíticas, BDI, encargos e cronogramas. |
 | **`composicao-propria-obra`** | `build_cpu_workbook.py` / `validate_cpu.py` | Criação, parametrização e auditoria de CPUs próprias analíticas. |
 | **`levantamento-quantitativos`** | `build_memoria_calculo.py` | Extração 2D/BIM/IFC com compatibilização estrita de unidades e desconto de vãos. |
-| **Consulta Preços (CLI)** | `python "squad-orcamentista/03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py" <CODIGO>` | Consulta token-eficiente de itens SINAPI/ORSE no SQLite `base_precos.db`. |
-| **Consulta Precedentes (CLI)** | `python "squad-orcamentista/04-BASE_CONHECIMENTO_SUPAT/03-SCRIPTS/consultar_precedente.py" <TEMA>` | Busca de precedentes e jurisprudência da SUPAT/SAEB por tema (463 casos). |
-| **Simulação Pré-ENVIO** | `python "C:/Users/ander/.gemini/config/skills/auditoria-orcamento-obra/scripts/simulate_supat_preenvio.py" <pasta_obra>` | Automação do checklist ITEM 01 a 10 antes do fechamento do pacote. |
-| **Validação Mecânica** | `python "C:/Users/ander/.gemini/config/skills/auditoria-orcamento-obra/scripts/amostrar_codigos.py" <planilha>` | Validação 100% de códigos contra `base_precos.db` e amostragem Faixa A. |
+| **Consulta Preços (CLI)** | `python "03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py" --fonte SINAPI --regime nao_desonerado <CODIGO>` | Consulta por fonte e regime explícitos; fonte não liberada é bloqueada. |
+| **Consulta Precedentes (CLI)** | `python "04-BASE_CONHECIMENTO_SUPAT/03-SCRIPTS/consultar_precedente.py" --diagnostico <TEMA>` | Localização diagnóstica no corpus legado; confirmar cada texto no documento de origem antes de citar. |
+| **Simulação Pré-ENVIO** | `python "scripts/simulate_supat_preenvio.py" <pasta_obra> --checkpoints <checkpoints.json>` | Automação fail-closed do checklist ITEM 01 a 10 antes da exportação. |
+| **Validação Mecânica** | `python "scripts/amostrar_codigos.py" <planilha> --regime <regime>` | Validação por fonte+código, descrição, unidade, preço e fórmulas calculadas. |
+| **Verificação Pós-Exportação** | `python "scripts/verify_export_package.py" <pasta_staging> --estado <estado.json>` | Confere os 7 pares, XLSX/PDF e hashes antes da liberação final. |
 
 ---
 
@@ -312,7 +321,10 @@ Ao gerar, reexportar ou formatar pacotes oficiais de envio de orçamentos (pasta
 - [ ] Descrições em `DC-001` e `EC-001` **rigorosamente sanitizadas** (zero anotações de processo entre parênteses).
 - [ ] Identidade visual FPE aplicada: cabeçalhos `#1F4E79`, brasão à esquerda, FPE à direita, sem nomes pessoais.
 - [ ] Pacote montado nas **7 pastas numeradas (`01` a `07`)** em par `.xlsx` + `.pdf`.
-- [ ] Gate de Envio atingiu **`LIBERADO`** (ou `LIBERADO_COM_PENDENCIA_TERCEIRO` autorizado pelo Anderson).
+- [ ] Gate pré-exportação atingiu `PRE_LIBERADO`, com auditoria somente leitura e checkpoints humanos assinados.
+- [ ] Eduardo gerou os arquivos em staging, sem publicar sobre envio anterior.
+- [ ] Verificador independente conferiu os 7 pares XLSX/PDF, registrou hashes e emitiu gate pós-exportação.
+- [ ] Gate de Envio atingiu **`LIBERADO`**. Pendência de terceiro permanece bloqueio até evidência e autorização formal registradas; não há liberação implícita.
 
 ---
 

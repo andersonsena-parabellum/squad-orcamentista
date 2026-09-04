@@ -1,4 +1,5 @@
 # Disciplina 06: COBERTURAS E ESTRUTURAS DE TELHADO
+> **ÍNDICE HISTÓRICO EM QUARENTENA — NÃO USAR PARA PRECIFICAÇÃO.** Consulte `../FONTES_DADOS.json`.
 
 > **Escopo:** Estruturas metálicas e de madeira para telhados, telhas cerâmicas, metálicas, termoacústicas, calhas, rufos e condutores.
 > **Data-Base SINAPI:** Bahia (BA) — 03/2025 (Com e Sem Desoneração)  

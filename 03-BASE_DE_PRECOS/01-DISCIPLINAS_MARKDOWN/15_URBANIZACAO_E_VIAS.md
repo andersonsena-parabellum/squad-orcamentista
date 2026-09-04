@@ -1,4 +1,5 @@
 # Disciplina 15: URBANIZAÇÃO E PAVIMENTAÇÃO VIÁRIA
+> **ÍNDICE HISTÓRICO EM QUARENTENA — NÃO USAR PARA PRECIFICAÇÃO.** Consulte `../FONTES_DADOS.json`.
 
 > **Escopo:** Guias e sarjetas, calçadas de concreto, pavimentação asfáltica CBUQ, drenagem pluvial urbana (bueiros/aduelas) e sinalização viária.
 > **Data-Base SINAPI:** Bahia (BA) — 03/2025 (Com e Sem Desoneração)  
