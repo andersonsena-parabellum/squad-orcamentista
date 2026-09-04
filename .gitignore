@@ -5,6 +5,7 @@
 desktop.ini
 *.rar
 *.zip
+!03-BASE_DE_PRECOS/00-FONTES_OFICIAIS/SINAPI-2026-07-formato-xlsx.zip
 
 # Python / caches locais
 __pycache__/

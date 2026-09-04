@@ -19,8 +19,8 @@ for _stream in (sys.stdout, sys.stderr):
 
 
 def brl(value: float | None) -> str:
-    if value is None:
-        return "AUSENTE"
+    if value is None or value <= 0:
+        return "SEM PREÇO — USO BLOQUEADO"
     return f"R$ {value:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
 
 
@@ -60,6 +60,7 @@ def main() -> int:
 
     price_comp = "custo_deson" if args.regime == "desonerado" else "custo_nao_deson"
     price_input = "preco_deson" if args.regime == "desonerado" else "preco_nao_deson"
+    provenance = f"UF {record.get('uf', 'N/D')} | competência {record.get('competencia', 'N/D')}"
     banner = "DIAGNÓSTICO — NÃO UTILIZAR EM ORÇAMENTO" if status != "LIBERADA" else "FONTE LIBERADA"
 
     with sqlite3.connect(DB_PATH) as conn:
@@ -71,7 +72,7 @@ def main() -> int:
         ).fetchone()
         if comp:
             print(f"[{banner}] {comp['fonte']} {comp['codigo']} — {comp['descricao']}")
-            print(f"Unidade: {comp['unidade']} | Grupo: {comp['grupo']} | {brl(comp['preco'])}")
+            print(f"{provenance} | Unidade: {comp['unidade']} | Grupo: {comp['grupo']} | {brl(comp['preco'])}")
             rows = conn.execute(
                 "SELECT tipo_item,codigo_item,descricao,unidade,coeficiente "
                 "FROM composicao_itens WHERE fonte=? AND codigo_composicao=?",
@@ -89,7 +90,10 @@ def main() -> int:
                     f"  {row['tipo_item']} {row['codigo_item']} | {row['unidade']} | "
                     f"coef. {row['coeficiente']} | {brl(unit_price)} | {row['descricao']}"
                 )
-            return 0 if status == "LIBERADA" else 2
+            if status == "LIBERADA" and comp["preco"] is not None and comp["preco"] > 0:
+                return 0
+            print("BLOQUEADO: a composição não possui custo positivo para UF/competência/regime selecionados.", file=sys.stderr)
+            return 2
 
         insumo = conn.execute(
             f"SELECT fonte,codigo,descricao,unidade,tipo,{price_input} AS preco "
@@ -98,8 +102,11 @@ def main() -> int:
         ).fetchone()
         if insumo:
             print(f"[{banner}] {insumo['fonte']} {insumo['codigo']} — {insumo['descricao']}")
-            print(f"Unidade: {insumo['unidade']} | Tipo: {insumo['tipo']} | {brl(insumo['preco'])}")
-            return 0 if status == "LIBERADA" else 2
+            print(f"{provenance} | Unidade: {insumo['unidade']} | Tipo: {insumo['tipo']} | {brl(insumo['preco'])}")
+            if status == "LIBERADA" and insumo["preco"] is not None and insumo["preco"] > 0:
+                return 0
+            print("BLOQUEADO: o insumo não possui preço positivo para UF/competência/regime selecionados.", file=sys.stderr)
+            return 2
 
         rows = conn.execute(
             f"SELECT fonte,codigo,descricao,unidade,{price_comp} AS preco FROM composicoes "
@@ -109,7 +116,7 @@ def main() -> int:
         if not rows:
             print("Nenhum registro encontrado para a fonte informada.")
             return 1
-        print(f"[{banner}] resultados em {args.fonte}:")
+        print(f"[{banner}] resultados em {args.fonte} | {provenance}:")
         for row in rows:
             print(f"  {row['codigo']} | {row['unidade']} | {brl(row['preco'])} | {row['descricao']}")
         return 0 if status == "LIBERADA" else 2

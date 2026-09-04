@@ -137,15 +137,18 @@ def audit_workbook(path: Path, regime: str, federal_transfer: bool = False) -> d
                         item["falhas"].append("DESCRICAO_DIVERGENTE")
                     if item["unidade"] != normalize_unit(official["unidade"]):
                         item["falhas"].append("UNIDADE_DIVERGENTE")
-                    try:
-                        official_price = money(official["preco"])
-                        sheet_price = money(ws_value.cell(row, columns["valor_unit"]).value)
-                        if official_price <= 0:
-                            item["falhas"].append("PRECO_OFICIAL_ZERO_OU_AUSENTE")
-                        elif abs(official_price - sheet_price) > Decimal("0.01"):
-                            item["falhas"].append(f"PRECO_DIVERGENTE: base={official_price} planilha={sheet_price}")
-                    except InvalidOperation:
-                        item["falhas"].append("PRECO_INVALIDO")
+                    if official["preco"] is None:
+                        item["falhas"].append("PRECO_OFICIAL_ZERO_OU_AUSENTE")
+                    else:
+                        try:
+                            official_price = money(official["preco"])
+                            sheet_price = money(ws_value.cell(row, columns["valor_unit"]).value)
+                            if official_price <= 0:
+                                item["falhas"].append("PRECO_OFICIAL_ZERO_OU_AUSENTE")
+                            elif abs(official_price - sheet_price) > Decimal("0.01"):
+                                item["falhas"].append(f"PRECO_DIVERGENTE: base={official_price} planilha={sheet_price}")
+                        except InvalidOperation:
+                            item["falhas"].append("PRECO_INVALIDO")
 
             for numeric_key in ("quantidade", "valor_unit", "total"):
                 formula_cell = ws_formula.cell(row, columns[numeric_key])

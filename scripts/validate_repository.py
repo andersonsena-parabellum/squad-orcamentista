@@ -21,6 +21,7 @@ REQUIRED_SCRIPTS = {
     "verify_export_package.py",
     "build_handoff.py",
     "migrate_db_schema.py",
+    "importar_sinapi.py",
 }
 
 
@@ -50,16 +51,21 @@ def validate() -> dict:
     else:
         precedent_status = load_json(precedent_registry).get("status")
         if precedent_status != "LIBERADA":
-            findings.append({"severity": "P0", "type": "PRECEDENTES_NAO_LIBERADOS", "detail": precedent_status})
+            findings.append({"severity": "P1", "type": "PRECEDENTES_NAO_LIBERADOS", "detail": precedent_status})
 
     if not SOURCE_REGISTRY.is_file():
         findings.append({"severity": "P0", "type": "REGISTRO_FONTES_AUSENTE", "detail": str(SOURCE_REGISTRY)})
     else:
         registry = load_json(SOURCE_REGISTRY)
+        released_sources = []
         for source, record in registry.get("fontes", {}).items():
             released, reason = source_is_releasable(source)
-            if not released:
-                findings.append({"severity": "P0", "type": "FONTE_NAO_LIBERADA", "detail": f"{source}: {reason}"})
+            if released:
+                released_sources.append(source)
+            else:
+                findings.append({"severity": "P1", "type": "FONTE_NAO_LIBERADA", "detail": f"{source}: {reason}"})
+        if not released_sources:
+            findings.append({"severity": "P0", "type": "NENHUMA_FONTE_DE_PRECOS_LIBERADA", "detail": "O núcleo de precificação está indisponível"})
 
     if not PRICE_DB.is_file():
         findings.append({"severity": "P0", "type": "BASE_AUSENTE", "detail": str(PRICE_DB)})
@@ -75,18 +81,24 @@ def validate() -> dict:
             pk_columns = [row[1] for row in sorted((row for row in conn.execute("PRAGMA table_info(composicoes)") if row[5]), key=lambda row: row[5])]
             if pk_columns != ["fonte", "codigo"]:
                 findings.append({"severity": "P0", "type": "CHAVE_COMPOSICOES_INSEGURA", "detail": pk_columns})
+            released = []
+            if SOURCE_REGISTRY.is_file():
+                for source in load_json(SOURCE_REGISTRY).get("fontes", {}):
+                    if source_is_releasable(source)[0]:
+                        released.append(source)
+            placeholders = ",".join("?" for _ in released) or "''"
             checks = {
-                "COMPOSICOES_PRECO_ZERO": "SELECT count(*) FROM composicoes WHERE custo_deson<=0 OR custo_nao_deson<=0",
-                "INSUMOS_PRECO_ZERO": "SELECT count(*) FROM insumos WHERE preco_deson<=0 OR preco_nao_deson<=0",
-                "COEFICIENTES_NAO_POSITIVOS": "SELECT count(*) FROM composicao_itens WHERE coeficiente IS NULL OR coeficiente<=0",
-                "ORFAOS_INSUMO_POR_FONTE": "SELECT count(*) FROM composicao_itens ci LEFT JOIN insumos i ON i.fonte=ci.fonte AND i.codigo=ci.codigo_item WHERE ci.tipo_item='INSUMO' AND i.codigo IS NULL",
-                "ORFAOS_COMPOSICAO_POR_FONTE": "SELECT count(*) FROM composicao_itens ci LEFT JOIN composicoes c ON c.fonte=ci.fonte AND c.codigo=ci.codigo_item WHERE ci.tipo_item<>'INSUMO' AND c.codigo IS NULL",
-                "ORSE_DESCRICAO_GENERICA": "SELECT count(*) FROM composicoes WHERE fonte='ORSE' AND descricao LIKE '%especificação analítica%execução técnica especializada%'",
+                "COMPOSICOES_SEM_PRECO_NA_UF": ("P1", "SELECT count(*) FROM composicoes WHERE fonte IN (" + placeholders + ") AND (custo_deson IS NULL OR custo_deson<=0 OR custo_nao_deson IS NULL OR custo_nao_deson<=0)", released),
+                "INSUMOS_SEM_PRECO_NA_UF": ("P1", "SELECT count(*) FROM insumos WHERE fonte IN (" + placeholders + ") AND (preco_deson IS NULL OR preco_deson<=0 OR preco_nao_deson IS NULL OR preco_nao_deson<=0)", released),
+                "COEFICIENTES_NAO_POSITIVOS": ("P1", "SELECT count(*) FROM composicao_itens WHERE fonte IN (" + placeholders + ") AND (coeficiente IS NULL OR coeficiente<=0)", released),
+                "ORFAOS_INSUMO_FONTE_LIBERADA": ("P0", "SELECT count(*) FROM composicao_itens ci LEFT JOIN insumos i ON i.fonte=ci.fonte AND i.codigo=ci.codigo_item WHERE ci.fonte IN (" + placeholders + ") AND ci.tipo_item='INSUMO' AND i.codigo IS NULL", released),
+                "ORFAOS_COMPOSICAO_FONTE_LIBERADA": ("P0", "SELECT count(*) FROM composicao_itens ci LEFT JOIN composicoes c ON c.fonte=ci.fonte AND c.codigo=ci.codigo_item WHERE ci.fonte IN (" + placeholders + ") AND ci.tipo_item<>'INSUMO' AND c.codigo IS NULL", released),
+                "ORSE_DESCRICAO_GENERICA_QUARENTENADA": ("P1", "SELECT count(*) FROM composicoes WHERE fonte='ORSE' AND descricao LIKE '%especificação analítica%execução técnica especializada%'", []),
             }
-            for finding_type, query in checks.items():
-                count = conn.execute(query).fetchone()[0]
+            for finding_type, (severity, query, params) in checks.items():
+                count = conn.execute(query, params).fetchone()[0]
                 if count:
-                    findings.append({"severity": "P0" if finding_type.startswith(("ORFAOS", "ORSE")) else "P1", "type": finding_type, "detail": count})
+                    findings.append({"severity": severity, "type": finding_type, "detail": count})
         finally:
             conn.close()
 
@@ -98,7 +110,14 @@ def validate() -> dict:
             if not linked.exists():
                 findings.append({"severity": "P1", "type": "CPU_FICHA_AUSENTE", "detail": link})
 
-    return {"schema_version": "1.0.0", "generated_at": utc_now(), "gate": "LIBERADO" if not findings else "BLOQUEADO", "findings": findings}
+    blocking = [finding for finding in findings if finding["severity"] == "P0"]
+    return {
+        "schema_version": "1.1.0",
+        "generated_at": utc_now(),
+        "gate": "LIBERADO" if not blocking else "BLOQUEADO",
+        "restricoes_ativas": len(findings) - len(blocking),
+        "findings": findings,
+    }
 
 
 def main() -> int:

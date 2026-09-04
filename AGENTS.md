@@ -106,9 +106,9 @@ Se a pasta da disciplina existe no projeto mas **não há LI legível**, marque 
 Base oficial consolidada: `squad-orcamentista/03-BASE_DE_PRECOS/`
 - **Consulta via CLI / Token-Eficiente:**
   ```bash
-  python "squad-orcamentista/03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py" <CODIGO>
+  python "squad-orcamentista/03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py" <CODIGO> --fonte SINAPI --regime <desonerado|nao_desonerado>
   ```
-  *(Exibe desonerado/não desonerado Bahia e detalhamento completo de coeficientes e insumos sem estourar a janela de contexto).*
+  *(Exige fonte e regime explícitos e exibe o detalhamento de coeficientes e insumos sem estourar a janela de contexto).*
 
 - **Cascata Obrigatória do Orçamentista (0 a 8):**
   1. *Etapa 0 (Fontes):* LI, Memorial Descritivo e Projeto 2D/3D (quantidade líquida na unidade da CPU).
@@ -301,9 +301,9 @@ Ao gerar, reexportar ou formatar pacotes oficiais de envio de orçamentos (pasta
 | **`levantamento-quantitativos`** | `build_memoria_calculo.py` | Extração 2D/BIM/IFC com compatibilização estrita de unidades e desconto de vãos. |
 | **Consulta Preços (CLI)** | `python "03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py" --fonte SINAPI --regime nao_desonerado <CODIGO>` | Consulta por fonte e regime explícitos; fonte não liberada é bloqueada. |
 | **Consulta Precedentes (CLI)** | `python "04-BASE_CONHECIMENTO_SUPAT/03-SCRIPTS/consultar_precedente.py" --diagnostico <TEMA>` | Localização diagnóstica no corpus legado; confirmar cada texto no documento de origem antes de citar. |
-| **Simulação Pré-ENVIO** | `python "scripts/simulate_supat_preenvio.py" <pasta_obra> --checkpoints <checkpoints.json>` | Automação fail-closed do checklist ITEM 01 a 10 antes da exportação. |
+| **Simulação Pré-ENVIO** | `python "scripts/simulate_supat_preenvio.py" <pasta_obra> --regime <regime> --evidencias <checkpoints.json> --out <auditoria.json>` | Automação fail-closed do checklist ITEM 01 a 10 antes da exportação. |
 | **Validação Mecânica** | `python "scripts/amostrar_codigos.py" <planilha> --regime <regime>` | Validação por fonte+código, descrição, unidade, preço e fórmulas calculadas. |
-| **Verificação Pós-Exportação** | `python "scripts/verify_export_package.py" <pasta_staging> --estado <estado.json>` | Confere os 7 pares, XLSX/PDF e hashes antes da liberação final. |
+| **Verificação Pós-Exportação** | `python "scripts/verify_export_package.py" <pasta_staging> --estado <estado.json> --out <verificacao.json>` | Confere os 7 pares, XLSX/PDF e hashes antes da liberação final. |
 
 ---
 

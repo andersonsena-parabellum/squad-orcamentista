@@ -17,6 +17,7 @@ from atualizar_estado import update
 from amostrar_codigos import audit_workbook
 from simulate_supat_preenvio import REQUIRED_HUMAN_ITEMS, audit_quotes, human_checkpoints, valid_cnpj
 from squad_common import atomic_write_json, sha256_file, source_is_releasable, validate_handoff_file
+from validate_repository import validate as validate_repository
 
 
 def make_cnpj(base12: str) -> str:
@@ -32,6 +33,10 @@ class SquadControlTests(unittest.TestCase):
         released, reason = source_is_releasable("ORSE")
         self.assertFalse(released)
         self.assertIn("QUARENTENADA", reason)
+
+    def test_official_sinapi_source_is_releasable(self) -> None:
+        released, reason = source_is_releasable("SINAPI")
+        self.assertTrue(released, reason)
 
     def test_cnpj_checksum(self) -> None:
         self.assertTrue(valid_cnpj("11.222.333/0001-81"))
@@ -61,6 +66,35 @@ class SquadControlTests(unittest.TestCase):
             types = {failure["tipo"] for failure in report["falhas"]}
             self.assertTrue(any(item.startswith("FORMULA_SEM_CACHE") for item in types))
             self.assertEqual(report["gate"], "BLOQUEADO")
+
+    def test_official_code_without_ba_price_stays_blocked(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "DC-001.xlsx"
+            wb = openpyxl.Workbook()
+            ws = wb.active
+            ws.append(["Item", "Código", "Banco", "Descrição", "Und", "Quant.", "Valor Unit", "Valor Unit com BDI", "Total", "Peso %"])
+            ws.append([
+                "1",
+                "105006",
+                "SINAPI",
+                "RAMPA DE ACESSIBILIDADE EM CONCRETO PRÉ MOLDADO, EM CALÇADA NOVA COM LARGURA MAIOR OU IGUAL À 3,00 M, FCK 25MPA, COM PISO PODOTÁTIL. AF_03/2024",
+                "UN",
+                1,
+                1,
+                1,
+                1,
+                100,
+            ])
+            wb.save(path)
+            report = audit_workbook(path, "NAO_DESONERADO")
+            types = {failure["tipo"] for failure in report["falhas"]}
+            self.assertIn("PRECO_OFICIAL_ZERO_OU_AUSENTE", types)
+            self.assertEqual(report["gate"], "BLOQUEADO")
+
+    def test_repository_is_operational_with_quarantines_isolated(self) -> None:
+        report = validate_repository()
+        self.assertEqual(report["gate"], "LIBERADO")
+        self.assertGreater(report["restricoes_ativas"], 0)
 
     def test_handoff_rejects_hash_drift(self) -> None:
         with tempfile.TemporaryDirectory() as temp:

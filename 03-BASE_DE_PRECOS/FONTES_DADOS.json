@@ -4,21 +4,32 @@
   "database": {
     "arquivo": "base_precos.db",
     "schema_version": "2.0.0",
-    "sha256": "2ea61ccbbc85a7a79d28645ad84eb2f3a6816e92655828b88eadca8285d71ec5",
+    "sha256": "d6e54616720b066cbec72bb55a8cc62c43c4502e693ebec57c70eb0f64aaa647",
     "observacao": "O hash identifica o índice local; não substitui os hashes das publicações oficiais de origem."
   },
   "fontes": {
     "SINAPI": {
-      "status": "NAO_VERIFICADA",
+      "status": "LIBERADA",
       "uf": "BA",
-      "competencia": "2025-03",
+      "competencia": "2026-07",
       "regimes": [
         "DESONERADO",
         "NAO_DESONERADO"
       ],
-      "arquivo_origem": null,
-      "sha256_origem": null,
-      "motivo": "A base local possui registros plausiveis, mas o arquivo oficial de importacao e seu hash nao estao no repositorio. Precos ficam bloqueados ate reconciliacao com a publicacao mensal da CAIXA."
+      "arquivo_origem": "00-FONTES_OFICIAIS/SINAPI-2026-07-formato-xlsx.zip",
+      "url_oficial": "https://www.caixa.gov.br/Downloads/sinapi-relatorios-mensais/SINAPI-2026-07-formato-xlsx.zip",
+      "sha256_origem": "58c131f997560332cf2d7f7f90644790d5c6e2a909a2963b18f136779312b14f",
+      "importado_em": "2026-09-04T15:04:55.101343+00:00",
+      "contagens": {
+        "composicoes": 10544,
+        "insumos": 6120,
+        "itens_analiticos": 56316,
+        "sem_preco_na_uf": {
+          "composicoes": 2144,
+          "insumos": 1672
+        }
+      },
+      "motivo": "Publicação mensal oficial da CAIXA conferida por hash e importada de forma transacional. Registros sem preço permanecem bloqueados individualmente."
     },
     "ORSE": {
       "status": "QUARENTENADA",
