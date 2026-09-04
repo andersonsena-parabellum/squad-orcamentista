@@ -1,0 +1,7 @@
+﻿# Arquivos de sistema e temporários
+*.tmp
+*.bak
+~$*
+desktop.ini
+*.rar
+*.zip
