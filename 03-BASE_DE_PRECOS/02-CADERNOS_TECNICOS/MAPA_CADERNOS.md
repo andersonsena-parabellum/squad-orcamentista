@@ -19,5 +19,5 @@
 
 ## 2. Como a IA Deve Consultar os Cadernos
 1. Identifique a família do serviço em questão.
-2. Abra **apenas o arquivo correspondente** na pasta `05-CADERNOS_TECNICOS_SINAPI/md/`.
+2. Abra **apenas o arquivo correspondente** nesta pasta `03-BASE_DE_PRECOS/02-CADERNOS_TECNICOS/`.
 3. Verifique a seção **"O que NÃO ESTÁ INCLUSO"** para lançar as composições complementares necessárias na planilha orçamentária (evitando orçamentos incompletos e ressalvas em auditoria).

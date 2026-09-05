@@ -21,7 +21,8 @@ python scripts/validate_repository.py
 Prossiga somente se o `gate` for `LIBERADO`. As `restricoes_ativas` não paralisam escopos independentes, mas devem ser respeitadas por fonte:
 
 - `SINAPI` pode sustentar preços apenas quando `FONTES_DADOS.json` estiver `LIBERADA`, o arquivo bruto existir, o hash coincidir e o item tiver preço positivo na UF, competência e regime escolhidos.
-- Fonte em quarentena não pode ser usada como preço, paradigma ou prova. Atualmente, a ORSE local é apenas diagnóstica.
+- `ORSE` oficial pode sustentar paradigma e referência SE quando a composição foi consultada/cacheada pelo script oficial. Preço direto fora de SE exige autorização e justificativa expressas; a carga genérica antiga está isolada como `ORSE_LEGADO_QUARENTENA`.
+- `CPU_PROPRIA` catalogada pode sustentar um modelo estrutural. Uso direto exige revalidar escopo, unidade, coeficientes, perdas e todos os preços para a obra/revisão.
 - O corpus SUPAT em quarentena não pode ser citado como exigência oficial; o checklist continua utilizável, e cada precedente exige conferência no documento de origem.
 
 Nunca contorne um bloqueio mudando manualmente status ou preço.
@@ -63,9 +64,11 @@ Consulte códigos com fonte e regime explícitos:
 
 ```powershell
 python 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py 93680 --fonte SINAPI --regime nao_desonerado
+python 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_orse_oficial.py "caixa de drenagem"
+python 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_cpu_propria.py pergolado
 ```
 
-A cascata é: SINAPI exato; SINAPI adaptável com caderno; sugestão técnica ao projetista; ORSE oficial liberada; CPU catalogada; CPU adaptada; CPU nova documentada; cotação; minuta de solicitação. Pule qualquer etapa cuja fonte esteja bloqueada e registre o motivo. Horas de mão de obra, BDI, encargos, produtividade e perdas não têm valor universal.
+A cascata é: SINAPI exato; SINAPI adaptável com caderno; sugestão técnica ao projetista; ORSE oficial como paradigma; CPU catalogada como modelo; CPU adaptada; CPU nova documentada; cotação; minuta de solicitação. A consulta de um código ORSE exato grava a evidência local. Recalcule a CPU na base da obra; horas de mão de obra, BDI, encargos, produtividade e perdas não têm valor universal.
 
 ## Auditoria e fechamento
 

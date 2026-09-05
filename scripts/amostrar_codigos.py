@@ -21,6 +21,10 @@ import openpyxl
 
 from squad_common import PRICE_DB, money, normalize_text, normalize_unit, sha256_file, source_is_releasable, utc_now
 
+ORSE_SCRIPT_DIR = Path(__file__).resolve().parents[1] / "03-BASE_DE_PRECOS" / "04-SCRIPTS"
+sys.path.insert(0, str(ORSE_SCRIPT_DIR))
+from orse_oficial import load_cached_composition
+
 
 PROCESS_NOTE_RE = re.compile(
     r"\b(REVISAR|CONFIRMAR|PENDENTE|VER\s+MEMORIAL|VER\s+RELAT[OÓ]RIO|"
@@ -76,7 +80,12 @@ def _database_lookup(cur: sqlite3.Cursor, source: str, code: str, regime: str) -
     return None
 
 
-def audit_workbook(path: Path, regime: str, federal_transfer: bool = False) -> dict[str, Any]:
+def audit_workbook(
+    path: Path,
+    regime: str,
+    federal_transfer: bool = False,
+    permit_orse_direct: bool = False,
+) -> dict[str, Any]:
     result: dict[str, Any] = {
         "schema_version": "1.0.0",
         "generated_at": utc_now(),
@@ -125,8 +134,34 @@ def audit_workbook(path: Path, regime: str, federal_transfer: bool = False) -> d
             if PROCESS_NOTE_RE.search(description):
                 item["falhas"].append("DESCRICAO_CONTAMINADA")
 
-            if source in {"SINAPI", "ORSE"}:
-                releasable, reason = source_is_releasable(source)
+            if source == "ORSE":
+                releasable, reason = source_is_releasable("ORSE", "preco_referencia_se")
+                if not releasable:
+                    item["falhas"].append(f"FONTE_NAO_LIBERADA: {reason}")
+                official = load_cached_composition(code)
+                if not official:
+                    item["falhas"].append("ORSE_NAO_CACHEADA: consultar código no portal oficial antes da auditoria")
+                else:
+                    if normalize_text(description) != normalize_text(official["descricao"]):
+                        item["falhas"].append("DESCRICAO_DIVERGENTE")
+                    if item["unidade"] != normalize_unit(official["unidade"]):
+                        item["falhas"].append("UNIDADE_DIVERGENTE")
+                    if not permit_orse_direct:
+                        item["falhas"].append("ORSE_DIRETO_SEM_AUTORIZACAO_EXPRESSA")
+                    if official["custo_total_orse_se"] is None:
+                        item["falhas"].append("PRECO_OFICIAL_ZERO_OU_AUSENTE")
+                    else:
+                        try:
+                            official_price = money(official["custo_total_orse_se"])
+                            sheet_price = money(ws_value.cell(row, columns["valor_unit"]).value)
+                            if official_price <= 0:
+                                item["falhas"].append("PRECO_OFICIAL_ZERO_OU_AUSENTE")
+                            elif abs(official_price - sheet_price) > Decimal("0.01"):
+                                item["falhas"].append(f"PRECO_DIVERGENTE: base={official_price} planilha={sheet_price}")
+                        except InvalidOperation:
+                            item["falhas"].append("PRECO_INVALIDO")
+            elif source == "SINAPI":
+                releasable, reason = source_is_releasable(source, "preco_direto")
                 if not releasable:
                     item["falhas"].append(f"FONTE_NAO_LIBERADA: {reason}")
                 official = _database_lookup(cur, source, code, regime)
@@ -196,12 +231,17 @@ def main() -> int:
     parser.add_argument("planilha", type=Path)
     parser.add_argument("--regime", required=True, choices=["DESONERADO", "NAO_DESONERADO"])
     parser.add_argument("--federal-transfer", action="store_true")
+    parser.add_argument(
+        "--permitir-orse-direto",
+        action="store_true",
+        help="declara que há autorização/justificativa expressa para usar preço ORSE/SE diretamente",
+    )
     parser.add_argument("--out", type=Path)
     args = parser.parse_args()
     if not args.planilha.is_file():
         print(f"[ERRO] Planilha nao encontrada: {args.planilha}", file=sys.stderr)
         return 2
-    report = audit_workbook(args.planilha, args.regime, args.federal_transfer)
+    report = audit_workbook(args.planilha, args.regime, args.federal_transfer, args.permitir_orse_direto)
     payload = json.dumps(report, ensure_ascii=False, indent=2)
     if args.out:
         args.out.parent.mkdir(parents=True, exist_ok=True)

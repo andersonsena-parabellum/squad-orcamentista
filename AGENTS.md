@@ -107,6 +107,8 @@ Base oficial consolidada: `squad-orcamentista/03-BASE_DE_PRECOS/`
 - **Consulta via CLI / Token-Eficiente:**
   ```bash
   python "squad-orcamentista/03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py" <CODIGO> --fonte SINAPI --regime <desonerado|nao_desonerado>
+  python "squad-orcamentista/03-BASE_DE_PRECOS/04-SCRIPTS/consultar_orse_oficial.py" <CODIGO_OU_DESCRICAO>
+  python "squad-orcamentista/03-BASE_DE_PRECOS/04-SCRIPTS/consultar_cpu_propria.py" <CODIGO_OU_DESCRICAO>
   ```
   *(Exige fonte e regime explícitos e exibe o detalhamento de coeficientes e insumos sem estourar a janela de contexto).*
 
@@ -115,8 +117,8 @@ Base oficial consolidada: `squad-orcamentista/03-BASE_DE_PRECOS/`
   2. *Etapa 1 (SINAPI Exato):* Consulta exata no banco SINAPI (BA) desonerado/não desonerado.
   3. *Etapa 2 (SINAPI Adaptável):* Copia mão de obra e coeficientes do caderno técnico; troca apenas o insumo material específico.
   4. *Etapa 2b (Sugestão ao Projetista):* Adequação leve de especificação comercial para item tabelado.
-  5. *Etapa 3 (ORSE Paradigma):* Paradigma `REF. ORSE xxxxx`, convertendo mão de obra para SINAPI `88xxx` com encargos complementares.
-  6. *Etapa 4 (CPU do Catálogo):* Reutilização de composições próprias já catalogadas (`03-CPU_PROPRIAS/MAPA_CPU_PROPRIAS.md`).
+  5. *Etapa 3 (ORSE Paradigma):* Consulte o portal oficial, grave a evidência local e use `REF. ORSE xxxxx`. Conversões para SINAPI e uso de preço fora de SE exigem justificativa; nada é substituído automaticamente.
+  6. *Etapa 4 (CPU do Catálogo):* Reutilização como modelo das composições próprias catalogadas (`03-CPU_PROPRIAS/CATALOGO_CPU_PROPRIAS.json`), com revalidação integral para a obra atual.
   7. *Etapa 5 (Adaptar CPU):* Adaptação de composição do catálogo.
   8. *Etapa 6 (CPU Nova Copiando Caderno):* Cópia de composição auxiliar de cadernos técnicos SINAPI (`02-CADERNOS_TECNICOS/`).
   9. *Etapa 7 (Cotação Internet):* Pesquisa de 3 fornecedores válidos com CNPJ adotando a **MEDIANA (FOB)** no Mapa `DC-007`.
@@ -162,13 +164,15 @@ A elaboração, revisão e auditoria nesta pasta são operadas pelo **Squad de O
 | **`@estruturalista`** | **Engenheiro Estrutural** | Apoio especializado em projetos de estruturas, contenções, fundações e laudos SPT vs sapatas/estacas. | Não precifica itens civis gerais. |
 
 ### Anti-Alucinação Mecânica de Códigos
-1. **Validação Mecânica 100% via SQLite:** O script `amostrar_codigos.py` valida por `fonte + código` contra `base_precos.db`, exige correspondência normalizada exata de descrição e unidade e bloqueia fonte não liberada.
+1. **Validação Mecânica 100%:** O script `amostrar_codigos.py` valida SINAPI no SQLite e ORSE no cache oficial por `fonte + código`, exige correspondência normalizada de descrição/unidade e bloqueia capacidade não liberada. Código ORSE deve ser cacheado antes da auditoria; uso direto requer a declaração explícita correspondente.
 2. **Deep Review na Faixa A:** O auditor inspeciona 100% das falhas apontadas pelo script, 100% dos serviços na Faixa A da Curva ABC sem BDI e até 5 CPUs próprias sorteadas.
 
 ### Proveniência das Bases
 
 - `03-BASE_DE_PRECOS/FONTES_DADOS.json` registra competência, UF, regime, arquivo bruto, hash e status de cada fonte.
-- Somente fonte com status `LIBERADA`, arquivo bruto verificável e hash correspondente pode sustentar preço oficial.
+- A liberação é por capacidade. Fonte, arquivo bruto e hash devem estar válidos; `paradigma_cpu` não equivale a `preco_direto`.
+- ORSE oficial está liberada como paradigma e referência de custo em SE. Preço direto fora de SE depende de autorização e justificativa expressas.
+- CPU catalogada está liberada como modelo estrutural; preço e uso direto dependem de revalidação na obra.
 - `QUARENTENADA`, `NAO_VERIFICADA`, arquivo ausente ou divergência de hash bloqueiam a transição do orçamento.
 - A SQLite é índice de consulta; não substitui o arquivo bruto oficial nem sua cadeia de custódia.
 

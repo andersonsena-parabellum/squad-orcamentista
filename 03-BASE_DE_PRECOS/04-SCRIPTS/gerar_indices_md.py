@@ -54,6 +54,13 @@ def main() -> int:
     if str(record.get("status", "")).upper() != "LIBERADA":
         print(f"BLOQUEADO: {args.fonte} não está LIBERADA.", file=sys.stderr)
         return 2
+    price_capability = record.get("capacidades", {}).get("preco_direto")
+    price_status = price_capability.get("status") if isinstance(price_capability, dict) else price_capability
+    if str(price_status).upper() != "LIBERADA":
+        print(f"BLOQUEADO: {args.fonte} não está liberada para índice de preço direto.", file=sys.stderr)
+        if args.fonte == "ORSE":
+            print("Use consultar_orse_oficial.py para paradigma e referência SE.", file=sys.stderr)
+        return 2
 
     buckets: dict[int, list[sqlite3.Row]] = defaultdict(list)
     with sqlite3.connect(DB_PATH) as conn:

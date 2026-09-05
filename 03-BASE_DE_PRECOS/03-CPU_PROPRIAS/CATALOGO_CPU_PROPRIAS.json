@@ -1,0 +1,3169 @@
+{
+  "schema_version": "1.1.0",
+  "gerado_em": "2026-09-05T03:16:13.540929+00:00",
+  "politica": "Modelos históricos ajudam a montar CPUs, mas descrição, unidade, coeficientes, perdas e preços devem ser revalidados para cada obra.",
+  "contagens": {
+    "modelos": 61,
+    "fontes_importadas": 1,
+    "duplicatas_identicas_ignoradas_na_ultima_importacao": 1
+  },
+  "composicoes": [
+    {
+      "codigo": "PRH.001",
+      "descricao": "REVESTIMENTO MONOLÍTICO COM MICROSEIXOS CINZA ESCURO",
+      "unidade": "M2",
+      "referencia_declarada": "REF. lógica SINAPI 93680 (execução de piso externo) — código de revestimento monolítico a cravar no OF",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88309",
+          "bank": "SINAPI",
+          "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.8,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.8,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.001",
+          "bank": "PRÓPRIO",
+          "description": "MICROSEIXO/SEIXO ROLADO CINZA ESCURO (0,03×1,10 perda 10%)",
+          "unit": "M3",
+          "coefficient": 0.033,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.013",
+          "bank": "PRÓPRIO",
+          "description": "ARGAMASSA DE ASSENTAMENTO DO MICROSEIXO",
+          "unit": "M3",
+          "coefficient": 0.02,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.002",
+      "descricao": "REVESTIMENTO CERÂMICO 20×20 VERMELHO ÁREA EXTERNA",
+      "unidade": "M2",
+      "referencia_declarada": "REF. lógica SINAPI assentamento de cerâmica externa — código a cravar no OF (não inventar)",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88309",
+          "bank": "SINAPI",
+          "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.7,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.7,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.002",
+          "bank": "PRÓPRIO",
+          "description": "CERÂMICA 20×20 VERMELHA ÁREA EXTERNA (perda 10% na CPU; qtd da planilha é líquida)",
+          "unit": "M2",
+          "coefficient": 1.1,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.014",
+          "bank": "PRÓPRIO",
+          "description": "ARGAMASSA COLANTE AC II EXTERNA",
+          "unit": "KG",
+          "coefficient": 5.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.003",
+      "descricao": "PISANTE PRÉ-MOLDADO 60×60 cm — FORNECIMENTO E ASSENTAMENTO",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 93680 (assentamento de peça de piso externo)",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.4,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.003",
+          "bank": "PRÓPRIO",
+          "description": "PLACA CONCRETO PRÉ-MOLDADA 60×60 cm (perda 10%)",
+          "unit": "UN",
+          "coefficient": 1.1,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.004",
+      "descricao": "BANCO TIPO 01 — ALVENARIA H=0,45 + GRAUTE + Ø10 + ASSENTO 12 CM (PRÉ-MOLDADO)",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 103318 / 89993 / 89996 / 97736",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "103318",
+          "bank": "SINAPI",
+          "description": "ALVENARIA DE VEDAÇÃO BLOCO CONCRETO 14×19×39 CM, ARGAMASSA BETONEIRA. AF_12/2021",
+          "unit": "M2",
+          "coefficient": 4.04,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "89993",
+          "bank": "SINAPI",
+          "description": "GRAUTEAMENTO VERTICAL EM ESTRUTURA DE ALVENARIA ESTRUTURAL COM GRAUTE INDUSTRIALIZADO FGK 20 MPA. AF_09/2019",
+          "unit": "M3",
+          "coefficient": 0.264,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "89996",
+          "bank": "SINAPI",
+          "description": "ARMAÇÃO VERTICAL COM BARRA DE AÇO CA-50 DE 10,0 MM EM ESTRUTURA DE ALVENARIA ESTRUTURAL. AF_09/2019",
+          "unit": "KG",
+          "coefficient": 8.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "97736",
+          "bank": "SINAPI",
+          "description": "PEÇA RETANGULAR PRÉ-MOLDADA DE CONCRETO, VOLUME DE CONCRETO MAIOR QUE 100 L, CONSUMO DE AÇO DE APROXIMADAMENTE 30 KG/M³. AF_01/2018",
+          "unit": "M3",
+          "coefficient": 0.768,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.006",
+      "descricao": "LIXEIRA REDONDA 90 L — FORNECIMENTO E ANCORAGEM",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 88316 (fixação de peça urbana)",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.007",
+          "bank": "PRÓPRIO",
+          "description": "LIXEIRA REDONDA 90 L (FINBIN City-60 ou equiv.)",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.007-1",
+      "descricao": "PERGOLADO METÁLICO TIPO 01 — ESTRUTURA RETANGULAR EM TUBOS QUADRADOS 15×15 CM, PINTURA ELETROSTÁTICA MARROM MÉDIO (EXCLUSIVE ENGASTE EM CONCRETO)",
+      "unidade": "UN",
+      "referencia_declarada": "Folha 04 / Entrega 01 pág. 2",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88278",
+          "bank": "SINAPI",
+          "description": "MONTADOR DE ESTRUTURA METÁLICA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 14.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88240",
+          "bank": "SINAPI",
+          "description": "AJUDANTE DE ESTRUTURA METÁLICA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 14.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 8.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88310",
+          "bank": "SINAPI",
+          "description": "PINTOR COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 8.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00010986",
+          "bank": "SINAPI",
+          "description": "PERFIL / TUBO QUADRADO DE AÇO 150X150X3,0 MM (582 KG POR PERGOLADO)",
+          "unit": "KG",
+          "coefficient": 582.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00007311",
+          "bank": "SINAPI",
+          "description": "TINTA ESMALTE SINTETICO / POLIURETANO MARROM MEDIO",
+          "unit": "L",
+          "coefficient": 5.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00004346",
+          "bank": "SINAPI",
+          "description": "PARAFUSOS, CHUMBADORES E CONECTORES DE FIXACAO",
+          "unit": "CJ",
+          "coefficient": 10.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.007-2",
+      "descricao": "PERGOLADO METÁLICO TIPO 02 — ESTRUTURA RETANGULAR EM TUBOS QUADRADOS 15×15 CM, PINTURA ELETROSTÁTICA MARROM MÉDIO (EXCLUSIVE ENGASTE EM CONCRETO)",
+      "unidade": "UN",
+      "referencia_declarada": "Folha 04 / Entrega 01 pág. 2",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88278",
+          "bank": "SINAPI",
+          "description": "MONTADOR DE ESTRUTURA METÁLICA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 20.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88240",
+          "bank": "SINAPI",
+          "description": "AJUDANTE DE ESTRUTURA METÁLICA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 20.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 10.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88310",
+          "bank": "SINAPI",
+          "description": "PINTOR COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 12.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00010986",
+          "bank": "SINAPI",
+          "description": "PERFIL / TUBO QUADRADO DE AÇO 150X150X3,0 MM (932 KG POR PERGOLADO)",
+          "unit": "KG",
+          "coefficient": 932.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00007311",
+          "bank": "SINAPI",
+          "description": "TINTA ESMALTE SINTETICO / POLIURETANO MARROM MEDIO",
+          "unit": "L",
+          "coefficient": 8.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00004346",
+          "bank": "SINAPI",
+          "description": "PARAFUSOS, CHUMBADORES E CONECTORES DE FIXACAO",
+          "unit": "CJ",
+          "coefficient": 14.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.007-3",
+      "descricao": "PERGOLADO METÁLICO TIPO 03 — ESTRUTURA QUADRADA EM TUBOS QUADRADOS 15×15 CM, PINTURA ELETROSTÁTICA MARROM MÉDIO (EXCLUSIVE ENGASTE EM CONCRETO)",
+      "unidade": "UN",
+      "referencia_declarada": "Folha 04 / Entrega 01 pág. 4",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88278",
+          "bank": "SINAPI",
+          "description": "MONTADOR DE ESTRUTURA METÁLICA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 18.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88240",
+          "bank": "SINAPI",
+          "description": "AJUDANTE DE ESTRUTURA METÁLICA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 18.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 9.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88310",
+          "bank": "SINAPI",
+          "description": "PINTOR COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 10.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00010986",
+          "bank": "SINAPI",
+          "description": "PERFIL / TUBO QUADRADO DE AÇO 150X150X3,0 MM (791 KG POR PERGOLADO)",
+          "unit": "KG",
+          "coefficient": 791.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00007311",
+          "bank": "SINAPI",
+          "description": "TINTA ESMALTE SINTETICO / POLIURETANO MARROM MEDIO",
+          "unit": "L",
+          "coefficient": 7.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00004346",
+          "bank": "SINAPI",
+          "description": "PARAFUSOS, CHUMBADORES E CONECTORES DE FIXACAO",
+          "unit": "CJ",
+          "coefficient": 12.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.008",
+      "descricao": "COBERTURA METÁLICA EM ARCO PARA PLAYGROUND — TELHAMENTO TRAPEZOIDAL EM AÇO GALVANIZADO E=0,5MM SOBRE ESTRUTURA METÁLICA TUBULAR",
+      "unidade": "M2",
+      "referencia_declarada": "REF. SINAPI 94213 + 101962",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88323",
+          "bank": "SINAPI",
+          "description": "TELHADISTA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.091,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.097,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88278",
+          "bank": "SINAPI",
+          "description": "MONTADOR DE ESTRUTURA METÁLICA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.55,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00007243",
+          "bank": "SINAPI",
+          "description": "TELHA TRAPEZOIDAL EM ACO ZINCADO, SEM PINTURA, ALTURA DE APROXIMADAMENTE 40 MM, ESPESSURA DE 0,5 MM",
+          "unit": "M2",
+          "coefficient": 1.166,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00011029",
+          "bank": "SINAPI",
+          "description": "HASTE RETA PARA GANCHO DE FERRO GALVANIZADO, COM ROSCA 1/4 \" X 30 CM PARA FIXACAO DE TELHA METÁLICA",
+          "unit": "CJ",
+          "coefficient": 4.15,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00010986",
+          "bank": "SINAPI",
+          "description": "PERFIL DE ACO GALVANIZADO / TUBO ESTRUTURAL (CONSUMO APROX. 25 KG/M2 DE COBERTURA)",
+          "unit": "KG",
+          "coefficient": 25.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.009",
+      "descricao": "ESPALHAMENTO DE TERRA VEGETAL e=5 cm (grama São Carlos)",
+      "unidade": "M2",
+      "referencia_declarada": "REF. SINAPI 103946 (plantio de grama em placas) + insumo 7253",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88441",
+          "bank": "SINAPI",
+          "description": "JARDINEIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.011,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.055,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "7253",
+          "bank": "SINAPI",
+          "description": "TERRA VEGETAL (GRANEL)",
+          "unit": "M3",
+          "coefficient": 0.05,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.010",
+      "descricao": "ESPALHAMENTO DE TERRA VEGETAL e=20 cm COM 5% MO (forração amendoim)",
+      "unidade": "M2",
+      "referencia_declarada": "REF. SINAPI 98505 (plantio de forração) + insumo 7253",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88441",
+          "bank": "SINAPI",
+          "description": "JARDINEIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.03,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.15,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "7253",
+          "bank": "SINAPI",
+          "description": "TERRA VEGETAL (GRANEL)",
+          "unit": "M3",
+          "coefficient": 0.2,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.010",
+          "bank": "PRÓPRIO",
+          "description": "MATÉRIA ORGÂNICA / COMPOSTO (5%)",
+          "unit": "M3",
+          "coefficient": 0.01,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.012",
+      "descricao": "EMBUTIDO DE SOLO LED 18 W 2700 K IP65 — APARELHO (infra ELE à parte)",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 88264 (instalação de luminária)",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88264",
+          "bank": "SINAPI",
+          "description": "ELETRICISTA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.011",
+          "bank": "PRÓPRIO",
+          "description": "LUMINÁRIA EMBUTIDA DE SOLO LED 18 W 2700 K IP65",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.013",
+      "descricao": "POSTE REBATEDOR REDONDO H=3,50 m — APARELHO (infra ELE à parte)",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 88264 (instalação de poste)",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88264",
+          "bank": "SINAPI",
+          "description": "ELETRICISTA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 2.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.012",
+          "bank": "PRÓPRIO",
+          "description": "POSTE REBATEDOR H=3,50 m 4000/3000 K",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.014",
+      "descricao": "PLACA ORIENTATIVA AÇO 1000×1500 mm — FORNECIMENTO E INSTALAÇÃO",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 103689 (placa de obra — geometria diferente; só paradigma de MO)",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88262",
+          "bank": "SINAPI",
+          "description": "CARPINTEIRO DE FORMAS COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.030",
+          "bank": "PRÓPRIO",
+          "description": "PLACA ORIENTATIVA 1000×1500 AÇO OU MADEIRA ADESIVADA",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.015",
+      "descricao": "PISO TÁTIL 20×20 — FORNECIMENTO E ASSENTAMENTO (alerta ou direcional)",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 104658 (tátil m² 40×40) — NÃO usar 104658 no sintético; CPU própria por peça 20×20",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88309",
+          "bank": "SINAPI",
+          "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.08,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.08,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.031",
+          "bank": "PRÓPRIO",
+          "description": "PEÇA TÁTIL 20×20 (ALERTA OU DIRECIONAL CONFORME ITEM) (perda 10% na CPU; qtd da planilha é líquida)",
+          "unit": "UN",
+          "coefficient": 1.1,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.016",
+      "descricao": "REVESTIMENTO PORCELANATO AMADEIRADO (banco tipo 04 / possível deck)",
+      "unidade": "M2",
+      "referencia_declarada": "REF. lógica SINAPI assentamento de porcelanato externo — código a cravar no OF",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88309",
+          "bank": "SINAPI",
+          "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.7,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.7,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.032",
+          "bank": "PRÓPRIO",
+          "description": "PORCELANATO AMADEIRADO ÁREA EXTERNA (perda 10% na CPU; qtd da planilha é líquida)",
+          "unit": "M2",
+          "coefficient": 1.1,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.017",
+      "descricao": "GRANITO VERMELHO BRASÍLIA e=2 cm — ASSENTAMENTO",
+      "unidade": "M2",
+      "referencia_declarada": "REF. lógica SINAPI assentamento de pedra/granito — código a cravar no OF",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88309",
+          "bank": "SINAPI",
+          "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.9,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.9,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.033",
+          "bank": "PRÓPRIO",
+          "description": "CHAPA GRANITO VERMELHO BRASÍLIA e=2 cm (perda 10% na CPU; qtd da planilha é líquida)",
+          "unit": "M2",
+          "coefficient": 1.1,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.018",
+      "descricao": "PINTURA DE DEMARCAÇÃO DE VAGA (tinta emborrachada amarela)",
+      "unidade": "L",
+      "referencia_declarada": "REF. lógica SINAPI pintura de sinalização viária — unidade do memorial é L (18 L ≈ 20 m²)",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88314",
+          "bank": "SINAPI",
+          "description": "PINTOR COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.15,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.034",
+          "bank": "PRÓPRIO",
+          "description": "TINTA PISO EMBORRACHADA AMARELA",
+          "unit": "L",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.019",
+      "descricao": "BATE-RODA 50×15×8 cm — FORNECIMENTO E FIXAÇÃO",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 88316 (fixação de peça pré-moldada)",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.3,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.035",
+          "bank": "PRÓPRIO",
+          "description": "BATE-RODA CONCRETO 50×15×08 cm",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.020",
+      "descricao": "BANCO TIPO 02 — ESTRUTURA. IFC V=1,79 m³ → face 11,90 m² (e=15 cm). Cerâmica/granito NÃO entram",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 103318. 4 un × 11,90 = 47,6 m² ≈ 42,25 m² da cerâmica 5.2.6",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "103318",
+          "bank": "SINAPI",
+          "description": "ALVENARIA DE VEDAÇÃO BLOCO CONCRETO 14×19×39 CM, ARGAMASSA BETONEIRA. AF_12/2021",
+          "unit": "M2",
+          "coefficient": 11.9,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.021",
+      "descricao": "BANCO TIPO 03 — ESTRUTURA. IFC V=5,61 m³ → face 37,4 m². Microseixo no 5.2.5",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 103318",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "103318",
+          "bank": "SINAPI",
+          "description": "ALVENARIA DE VEDAÇÃO BLOCO CONCRETO 14×19×39 CM, ARGAMASSA BETONEIRA. AF_12/2021",
+          "unit": "M2",
+          "coefficient": 37.4,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.022",
+      "descricao": "BANCO TIPO 04 / PATAMARES — concreto e=12 cm 46,7 m²/un (2 lajes IFC). Porcelanato no 5.2.7",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 94964 (concreto FCK 20 MPa — só preparo; lançamento com MO)",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "94964",
+          "bank": "SINAPI",
+          "description": "CONCRETO FCK=20 MPA TRAÇO 1:2,7:3 BETONEIRA 400 L. AF_05/2021",
+          "unit": "M3",
+          "coefficient": 5.6,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88309",
+          "bank": "SINAPI",
+          "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 6.7,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 6.7,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.023",
+      "descricao": "BANCO TIPO 05 60×60×65 — V=0,234 m³, pintura 1,92 m² (5 faces)",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 94964 + 88489",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "94964",
+          "bank": "SINAPI",
+          "description": "CONCRETO FCK=20 MPA BETONEIRA 400 L. AF_05/2021",
+          "unit": "M3",
+          "coefficient": 0.234,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88489",
+          "bank": "SINAPI",
+          "description": "PINTURA LÁTEX ACRÍLICA PREMIUM 2 DEMÃOS. AF_04/2023",
+          "unit": "M2",
+          "coefficient": 1.92,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88309",
+          "bank": "SINAPI",
+          "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.8,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.8,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.024",
+      "descricao": "BANCO TIPO 06 60×60×45 — V=0,162 m³, pintura 1,80 m²",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 94964 + 88489",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "94964",
+          "bank": "SINAPI",
+          "description": "CONCRETO FCK=20 MPA BETONEIRA 400 L. AF_05/2021",
+          "unit": "M3",
+          "coefficient": 0.162,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88489",
+          "bank": "SINAPI",
+          "description": "PINTURA LÁTEX ACRÍLICA PREMIUM 2 DEMÃOS. AF_04/2023",
+          "unit": "M2",
+          "coefficient": 1.8,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88309",
+          "bank": "SINAPI",
+          "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.6,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.6,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.025",
+      "descricao": "PERGOLADO CIRCULAR/ARQUEADO EM ESTRUTURA TUBULAR GALVANIZADA CURVA D=7,90M, VÃO LATERAL 5,10M, H=4,60M, COM PINTURA ELETROSTÁTICA MARROM MÉDIO (EXCLUSIVE ENGASTE EM CONCRETO)",
+      "unidade": "UN",
+      "referencia_declarada": "Folha 01.3 Detalhes 5, 6 e 7 + Memorial R01 pág. 7",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88278",
+          "bank": "SINAPI",
+          "description": "MONTADOR DE ESTRUTURA METÁLICA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 24.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88240",
+          "bank": "SINAPI",
+          "description": "AJUDANTE DE ESTRUTURA METÁLICA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 24.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 12.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88310",
+          "bank": "SINAPI",
+          "description": "PINTOR COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 16.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00010986",
+          "bank": "SINAPI",
+          "description": "PERFIL / TUBO DE AÇO GALVANIZADO CURVADO (1.050 KG POR PERGOLADO)",
+          "unit": "KG",
+          "coefficient": 1050.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00007311",
+          "bank": "SINAPI",
+          "description": "TINTA ESMALTE SINTÉTICO / POLIURETANO MARROM MÉDIO",
+          "unit": "L",
+          "coefficient": 8.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00004346",
+          "bank": "SINAPI",
+          "description": "PARAFUSOS, CHUMBADORES E CONECTORES METÁLICOS DE MONTAGEM",
+          "unit": "CJ",
+          "coefficient": 16.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.026",
+      "descricao": "AREIA LAVADA / TRATADA PARA FORRAÇÃO DE CAIXA DE AREIA DE PLAYGROUND (ESPESSURA 30 CM), INCLUSO DESCARGA E ESPALHAMENTO MANUAL",
+      "unidade": "M3",
+      "referencia_declarada": "Memorial R01 pág. 7 / SINAPI 98511",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.2,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00000370",
+          "bank": "SINAPI",
+          "description": "AREIA MEDIA - POSTO JAZIDA/FORNECEDOR (INCLUI PERDA E EMPOLAMENTO 15%)",
+          "unit": "M3",
+          "coefficient": 1.15,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.027",
+      "descricao": "MURETA DE CONTENÇÃO PLAYGROUND (alvenaria) — PAGAMENTO m²",
+      "unidade": "M2",
+      "referencia_declarada": "REF. lógica SINAPI alvenaria de vedação bloco e=14/15 cm — código a cravar no OF",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88309",
+          "bank": "SINAPI",
+          "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.2,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.2,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.015",
+          "bank": "PRÓPRIO",
+          "description": "BLOCO/ARGAMASSA DA MURETA",
+          "unit": "M2",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.028",
+      "descricao": "CERCA TUBULAR COLORIDA PARA PLAYGROUND — MÓDULO COM 15 PERFIS TUBULARES REDONDOS (H = 80 A 110 CM + 20 CM DE CHUMBAMENTO), INCLUSO PINTURA E FIXAÇÃO",
+      "unidade": "UN",
+      "referencia_declarada": "Folha 01.3 Det. Cerca / Memorial R01 pág. 7",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88278",
+          "bank": "SINAPI",
+          "description": "MONTADOR DE ESTRUTURA METÁLICA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88310",
+          "bank": "SINAPI",
+          "description": "PINTOR COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00010986",
+          "bank": "SINAPI",
+          "description": "PERFIL / TUBO DE AÇO GALVANIZADO REDONDO 2\" (41,4 KG POR MÓDULO)",
+          "unit": "KG",
+          "coefficient": 41.4,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00007311",
+          "bank": "SINAPI",
+          "description": "TINTA ESMALTE SINTÉTICO COLORIDA (AZUL, VERDE, AMARELO, PINK, ROXO)",
+          "unit": "L",
+          "coefficient": 0.6,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00037595",
+          "bank": "SINAPI",
+          "description": "ARGAMASSA DE FIXAÇÃO / CHUMBAMENTO",
+          "unit": "KG",
+          "coefficient": 15.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.029",
+      "descricao": "DEMARCAÇÃO DE BRINQUEDO AMARELINHA COM PINTURA EM TINTA ACRÍLICA EMBORRACHADA/RESISTENTE SOBRE PISO INTERTRAVADO/CONCRETO (ÁREA APROX. 4,0 M²)",
+      "unidade": "UN",
+      "referencia_declarada": "Folha 01.3 / SINAPI 102498",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88310",
+          "bank": "SINAPI",
+          "description": "PINTOR COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 3.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00007348",
+          "bank": "SINAPI",
+          "description": "TINTA ACRILICA PREMIUM PARA PISO / SINALIZACAO HORIZONTAL COLORIDA",
+          "unit": "L",
+          "coefficient": 1.2,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00005318",
+          "bank": "SINAPI",
+          "description": "DILUENTE / SOLVENTE",
+          "unit": "L",
+          "coefficient": 0.2,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00007307",
+          "bank": "SINAPI",
+          "description": "FITA CREPE PARA MASCARAMENTO E DELIMITACAO DAS CASAS",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.030",
+      "descricao": "GANGORRA INFANTIL 2 LUGARES — FORNECIMENTO E MONTAGEM (INSUMO A COTAR, ≥3 FORNECEDORES, MENOR PREÇO)",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 88278 — montagem de peça metálica urbana (produtividade)",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88278",
+          "bank": "SINAPI",
+          "description": "MONTADOR DE ESTRUTURA METÁLICA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 2.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.E030",
+          "bank": "PRÓPRIO",
+          "description": "GANGORRA INFANTIL 2 LUGARES",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "DESCRICAO_CONTEM_NOTA_DE_PROCESSO_SANITIZAR",
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.031",
+      "descricao": "CASINHA COM ESCORREGADOR — FORNECIMENTO E MONTAGEM (INSUMO A COTAR, ≥3 FORNECEDORES, MENOR PREÇO)",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 88278 — montagem de peça metálica urbana (produtividade)",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88278",
+          "bank": "SINAPI",
+          "description": "MONTADOR DE ESTRUTURA METÁLICA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 2.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.E031",
+          "bank": "PRÓPRIO",
+          "description": "CASINHA COM ESCORREGADOR",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "DESCRICAO_CONTEM_NOTA_DE_PROCESSO_SANITIZAR",
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.032",
+      "descricao": "BALANÇO INFANTIL 2 LUGARES — FORNECIMENTO E MONTAGEM (INSUMO A COTAR, ≥3 FORNECEDORES, MENOR PREÇO)",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 88278 — montagem de peça metálica urbana (produtividade)",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88278",
+          "bank": "SINAPI",
+          "description": "MONTADOR DE ESTRUTURA METÁLICA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 2.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.E032",
+          "bank": "PRÓPRIO",
+          "description": "BALANÇO INFANTIL 2 LUGARES",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "DESCRICAO_CONTEM_NOTA_DE_PROCESSO_SANITIZAR",
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.033",
+      "descricao": "BANCO COLORIDO 50×50×45 — V=0,1125 m³, pintura 5 faces 1,15 m² (IFC BLOCO H=0,45 ~0,072 m³)",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 94964 + 88489",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "94964",
+          "bank": "SINAPI",
+          "description": "CONCRETO FCK=20 MPA BETONEIRA 400 L. AF_05/2021",
+          "unit": "M3",
+          "coefficient": 0.1125,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88489",
+          "bank": "SINAPI",
+          "description": "PINTURA LÁTEX ACRÍLICA 2 DEMÃOS. AF_04/2023",
+          "unit": "M2",
+          "coefficient": 1.15,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88309",
+          "bank": "SINAPI",
+          "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.5,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.034",
+      "descricao": "BANCO COLORIDO 40×40×45 — V=0,072 m³ (IFC), pintura 0,88 m²",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 94964 + 88489",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "94964",
+          "bank": "SINAPI",
+          "description": "CONCRETO FCK=20 MPA BETONEIRA 400 L. AF_05/2021",
+          "unit": "M3",
+          "coefficient": 0.072,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88489",
+          "bank": "SINAPI",
+          "description": "PINTURA LÁTEX ACRÍLICA 2 DEMÃOS. AF_04/2023",
+          "unit": "M2",
+          "coefficient": 0.88,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88309",
+          "bank": "SINAPI",
+          "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.4,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.4,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.035",
+      "descricao": "BANCO COLORIDO 40×40×35 — V=0,056 m³ IFC, pintura 0,72 m²",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 94964 + 88489",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "94964",
+          "bank": "SINAPI",
+          "description": "CONCRETO FCK=20 MPA BETONEIRA 400 L. AF_05/2021",
+          "unit": "M3",
+          "coefficient": 0.056,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88489",
+          "bank": "SINAPI",
+          "description": "PINTURA LÁTEX ACRÍLICA 2 DEMÃOS. AF_04/2023",
+          "unit": "M2",
+          "coefficient": 0.72,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88309",
+          "bank": "SINAPI",
+          "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.35,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.35,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.036",
+      "descricao": "BANCO COLORIDO 40×40×25 — V=0,040 m³ IFC, pintura 0,56 m²",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 94964 + 88489",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "94964",
+          "bank": "SINAPI",
+          "description": "CONCRETO FCK=20 MPA BETONEIRA 400 L. AF_05/2021",
+          "unit": "M3",
+          "coefficient": 0.04,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88489",
+          "bank": "SINAPI",
+          "description": "PINTURA LÁTEX ACRÍLICA 2 DEMÃOS. AF_04/2023",
+          "unit": "M2",
+          "coefficient": 0.56,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88309",
+          "bank": "SINAPI",
+          "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.3,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.3,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.037",
+      "descricao": "ELÍPTICO MECÂNICO INDIVIDUAL — FORNECIMENTO E MONTAGEM (INSUMO A COTAR, ≥3 FORNECEDORES, MENOR PREÇO)",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 88278 — montagem de peça metálica urbana (produtividade)",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88278",
+          "bank": "SINAPI",
+          "description": "MONTADOR DE ESTRUTURA METÁLICA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 2.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.E037",
+          "bank": "PRÓPRIO",
+          "description": "ELÍPTICO MECÂNICO INDIVIDUAL",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "DESCRICAO_CONTEM_NOTA_DE_PROCESSO_SANITIZAR",
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.038",
+      "descricao": "SIMULADOR DE ESQUI INDIVIDUAL — FORNECIMENTO E MONTAGEM (INSUMO A COTAR, ≥3 FORNECEDORES, MENOR PREÇO)",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 88278 — montagem de peça metálica urbana (produtividade)",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88278",
+          "bank": "SINAPI",
+          "description": "MONTADOR DE ESTRUTURA METÁLICA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 2.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.E038",
+          "bank": "PRÓPRIO",
+          "description": "SIMULADOR DE ESQUI INDIVIDUAL",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "DESCRICAO_CONTEM_NOTA_DE_PROCESSO_SANITIZAR",
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.039",
+      "descricao": "PRESSÃO DE PERNAS DUPLO — FORNECIMENTO E MONTAGEM (INSUMO A COTAR, ≥3 FORNECEDORES, MENOR PREÇO)",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 88278 — montagem de peça metálica urbana (produtividade)",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88278",
+          "bank": "SINAPI",
+          "description": "MONTADOR DE ESTRUTURA METÁLICA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 2.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.E039",
+          "bank": "PRÓPRIO",
+          "description": "PRESSÃO DE PERNAS DUPLO",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "DESCRICAO_CONTEM_NOTA_DE_PROCESSO_SANITIZAR",
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.040",
+      "descricao": "SIMULADOR DE CAVALGADA INDIVIDUAL — FORNECIMENTO E MONTAGEM (INSUMO A COTAR, ≥3 FORNECEDORES, MENOR PREÇO)",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 88278 — montagem de peça metálica urbana (produtividade)",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88278",
+          "bank": "SINAPI",
+          "description": "MONTADOR DE ESTRUTURA METÁLICA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 2.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.E040",
+          "bank": "PRÓPRIO",
+          "description": "SIMULADOR DE CAVALGADA INDIVIDUAL",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "DESCRICAO_CONTEM_NOTA_DE_PROCESSO_SANITIZAR",
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.041",
+      "descricao": "REMADA SENTADA INDIVIDUAL — FORNECIMENTO E MONTAGEM (INSUMO A COTAR, ≥3 FORNECEDORES, MENOR PREÇO)",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 88278 — montagem de peça metálica urbana (produtividade)",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88278",
+          "bank": "SINAPI",
+          "description": "MONTADOR DE ESTRUTURA METÁLICA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 2.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.E041",
+          "bank": "PRÓPRIO",
+          "description": "REMADA SENTADA INDIVIDUAL",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "DESCRICAO_CONTEM_NOTA_DE_PROCESSO_SANITIZAR",
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.042",
+      "descricao": "ROTAÇÃO VERTICAL DUPLA — FORNECIMENTO E MONTAGEM (INSUMO A COTAR, ≥3 FORNECEDORES, MENOR PREÇO)",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 88278 — montagem de peça metálica urbana (produtividade)",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88278",
+          "bank": "SINAPI",
+          "description": "MONTADOR DE ESTRUTURA METÁLICA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 2.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.E042",
+          "bank": "PRÓPRIO",
+          "description": "ROTAÇÃO VERTICAL DUPLA",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "DESCRICAO_CONTEM_NOTA_DE_PROCESSO_SANITIZAR",
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.043",
+      "descricao": "PRANCHA LATERAL (SURF) — FORNECIMENTO E MONTAGEM (INSUMO A COTAR, ≥3 FORNECEDORES, MENOR PREÇO)",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 88278 — montagem de peça metálica urbana (produtividade)",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88278",
+          "bank": "SINAPI",
+          "description": "MONTADOR DE ESTRUTURA METÁLICA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 2.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.E043",
+          "bank": "PRÓPRIO",
+          "description": "PRANCHA LATERAL (SURF)",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "DESCRICAO_CONTEM_NOTA_DE_PROCESSO_SANITIZAR",
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.044",
+      "descricao": "ESTAÇÃO DE MUSCULAÇÃO E CALISTENIA — FORNECIMENTO E MONTAGEM (INSUMO A COTAR, ≥3 FORNECEDORES, MENOR PREÇO)",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 88278 — montagem de peça metálica urbana (produtividade)",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88278",
+          "bank": "SINAPI",
+          "description": "MONTADOR DE ESTRUTURA METÁLICA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 2.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.E044",
+          "bank": "PRÓPRIO",
+          "description": "ESTAÇÃO DE MUSCULAÇÃO E CALISTENIA",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "DESCRICAO_CONTEM_NOTA_DE_PROCESSO_SANITIZAR",
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.045",
+      "descricao": "BICO GEISER 38 mm — PEÇA (rede hidromecânica à parte)",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 88267 não cravado; MO de encanador a selecionar no OF. Peça Sodramar ou equiv.",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.049",
+          "bank": "PRÓPRIO",
+          "description": "BICO GEISER 38 mm INOX/PLÁSTICO",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.046",
+      "descricao": "MURETA/JARDINEIRA DE CANTEIRO — ALVENARIA, PAGAMENTO m²",
+      "unidade": "M2",
+      "referencia_declarada": "REF. lógica SINAPI alvenaria de vedação — código a cravar no OF. Seixo NÃO incluso (item 5.2.5)",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88309",
+          "bank": "SINAPI",
+          "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.015",
+          "bank": "PRÓPRIO",
+          "description": "BLOCO/ARGAMASSA DA MURETA",
+          "unit": "M2",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.047",
+      "descricao": "GRANITO BRANCO e=2 cm — ASSENTAMENTO",
+      "unidade": "M2",
+      "referencia_declarada": "REF. lógica SINAPI assentamento de granito",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88309",
+          "bank": "SINAPI",
+          "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.9,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.9,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.016",
+          "bank": "PRÓPRIO",
+          "description": "CHAPA GRANITO BRANCO e=2 cm (perda 10%)",
+          "unit": "M2",
+          "coefficient": 1.1,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.048",
+      "descricao": "PISO PORCELANATO 80×80 e=2 cm",
+      "unidade": "M2",
+      "referencia_declarada": "REF. lógica SINAPI assentamento de porcelanato",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88309",
+          "bank": "SINAPI",
+          "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.65,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.65,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.017",
+          "bank": "PRÓPRIO",
+          "description": "PORCELANATO 80×80 ÁREA EXTERNA (perda 10%)",
+          "unit": "M2",
+          "coefficient": 1.1,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.049",
+      "descricao": "PORTA DE CORRER EM ALUMÍNIO ANODIZADO COM VIDRO TEMPERADO 6 MM, 2 FOLHAS, MEDINDO 1800×2180 MM, COM TRILHOS, FECHADURA, PUXADORES E ACESSÓRIOS",
+      "unidade": "UN",
+      "referencia_declarada": "IFC / SINAPI 91338",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88278",
+          "bank": "SINAPI",
+          "description": "MONTADOR DE ESTRUTURA METÁLICA/ESQUADRIAS COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 4.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 2.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00004914",
+          "bank": "SINAPI",
+          "description": "PORTA DE CORRER EM ALUMINIO COM VIDRO TEMPERADO 6 MM, 1,80 X 2,18 M",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00036888",
+          "bank": "SINAPI",
+          "description": "GUARNICAO / MOLDURA / ARREMATE EM ALUMINIO",
+          "unit": "M",
+          "coefficient": 8.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00000142",
+          "bank": "SINAPI",
+          "description": "SELANTE ELASTICO MONOCOMPONENTE A BASE DE POLIURETANO (PU) 310 ML",
+          "unit": "UN",
+          "coefficient": 2.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.050",
+      "descricao": "JANELA DE CORRER EM ALUMÍNIO ANODIZADO COM VIDRO TEMPERADO 6 MM, 3 FOLHAS, MEDINDO 240×180 CM, COM FERRAGENS, FECHOS E ACESSÓRIOS COMPLETA",
+      "unidade": "UN",
+      "referencia_declarada": "IFC / SINAPI 91316",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88278",
+          "bank": "SINAPI",
+          "description": "MONTADOR DE ESTRUTURA METÁLICA/ESQUADRIAS COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 3.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.8,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00004887",
+          "bank": "SINAPI",
+          "description": "JANELA DE CORRER EM ALUMINIO COM VIDRO TEMPERADO 6 MM, 2,40 X 1,80 M",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00036888",
+          "bank": "SINAPI",
+          "description": "GUARNICAO / MOLDURA / ARREMATE EM ALUMINIO",
+          "unit": "M",
+          "coefficient": 8.4,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00000142",
+          "bank": "SINAPI",
+          "description": "SELANTE ELASTICO MONOCOMPONENTE A BASE DE POLIURETANO (PU) 310 ML",
+          "unit": "UN",
+          "coefficient": 2.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.051",
+      "descricao": "JANELA DE CORRER EM ALUMÍNIO ANODIZADO COM VIDRO TEMPERADO 6 MM, 3 FOLHAS, MEDINDO 200×130 CM, COM FERRAGENS, FECHOS E ACESSÓRIOS COMPLETA",
+      "unidade": "UN",
+      "referencia_declarada": "IFC / SINAPI 91316",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88278",
+          "bank": "SINAPI",
+          "description": "MONTADOR DE ESTRUTURA METÁLICA/ESQUADRIAS COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 2.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.2,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00004887",
+          "bank": "SINAPI",
+          "description": "JANELA DE CORRER EM ALUMINIO COM VIDRO TEMPERADO 6 MM, 2,00 X 1,30 M",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00036888",
+          "bank": "SINAPI",
+          "description": "GUARNICAO / MOLDURA / ARREMATE EM ALUMINIO",
+          "unit": "M",
+          "coefficient": 6.6,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00000142",
+          "bank": "SINAPI",
+          "description": "SELANTE ELASTICO MONOCOMPONENTE A BASE DE POLIURETANO (PU) 310 ML",
+          "unit": "UN",
+          "coefficient": 1.5,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.052",
+      "descricao": "COBERTURA EM TELHA CERÂMICA (estrutura de apoio NÃO inclusa — kg desconhecido)",
+      "unidade": "M2",
+      "referencia_declarada": "REF. lógica SINAPI telhamento cerâmico — código a cravar no OF. 150,73 m² no IFC sem split play/quiosque",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88309",
+          "bank": "SINAPI",
+          "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.35,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.35,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.021",
+          "bank": "PRÓPRIO",
+          "description": "TELHA CERÂMICA + CUMEEIRA/ACESSÓRIOS (perda 15%)",
+          "unit": "M2",
+          "coefficient": 1.15,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.053",
+      "descricao": "PILAR DE MADEIRA 15×15 cm H=2,50 m",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 88262 (carpinteiro)",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88262",
+          "bank": "SINAPI",
+          "description": "CARPINTEIRO DE FORMAS COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.022",
+          "bank": "PRÓPRIO",
+          "description": "MADEIRA SERRADA 15×15 H=2,50 m TRATADA",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.054",
+      "descricao": "BASE DE CONCRETO 40×40×20 cm",
+      "unidade": "UN",
+      "referencia_declarada": "REF. lógica SINAPI concreto magro / lastro — código a cravar no OF",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88309",
+          "bank": "SINAPI",
+          "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.25,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.4,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.023",
+          "bank": "PRÓPRIO",
+          "description": "CONCRETO FCK 20 MPa PARA BASE 0,032 m³/un",
+          "unit": "M3",
+          "coefficient": 0.032,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.055",
+      "descricao": "MOBILIÁRIO METÁLICO TIPO 3 (família Revit sem nome no memorial)",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 88278",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88278",
+          "bank": "SINAPI",
+          "description": "MONTADOR DE ESTRUTURA METÁLICA COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.024",
+          "bank": "PRÓPRIO",
+          "description": "MOBILIÁRIO METÁLICO TIPO 3 — CONFIRMAR MODELO COM ARQUITETO",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.056",
+      "descricao": "PORCELANATO 60×60 SOBRE BASE 13 cm (só o revestimento; base no próprio item)",
+      "unidade": "M2",
+      "referencia_declarada": "REF. lógica SINAPI assentamento de porcelanato",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88309",
+          "bank": "SINAPI",
+          "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.8,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.8,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.025",
+          "bank": "PRÓPRIO",
+          "description": "PORCELANATO 60×60 ÁREA EXTERNA (perda 10%)",
+          "unit": "M2",
+          "coefficient": 1.1,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.057",
+      "descricao": "ALVENARIA DE VEDAÇÃO DO QUIOSQUE — PAGAMENTO m² (vão >2 m² já descontado no qtd)",
+      "unidade": "M2",
+      "referencia_declarada": "REF. lógica SINAPI alvenaria de vedação bloco e=14/15 cm — código a cravar no OF",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88309",
+          "bank": "SINAPI",
+          "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.4,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 1.4,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.026",
+          "bank": "PRÓPRIO",
+          "description": "BLOCO/ARGAMASSA/VERGA DA ALVENARIA",
+          "unit": "M2",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.058",
+      "descricao": "TUTOR DE MUDA ARBÓREA + AMARRAÇÃO (eucalipto/pinus Ø 5 cm H=2,5 m)",
+      "unidade": "UN",
+      "referencia_declarada": "REF. 98511 não inclui tutor. Caderno PAIS: só muda + MO + reaterro",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88441",
+          "bank": "SINAPI",
+          "description": "JARDINEIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.2,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "INS.058",
+          "bank": "PRÓPRIO",
+          "description": "TUTOR MADEIRA H=2,5 m + FITA/AMARRAÇÃO",
+          "unit": "UN",
+          "coefficient": 1.0,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "INSUMOS_PROPRIOS_EXIGEM_FONTE_DE_PRECO_ATUAL",
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.059",
+      "descricao": "MANTA GEOTÊXTIL NÃO TECIDO (BIDIM OU EQUIVALENTE) SOB A CAIXA DE AREIA, PARA DRENAGEM E SEPARAÇÃO DE SOLO (NBR 16071)",
+      "unidade": "M2",
+      "referencia_declarada": "NBR 16071 / SINAPI 101689",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.12,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Insumo",
+          "code": "00020000",
+          "bank": "SINAPI",
+          "description": "GEOTEXTIL NAO TECIDO 100% POLIESTER OU POLIPROPILENO (SOBREPOSIÇÃO 10%)",
+          "unit": "M2",
+          "coefficient": 1.1,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.060",
+      "descricao": "ANCORAGEM DE LIXEIRA — VALA + CONCRETO ~0,03 m³",
+      "unidade": "UN",
+      "referencia_declarada": "REF. SINAPI 94964. Prancha 04",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "94964",
+          "bank": "SINAPI",
+          "description": "CONCRETO FCK=20 MPA BETONEIRA 400 L. AF_05/2021",
+          "unit": "M3",
+          "coefficient": 0.03,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88309",
+          "bank": "SINAPI",
+          "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.3,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.4,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    },
+    {
+      "codigo": "PRH.061",
+      "descricao": "ENGASTE / BASE DE CONCRETO PARA PILAR DE PERGOLADO — DIMENSÕES 40×40×60 CM (0,096 M³)",
+      "unidade": "UN",
+      "referencia_declarada": "Geometria Folha 04 / Entrega 01",
+      "itens": [
+        {
+          "type": "Composição Auxiliar",
+          "code": "94964",
+          "bank": "SINAPI",
+          "description": "CONCRETO FCK = 20MPA, TRAÇO 1:2,7:3 - PREPARO COM BETONEIRA 400 L",
+          "unit": "M3",
+          "coefficient": 0.096,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "93358",
+          "bank": "SINAPI",
+          "description": "ESCAVAÇÃO MANUAL DE VALA COM PROFUNDIDADE ATÉ 1,50 M",
+          "unit": "M3",
+          "coefficient": 0.096,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88309",
+          "bank": "SINAPI",
+          "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.5,
+          "unit_price": 0.0
+        },
+        {
+          "type": "Composição Auxiliar",
+          "code": "88316",
+          "bank": "SINAPI",
+          "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+          "unit": "H",
+          "coefficient": 0.5,
+          "unit_price": 0.0
+        }
+      ],
+      "uso_como_modelo": "LIBERADO",
+      "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+      "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+      "validacoes_pendentes": [
+        "COEFICIENTES_EXIGEM_CONFIRMACAO_NO_PROJETO_E_PARADIGMA"
+      ],
+      "origem": {
+        "projeto": "CT098-PFRP-PRH - Praça do Hospital",
+        "revisao": "R01",
+        "arquivo": "03-CPU_PROPRIAS/_ORIGINAIS/23fceea78548-cpus_r01.json",
+        "sha256": "23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa"
+      }
+    }
+  ]
+}

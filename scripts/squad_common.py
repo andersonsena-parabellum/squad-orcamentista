@@ -120,13 +120,31 @@ def source_record(source: str) -> dict[str, Any] | None:
     return source_registry().get("fontes", {}).get(normalize_text(source))
 
 
-def source_is_releasable(source: str) -> tuple[bool, str]:
+def source_is_releasable(source: str, capability: str | None = None) -> tuple[bool, str]:
+    """Confere cadeia de custodia e, opcionalmente, uma capacidade da fonte.
+
+    Uma fonte pode ser oficial e integra sem estar autorizada para todo uso. A
+    ORSE, por exemplo, e liberada como paradigma e referencia SE, enquanto o
+    uso direto em outra UF depende de autorizacao/justificativa do processo.
+    """
     record = source_record(source)
     if not record:
         return False, "fonte sem registro de proveniencia"
     status = normalize_text(record.get("status"))
     if status != "LIBERADA":
         return False, f"fonte com status {status}: {record.get('motivo', '')}"
+    if capability:
+        capability_record = record.get("capacidades", {}).get(capability)
+        if not capability_record:
+            return False, f"capacidade {capability} nao declarada para a fonte"
+        capability_status = normalize_text(
+            capability_record.get("status")
+            if isinstance(capability_record, dict)
+            else capability_record
+        )
+        if capability_status != "LIBERADA":
+            detail = capability_record.get("motivo", "") if isinstance(capability_record, dict) else ""
+            return False, f"capacidade {capability} com status {capability_status}: {detail}"
     origin = record.get("arquivo_origem")
     expected_hash = record.get("sha256_origem")
     if not record.get("competencia") or not origin or not expected_hash:

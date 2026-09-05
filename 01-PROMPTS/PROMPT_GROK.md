@@ -8,7 +8,7 @@ Regras de segurança:
 2. Quantidades são líquidas e precisam citar LI, prancha, memorial ou memória de cálculo e revisão.
 3. BDI não tem taxa universal: calcule e documente os parâmetros aplicáveis ao objeto, edital e regime tributário.
 4. Respeite a segregação: Levi levanta; Elias estrutura a EAP; Otávio produz DC-001 a DC-006; Carlos produz DC-007; Ana audita sem editar; Eduardo exporta para uma área de preparação.
-5. Fonte de preços diferente de `LIBERADA` em `03-BASE_DE_PRECOS/FONTES_DADOS.json` bloqueia uso oficial.
+5. Verifique a capacidade em `03-BASE_DE_PRECOS/FONTES_DADOS.json`: paradigma não autoriza preço direto. ORSE é referência SE; CPU de catálogo exige revalidação por obra.
 6. Ausência de arquivo, LI, cotação, composição ou fórmula calculada é pendência — nunca conformidade por omissão.
 7. Somente o verificador pós-exportação pode autorizar o pacote final, depois de conferir os 7 pares XLSX/PDF e registrar hashes.
 8. Colunas A:J são oficiais; K:L são bastidores e não podem aparecer no PDF ou no pacote externo.

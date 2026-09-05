@@ -22,6 +22,7 @@ REQUIRED_SCRIPTS = {
     "build_handoff.py",
     "migrate_db_schema.py",
     "importar_sinapi.py",
+    "quarentenar_orse_legada.py",
 }
 
 
@@ -34,6 +35,10 @@ def validate() -> dict:
 
     nested_scripts = [
         REPO_ROOT / "03-BASE_DE_PRECOS" / "04-SCRIPTS" / "consultar_composicao.py",
+        REPO_ROOT / "03-BASE_DE_PRECOS" / "04-SCRIPTS" / "consultar_orse_oficial.py",
+        REPO_ROOT / "03-BASE_DE_PRECOS" / "04-SCRIPTS" / "orse_oficial.py",
+        REPO_ROOT / "03-BASE_DE_PRECOS" / "04-SCRIPTS" / "importar_cpu_propria.py",
+        REPO_ROOT / "03-BASE_DE_PRECOS" / "04-SCRIPTS" / "consultar_cpu_propria.py",
         REPO_ROOT / "03-BASE_DE_PRECOS" / "04-SCRIPTS" / "gerar_indices_md.py",
         REPO_ROOT / "04-BASE_CONHECIMENTO_SUPAT" / "03-SCRIPTS" / "consultar_precedente.py",
         REPO_ROOT / "04-BASE_CONHECIMENTO_SUPAT" / "03-SCRIPTS" / "extrair_pares.py",
@@ -84,7 +89,7 @@ def validate() -> dict:
             released = []
             if SOURCE_REGISTRY.is_file():
                 for source in load_json(SOURCE_REGISTRY).get("fontes", {}):
-                    if source_is_releasable(source)[0]:
+                    if source_is_releasable(source, "preco_direto")[0]:
                         released.append(source)
             placeholders = ",".join("?" for _ in released) or "''"
             checks = {
@@ -93,7 +98,7 @@ def validate() -> dict:
                 "COEFICIENTES_NAO_POSITIVOS": ("P1", "SELECT count(*) FROM composicao_itens WHERE fonte IN (" + placeholders + ") AND (coeficiente IS NULL OR coeficiente<=0)", released),
                 "ORFAOS_INSUMO_FONTE_LIBERADA": ("P0", "SELECT count(*) FROM composicao_itens ci LEFT JOIN insumos i ON i.fonte=ci.fonte AND i.codigo=ci.codigo_item WHERE ci.fonte IN (" + placeholders + ") AND ci.tipo_item='INSUMO' AND i.codigo IS NULL", released),
                 "ORFAOS_COMPOSICAO_FONTE_LIBERADA": ("P0", "SELECT count(*) FROM composicao_itens ci LEFT JOIN composicoes c ON c.fonte=ci.fonte AND c.codigo=ci.codigo_item WHERE ci.fonte IN (" + placeholders + ") AND ci.tipo_item<>'INSUMO' AND c.codigo IS NULL", released),
-                "ORSE_DESCRICAO_GENERICA_QUARENTENADA": ("P1", "SELECT count(*) FROM composicoes WHERE fonte='ORSE' AND descricao LIKE '%especificação analítica%execução técnica especializada%'", []),
+                "ORSE_OFICIAL_CONTAMINADA_POR_CARGA_GENERICA": ("P0", "SELECT count(*) FROM composicoes WHERE fonte='ORSE' AND descricao LIKE '%especificação analítica%execução técnica especializada%'", []),
             }
             for finding_type, (severity, query, params) in checks.items():
                 count = conn.execute(query, params).fetchone()[0]

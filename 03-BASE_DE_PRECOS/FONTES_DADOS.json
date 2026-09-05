@@ -1,11 +1,11 @@
 {
-  "schema_version": "1.0.0",
-  "politica": "fail-closed",
+  "schema_version": "1.1.0",
+  "politica": "fail-closed-por-capacidade",
   "database": {
     "arquivo": "base_precos.db",
     "schema_version": "2.0.0",
-    "sha256": "d6e54616720b066cbec72bb55a8cc62c43c4502e693ebec57c70eb0f64aaa647",
-    "observacao": "O hash identifica o índice local; não substitui os hashes das publicações oficiais de origem."
+    "sha256": "a59957251f947dc83f7439d379fbbd1bc1b6d08337fe0cf776d174aff747be34",
+    "observacao": "Partição ORSE sintética preservada sob ORSE_LEGADO_QUARENTENA; consultas ORSE usam somente o portal oficial/cache verificável."
   },
   "fontes": {
     "SINAPI": {
@@ -16,6 +16,11 @@
         "DESONERADO",
         "NAO_DESONERADO"
       ],
+      "capacidades": {
+        "consulta": "LIBERADA",
+        "paradigma_cpu": "LIBERADA",
+        "preco_direto": "LIBERADA"
+      },
       "arquivo_origem": "00-FONTES_OFICIAIS/SINAPI-2026-07-formato-xlsx.zip",
       "url_oficial": "https://www.caixa.gov.br/Downloads/sinapi-relatorios-mensais/SINAPI-2026-07-formato-xlsx.zip",
       "sha256_origem": "58c131f997560332cf2d7f7f90644790d5c6e2a909a2963b18f136779312b14f",
@@ -32,13 +37,51 @@
       "motivo": "Publicação mensal oficial da CAIXA conferida por hash e importada de forma transacional. Registros sem preço permanecem bloqueados individualmente."
     },
     "ORSE": {
+      "status": "LIBERADA",
+      "uf": "SE",
+      "competencia": "2026-06",
+      "ordem_periodo": 1,
+      "regimes": [],
+      "capacidades": {
+        "consulta": "LIBERADA",
+        "paradigma_cpu": "LIBERADA",
+        "preco_referencia_se": "LIBERADA",
+        "preco_direto": {
+          "status": "CONDICIONADA_AUTORIZACAO",
+          "motivo": "Uso direto fora de Sergipe exige previsão/aceite do órgão e justificativa de compatibilidade territorial e temporal."
+        }
+      },
+      "arquivo_origem": "00-FONTES_OFICIAIS/ORSE-2026-06.ORSE",
+      "url_oficial": "https://orse.cehop.se.gov.br/downloads/20260601-00.ORSE",
+      "url_consulta": "https://orse.cehop.se.gov.br/servicosargumento.asp",
+      "sha256_origem": "f1384a72398fb571b31de0fe0b0db918c90914c4362c3b75faa88170cb3bba90",
+      "motivo": "Base mensal oficial preservada por hash. Estruturas e coeficientes são consultados no portal oficial e cada composição selecionada é cacheada com URL e hash do HTML."
+    },
+    "CPU_PROPRIA": {
+      "status": "LIBERADA",
+      "uf": "MULTIPLA",
+      "competencia": "CATALOGO-2026-09-05",
+      "regimes": [],
+      "capacidades": {
+        "consulta": "LIBERADA",
+        "paradigma_cpu": "LIBERADA",
+        "preco_direto": {
+          "status": "BLOQUEADA_ATE_REVALIDACAO",
+          "motivo": "Cada CPU deve ser recalculada na data-base da obra e seus coeficientes, perdas e insumos próprios precisam de evidência específica."
+        }
+      },
+      "arquivo_origem": "03-CPU_PROPRIAS/CATALOGO_CPU_PROPRIAS.json",
+      "sha256_origem": "6040320ea4a55e2f511f497785613fca585a6e97eb2a365dd5d574f70db73f35",
+      "motivo": "Catálogo de modelos estruturais históricos com origem e hash; não transmite preço, aceite ou coeficiente sem revalidação."
+    },
+    "ORSE_LEGADO_QUARENTENA": {
       "status": "QUARENTENADA",
       "uf": "SE",
       "competencia": "2026-06",
       "regimes": [],
       "arquivo_origem": "../../ORSE_Tabela_2026_06.xml",
       "sha256_origem": "8d89806b9d54889cbbb7a5198301fcd1768516b573c5d4ef3e5c9ee1a18a9441",
-      "motivo": "Os 1.050 registros apresentam descricoes parametrizadas genericas e referencias analiticas sem correspondencia por fonte. Nao utilizar como preco ou paradigma oficial."
+      "motivo": "Carga sintética anterior isolada sob nome próprio; não pode responder por ORSE oficial."
     }
   }
 }

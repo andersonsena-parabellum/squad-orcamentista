@@ -1,16 +1,26 @@
 # Mapa de Composições Próprias
 
-O catálogo é um índice de artefatos existentes, não uma presunção de aprovação. Uma CPU só pode ser reutilizada quando sua estrutura, seus coeficientes, sua fonte paradigmática e seus preços tiverem evidências verificáveis.
+O catálogo separa **modelo estrutural** de **uso direto**. Modelos ajudam a decompor novos serviços, mas não transmitem automaticamente coeficientes, perdas, preços ou aceite de outra obra.
 
 ## Situação atual
 
-| Código | Descrição | Unidade | Status | Evidência |
-|---|---|---:|---|---|
-| `PRP-001-TI` | Rack 19 pol 44U com acessórios | UN | `QUARENTENADA` | [Ficha disponível](por_disciplina/CPU_PRP_001_RACK_44U.md), porém sem três propostas/CNPJs e sem validação dos códigos e coeficientes |
+O arquivo `CATALOGO_CPU_PROPRIAS.json` contém **61 modelos estruturais** recuperados do pacote R01 da Praça do Hospital, com o JSON original preservado por SHA-256. A duplicata idêntica `PRH.007-1` foi deduplicada. Todos estão:
+
+- `uso_como_modelo = LIBERADO`;
+- `uso_direto = BLOQUEADO_ATE_REVALIDACAO`;
+- `preco = RECALCULAR_NA_DATA_BASE_DA_OBRA`.
+
+Consulte por código ou descrição:
+
+```powershell
+python 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_cpu_propria.py pergolado
+```
+
+A ficha avulsa `PRP-001-TI` permanece [quarentenada](por_disciplina/CPU_PRP_001_RACK_44U.md), pois não integra o catálogo validado e não contém as evidências declaradas de preço e coeficientes.
 
 As antigas referências `PRP-002-AV` e `PRP-003-EST` foram removidas do índice vigente porque não existem fichas correspondentes no repositório. Elas permanecem rastreáveis na tag `v0.1.0-baseline`.
 
-## Critérios para liberação
+## Critérios para uso direto em uma obra
 
 1. Ficha analítica completa, com versão e responsável técnico pela revisão.
 2. Referência paradigmática comprovada e fonte de preços `LIBERADA`.

@@ -29,10 +29,25 @@ def make_cnpj(base12: str) -> str:
 
 
 class SquadControlTests(unittest.TestCase):
-    def test_quarantined_source_is_fail_closed(self) -> None:
-        released, reason = source_is_releasable("ORSE")
+    def test_legacy_orse_source_is_fail_closed(self) -> None:
+        released, reason = source_is_releasable("ORSE_LEGADO_QUARENTENA")
         self.assertFalse(released)
         self.assertIn("QUARENTENADA", reason)
+
+    def test_official_orse_is_releasable_as_cpu_paradigm(self) -> None:
+        released, reason = source_is_releasable("ORSE", "paradigma_cpu")
+        self.assertTrue(released, reason)
+
+    def test_orse_direct_price_remains_conditioned(self) -> None:
+        released, reason = source_is_releasable("ORSE", "preco_direto")
+        self.assertFalse(released)
+        self.assertIn("CONDICIONADA_AUTORIZACAO", reason)
+
+    def test_cpu_catalog_is_releasable_as_model_only(self) -> None:
+        released, reason = source_is_releasable("CPU_PROPRIA", "paradigma_cpu")
+        self.assertTrue(released, reason)
+        direct, _ = source_is_releasable("CPU_PROPRIA", "preco_direto")
+        self.assertFalse(direct)
 
     def test_official_sinapi_source_is_releasable(self) -> None:
         released, reason = source_is_releasable("SINAPI")
@@ -90,6 +105,19 @@ class SquadControlTests(unittest.TestCase):
             types = {failure["tipo"] for failure in report["falhas"]}
             self.assertIn("PRECO_OFICIAL_ZERO_OU_AUSENTE", types)
             self.assertEqual(report["gate"], "BLOQUEADO")
+
+    def test_cached_orse_price_requires_explicit_direct_use_authorization(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "DC-001-ORSE.xlsx"
+            wb = openpyxl.Workbook()
+            ws = wb.active
+            ws.append(["Item", "Código", "Banco", "Descrição", "Und", "Quant.", "Valor Unit", "Valor Unit com BDI", "Total", "Peso %"])
+            ws.append(["1", "05970", "ORSE", "Caixa de Drenagem Tipo I - Dimensões 0,80x0,80x1,00m", "UN", 1, 1508.83, 1508.83, 1508.83, 100])
+            wb.save(path)
+            blocked = audit_workbook(path, "NAO_DESONERADO")
+            self.assertIn("ORSE_DIRETO_SEM_AUTORIZACAO_EXPRESSA", {failure["tipo"] for failure in blocked["falhas"]})
+            released = audit_workbook(path, "NAO_DESONERADO", permit_orse_direct=True)
+            self.assertEqual(released["gate"], "LIBERADO")
 
     def test_repository_is_operational_with_quarantines_isolated(self) -> None:
         report = validate_repository()

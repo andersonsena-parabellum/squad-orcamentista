@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import sqlite3
 import sys
@@ -38,9 +39,8 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("consulta", help="código exato ou trecho da descrição")
     parser.add_argument("--fonte", required=True, choices=("SINAPI", "ORSE"))
-    parser.add_argument(
-        "--regime", required=True, choices=("desonerado", "nao_desonerado")
-    )
+    parser.add_argument("--regime", choices=("desonerado", "nao_desonerado"))
+    parser.add_argument("--pagina", type=int, default=1, help="página da busca textual ORSE")
     parser.add_argument(
         "--diagnostico",
         action="store_true",
@@ -53,6 +53,26 @@ def main() -> int:
     if status != "LIBERADA" and not args.diagnostico:
         print(f"BLOQUEADO: fonte {args.fonte} com status {status}.", file=sys.stderr)
         print(record.get("motivo", "Sem justificativa registrada."), file=sys.stderr)
+        return 2
+    origin_path = (REGISTRY_PATH.parent / str(record.get("arquivo_origem", ""))).resolve()
+    if not origin_path.is_file() or hashlib.sha256(origin_path.read_bytes()).hexdigest() != record.get("sha256_origem"):
+        print(f"BLOQUEADO: cadeia de custódia inválida para {args.fonte}.", file=sys.stderr)
+        return 2
+
+    if args.fonte == "ORSE":
+        from consultar_orse_oficial import main as orse_main
+
+        forwarded = [sys.argv[0], args.consulta]
+        if args.pagina != 1:
+            forwarded.extend(["--pagina", str(args.pagina)])
+        original = sys.argv
+        try:
+            sys.argv = forwarded
+            return orse_main()
+        finally:
+            sys.argv = original
+    if not args.regime:
+        print("BLOQUEADO: --regime é obrigatório para consulta SINAPI.", file=sys.stderr)
         return 2
     if not DB_PATH.exists():
         print(f"BLOQUEADO: banco ausente: {DB_PATH}", file=sys.stderr)

@@ -1,0 +1,740 @@
+{
+  "schema_version": "1.0.0",
+  "fonte": "ORSE",
+  "uf": "SE",
+  "competencia": "2026-06",
+  "codigo": "5970",
+  "codigo_exibicao": "05970/ORSE",
+  "descricao": "Caixa de Drenagem Tipo I - Dimensões 0,80x0,80x1,00m",
+  "unidade": "un",
+  "custo_total_orse_se": 1508.83,
+  "composicoes_auxiliares": [
+    {
+      "tipo": "COMPOSICAO_AUXILIAR",
+      "codigo": "26",
+      "fonte": "ORSE",
+      "descricao": "Coleta e carga manuais de entulho",
+      "unidade": "m3",
+      "coeficiente": 1.2078,
+      "custo_unitario_orse_se": 19.56,
+      "custo_total_orse_se": 23.62
+    },
+    {
+      "tipo": "COMPOSICAO_AUXILIAR",
+      "codigo": "76",
+      "fonte": "ORSE",
+      "descricao": "Reaterro manual de valas com espalhamento s/ compactação",
+      "unidade": "m3",
+      "coeficiente": 0.2684,
+      "custo_unitario_orse_se": 19.56,
+      "custo_total_orse_se": 5.25
+    },
+    {
+      "tipo": "COMPOSICAO_AUXILIAR",
+      "codigo": "95",
+      "fonte": "ORSE",
+      "descricao": "Concreto simples fabricado na obra, fck=13,5 mpa, lançado e adensado. Rev 01_06/2026",
+      "unidade": "m3",
+      "coeficiente": 0.1,
+      "custo_unitario_orse_se": 845.76,
+      "custo_total_orse_se": 84.58
+    },
+    {
+      "tipo": "COMPOSICAO_AUXILIAR",
+      "codigo": "157",
+      "fonte": "ORSE",
+      "descricao": "Alvenaria tijolo cerâmico maciço (5x9x19), esp = 0,19m (dobrada), com argamassa traço t5 - 1:2:8 (cimento / cal / areia) c/ junta de 2,0cm - R1",
+      "unidade": "m2",
+      "coeficiente": 3.6,
+      "custo_unitario_orse_se": 236.6,
+      "custo_total_orse_se": 851.76
+    },
+    {
+      "tipo": "COMPOSICAO_AUXILIAR",
+      "codigo": "2497",
+      "fonte": "ORSE",
+      "descricao": "Escavação manual de vala ou cava em material de 1ª categoria, profundidade até 1,50m",
+      "unidade": "m3",
+      "coeficiente": 1.4762,
+      "custo_unitario_orse_se": 58.67,
+      "custo_total_orse_se": 86.61
+    },
+    {
+      "tipo": "COMPOSICAO_AUXILIAR",
+      "codigo": "3310",
+      "fonte": "ORSE",
+      "descricao": "Chapisco em parede com argamassa traço t1 - 1:3 (cimento / areia) - Revisado 08/2015",
+      "unidade": "m2",
+      "coeficiente": 3.2,
+      "custo_unitario_orse_se": 7.55,
+      "custo_total_orse_se": 24.16
+    },
+    {
+      "tipo": "COMPOSICAO_AUXILIAR",
+      "codigo": "3317",
+      "fonte": "ORSE",
+      "descricao": "Reboco especial de parede 2cm com argamassa traço t1 - 1:3 (cimento / areia)",
+      "unidade": "m2",
+      "coeficiente": 3.2,
+      "custo_unitario_orse_se": 39.02,
+      "custo_total_orse_se": 124.86
+    },
+    {
+      "tipo": "COMPOSICAO_AUXILIAR",
+      "codigo": "6456",
+      "fonte": "ORSE",
+      "descricao": "Concreto Armado fck=21,0MPa, usinado, bombeado, adensado e lançado, para Uso Geral, com formas planas em compensado resinado 12mm (05 usos)",
+      "unidade": "m3",
+      "coeficiente": 0.12,
+      "custo_unitario_orse_se": 2565.42,
+      "custo_total_orse_se": 307.85
+    }
+  ],
+  "insumos_detalhados": [
+    {
+      "classe_orse": "M",
+      "codigo": "81",
+      "fonte": "ORSE",
+      "descricao": "Aço ca-50 6,3 a 12,5 mm",
+      "unidade": "kg",
+      "coeficiente": 9.6,
+      "custo_unitario_orse_se": 8.59,
+      "custo_total_orse_se": 82.46
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "158",
+      "fonte": "ORSE",
+      "descricao": "Almoço (Participação do empregador)",
+      "unidade": "un",
+      "coeficiente": 3.40789752,
+      "custo_unitario_orse_se": 14.0,
+      "custo_total_orse_se": 47.71
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "43130",
+      "fonte": "SINAPI",
+      "descricao": "Arame galvanizado 12 bwg, d = 2,76 mm (0,048 kg/m) ou 14 bwg, d = 2,11 mm (0,026 kg/m)",
+      "unidade": "kg",
+      "coeficiente": 0.18,
+      "custo_unitario_orse_se": 28.0,
+      "custo_total_orse_se": 5.04
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "43132",
+      "fonte": "SINAPI",
+      "descricao": "Arame recozido 16 bwg, d = 1,65 mm (0,016 kg/m) ou 18 bwg, d = 1,25 mm (0,01 kg/m)",
+      "unidade": "kg",
+      "coeficiente": 0.192,
+      "custo_unitario_orse_se": 28.0,
+      "custo_total_orse_se": 5.38
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "10585",
+      "fonte": "ORSE",
+      "descricao": "Arco de serra",
+      "unidade": "un",
+      "coeficiente": 0.00015792,
+      "custo_unitario_orse_se": 19.95,
+      "custo_total_orse_se": 0.0
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "367",
+      "fonte": "SINAPI",
+      "descricao": "Areia grossa - posto jazida/fornecedor (retirado na jazida, sem transporte)",
+      "unidade": "m3",
+      "coeficiente": 0.4401304,
+      "custo_unitario_orse_se": 116.5,
+      "custo_total_orse_se": 51.28
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "370",
+      "fonte": "SINAPI",
+      "descricao": "Areia media - posto jazida/fornecedor (retirado na jazida, sem transporte)",
+      "unidade": "m3",
+      "coeficiente": 0.0864,
+      "custo_unitario_orse_se": 115.0,
+      "custo_total_orse_se": 9.94
+    },
+    {
+      "classe_orse": "P",
+      "codigo": "378",
+      "fonte": "SINAPI",
+      "descricao": "Armador (horista)",
+      "unidade": "h",
+      "coeficiente": 0.7896,
+      "custo_unitario_orse_se": 20.45,
+      "custo_total_orse_se": 16.15
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "12893",
+      "fonte": "SINAPI",
+      "descricao": "Bota de seguranca com biqueira de aco e colarinho acolchoado",
+      "unidade": "par",
+      "coeficiente": 0.02663604,
+      "custo_unitario_orse_se": 76.67,
+      "custo_total_orse_se": 2.04
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "1106",
+      "fonte": "SINAPI",
+      "descricao": "Cal hidratada ch-i para argamassas",
+      "unidade": "kg",
+      "coeficiente": 51.7608,
+      "custo_unitario_orse_se": 1.4,
+      "custo_total_orse_se": 72.47
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "12894",
+      "fonte": "SINAPI",
+      "descricao": "Capa para chuva em pvc com forro de poliester, com capuz (amarela ou azul)",
+      "unidade": "un",
+      "coeficiente": 0.00669528,
+      "custo_unitario_orse_se": 20.85,
+      "custo_total_orse_se": 0.14
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "12895",
+      "fonte": "SINAPI",
+      "descricao": "Capacete de seguranca aba frontal com suspensao de polietileno, sem jugular (classe b)",
+      "unidade": "un",
+      "coeficiente": 0.02008584,
+      "custo_unitario_orse_se": 14.0,
+      "custo_total_orse_se": 0.28
+    },
+    {
+      "classe_orse": "P",
+      "codigo": "1213",
+      "fonte": "SINAPI",
+      "descricao": "Carpinteiro de formas para concreto (horista)",
+      "unidade": "h",
+      "coeficiente": 1.4508,
+      "custo_unitario_orse_se": 21.49,
+      "custo_total_orse_se": 31.18
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "2711",
+      "fonte": "SINAPI",
+      "descricao": "Carrinho de mao, em aco, com capacidade de *45 a 65* l / *100* kg, pneu com camara",
+      "unidade": "un",
+      "coeficiente": 0.00400016,
+      "custo_unitario_orse_se": 175.45,
+      "custo_total_orse_se": 0.7
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "10492",
+      "fonte": "ORSE",
+      "descricao": "Cesta Básica",
+      "unidade": "un",
+      "coeficiente": 0.1506438,
+      "custo_unitario_orse_se": 205.0,
+      "custo_total_orse_se": 30.88
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "10579",
+      "fonte": "ORSE",
+      "descricao": "Chave de fenda chata 30 cm",
+      "unidade": "un",
+      "coeficiente": 0.00029016,
+      "custo_unitario_orse_se": 26.9,
+      "custo_total_orse_se": 0.01
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "1379",
+      "fonte": "SINAPI",
+      "descricao": "Cimento portland composto cp ii-32",
+      "unidade": "kg",
+      "coeficiente": 113.4368,
+      "custo_unitario_orse_se": 0.96,
+      "custo_total_orse_se": 108.9
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "4722",
+      "fonte": "ORSE",
+      "descricao": "Colher de pedreiro",
+      "unidade": "un",
+      "coeficiente": 0.00449408,
+      "custo_unitario_orse_se": 18.8,
+      "custo_total_orse_se": 0.08
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "630",
+      "fonte": "ORSE",
+      "descricao": "Compensado resinado 12mm - Madeirit ou similar",
+      "unidade": "m2",
+      "coeficiente": 0.2808,
+      "custo_unitario_orse_se": 44.17,
+      "custo_total_orse_se": 12.4
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "34492",
+      "fonte": "SINAPI",
+      "descricao": "Concreto usinado bombeavel, classe de resistencia c20, com brita 0 e 1, slump = 100 +/- 20 mm, exclui servico de bombeamento (nbr 8953)",
+      "unidade": "m3",
+      "coeficiente": 0.12,
+      "custo_unitario_orse_se": 530.0,
+      "custo_total_orse_se": 63.6
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "4174",
+      "fonte": "ORSE",
+      "descricao": "Desempenadeira de aço lisa, cabo madeira, ref:143, Atlas ou similar",
+      "unidade": "un",
+      "coeficiente": 0.0056176,
+      "custo_unitario_orse_se": 17.99,
+      "custo_total_orse_se": 0.1
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "11245",
+      "fonte": "ORSE",
+      "descricao": "Desempoladeira de madeira 12x22",
+      "unidade": "un",
+      "coeficiente": 0.00786464,
+      "custo_unitario_orse_se": 11.6,
+      "custo_total_orse_se": 0.09
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "2692",
+      "fonte": "SINAPI",
+      "descricao": "Desmoldante protetor para formas de madeira, de base oleosa emulsionada em agua",
+      "unidade": "l",
+      "coeficiente": 0.024,
+      "custo_unitario_orse_se": 8.98,
+      "custo_total_orse_se": 0.22
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "11246",
+      "fonte": "ORSE",
+      "descricao": "Escala métrica de bambú",
+      "unidade": "Un",
+      "coeficiente": 0.00786464,
+      "custo_unitario_orse_se": 10.22,
+      "custo_total_orse_se": 0.08
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "39017",
+      "fonte": "SINAPI",
+      "descricao": "Espacador / distanciador circular com entrada lateral, em plastico, para vergalhao *4,2 a 12,5* mm, cobrimento 20 mm",
+      "unidade": "un",
+      "coeficiente": 3.84,
+      "custo_unitario_orse_se": 0.22,
+      "custo_total_orse_se": 0.84
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "39315",
+      "fonte": "SINAPI",
+      "descricao": "Espacador / distanciador tipo garra dupla, em plastico, cobrimento *20* mm, para ferragens de lajes e fundo de vigas",
+      "unidade": "un",
+      "coeficiente": 3.84,
+      "custo_unitario_orse_se": 0.36,
+      "custo_total_orse_se": 1.38
+    },
+    {
+      "classe_orse": "S",
+      "codigo": "10517",
+      "fonte": "ORSE",
+      "descricao": "Exames admissionais/demissionais (checkup)",
+      "unidade": "cj",
+      "coeficiente": 0.01339056,
+      "custo_unitario_orse_se": 300.0,
+      "custo_total_orse_se": 4.02
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "941",
+      "fonte": "ORSE",
+      "descricao": "Fardamento com mangas curta",
+      "unidade": "un",
+      "coeficiente": 0.0502146,
+      "custo_unitario_orse_se": 198.81,
+      "custo_total_orse_se": 9.98
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "10578",
+      "fonte": "ORSE",
+      "descricao": "Formão grande",
+      "unidade": "un",
+      "coeficiente": 0.00029016,
+      "custo_unitario_orse_se": 23.9,
+      "custo_total_orse_se": 0.01
+    },
+    {
+      "classe_orse": "E",
+      "codigo": "11248",
+      "fonte": "ORSE",
+      "descricao": "Furadeira e Parafusadeira eletrica Bosch ou Similar profissional",
+      "unidade": "un",
+      "coeficiente": 0.00014508,
+      "custo_unitario_orse_se": 246.0,
+      "custo_total_orse_se": 0.04
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "12892",
+      "fonte": "SINAPI",
+      "descricao": "Luva raspa de couro, cano curto (punho *7* cm)",
+      "unidade": "par",
+      "coeficiente": 0.07699572,
+      "custo_unitario_orse_se": 11.28,
+      "custo_total_orse_se": 0.87
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "1569",
+      "fonte": "ORSE",
+      "descricao": "Madeira mista serrada (barrote) 6 x 6cm - 0,0036 m3/m (angelim, louro)",
+      "unidade": "m",
+      "coeficiente": 1.4724,
+      "custo_unitario_orse_se": 10.5,
+      "custo_total_orse_se": 15.46
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "4729",
+      "fonte": "ORSE",
+      "descricao": "Marreta 1 kg com cabo",
+      "unidade": "un",
+      "coeficiente": 0.00200008,
+      "custo_unitario_orse_se": 39.5,
+      "custo_total_orse_se": 0.08
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "11264",
+      "fonte": "ORSE",
+      "descricao": "Marreta de 1/2 kg com cabo",
+      "unidade": "un",
+      "coeficiente": 0.00224704,
+      "custo_unitario_orse_se": 13.52,
+      "custo_total_orse_se": 0.03
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "11244",
+      "fonte": "ORSE",
+      "descricao": "Martelo com unha",
+      "unidade": "un",
+      "coeficiente": 0.00029016,
+      "custo_unitario_orse_se": 39.1,
+      "custo_total_orse_se": 0.01
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "11265",
+      "fonte": "ORSE",
+      "descricao": "Martelo de borracha com cabo",
+      "unidade": "un",
+      "coeficiente": 0.00449408,
+      "custo_unitario_orse_se": 18.75,
+      "custo_total_orse_se": 0.08
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "11243",
+      "fonte": "ORSE",
+      "descricao": "Martelo sem unha",
+      "unidade": "un",
+      "coeficiente": 0.00112352,
+      "custo_unitario_orse_se": 28.0,
+      "custo_total_orse_se": 0.03
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "10789",
+      "fonte": "ORSE",
+      "descricao": "Nível de bolha de madeira",
+      "unidade": "un",
+      "coeficiente": 0.00224704,
+      "custo_unitario_orse_se": 19.5,
+      "custo_total_orse_se": 0.04
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "1651",
+      "fonte": "ORSE",
+      "descricao": "Óculos branco proteção",
+      "unidade": "pr",
+      "coeficiente": 0.02663604,
+      "custo_unitario_orse_se": 6.0,
+      "custo_total_orse_se": 0.16
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "10788",
+      "fonte": "ORSE",
+      "descricao": "Pá quadrada",
+      "unidade": "un",
+      "coeficiente": 0.00400016,
+      "custo_unitario_orse_se": 36.9,
+      "custo_total_orse_se": 0.15
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "4721",
+      "fonte": "SINAPI",
+      "descricao": "Pedra britada n. 1 (9,5 a 19 mm) posto pedreira/fornecedor, sem frete",
+      "unidade": "m3",
+      "coeficiente": 0.0209,
+      "custo_unitario_orse_se": 137.75,
+      "custo_total_orse_se": 2.88
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "4718",
+      "fonte": "SINAPI",
+      "descricao": "Pedra britada n. 2 (19 a 38 mm) posto pedreira/fornecedor, sem frete",
+      "unidade": "m3",
+      "coeficiente": 0.0627,
+      "custo_unitario_orse_se": 138.48,
+      "custo_total_orse_se": 8.68
+    },
+    {
+      "classe_orse": "P",
+      "codigo": "4750",
+      "fonte": "SINAPI",
+      "descricao": "Pedreiro (horista)",
+      "unidade": "h",
+      "coeficiente": 11.2352,
+      "custo_unitario_orse_se": 20.45,
+      "custo_total_orse_se": 229.79
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "5068",
+      "fonte": "SINAPI",
+      "descricao": "Prego de aco polido com cabeca 17 x 21 (2 x 11)",
+      "unidade": "kg",
+      "coeficiente": 0.03,
+      "custo_unitario_orse_se": 16.68,
+      "custo_total_orse_se": 0.5
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "5069",
+      "fonte": "SINAPI",
+      "descricao": "Prego de aco polido com cabeca 17 x 27 (2 1/2 x 11)",
+      "unidade": "kg",
+      "coeficiente": 0.12,
+      "custo_unitario_orse_se": 17.0,
+      "custo_total_orse_se": 2.04
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "10596",
+      "fonte": "ORSE",
+      "descricao": "Protetor auricular",
+      "unidade": "un",
+      "coeficiente": 0.1506438,
+      "custo_unitario_orse_se": 4.95,
+      "custo_total_orse_se": 0.75
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "10599",
+      "fonte": "ORSE",
+      "descricao": "Protetor solar fps 30 com 120ml",
+      "unidade": "un",
+      "coeficiente": 0.06025752,
+      "custo_unitario_orse_se": 18.54,
+      "custo_total_orse_se": 1.12
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "10790",
+      "fonte": "ORSE",
+      "descricao": "Prumo de face",
+      "unidade": "un",
+      "coeficiente": 0.00112352,
+      "custo_unitario_orse_se": 25.95,
+      "custo_total_orse_se": 0.03
+    },
+    {
+      "classe_orse": "S",
+      "codigo": "10761",
+      "fonte": "ORSE",
+      "descricao": "Refeição - café da manhã ( café com leite e dois pães com manteiga)",
+      "unidade": "un",
+      "coeficiente": 3.40789752,
+      "custo_unitario_orse_se": 5.0,
+      "custo_total_orse_se": 17.04
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "10282",
+      "fonte": "ORSE",
+      "descricao": "Regua de alumínio c/ 2,00m (para pedreiro)",
+      "unidade": "un",
+      "coeficiente": 0.00224704,
+      "custo_unitario_orse_se": 44.0,
+      "custo_total_orse_se": 0.1
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "4509",
+      "fonte": "SINAPI",
+      "descricao": "Sarrafo *2,5 x 10* cm em pinus, mista ou equivalente da regiao - bruta",
+      "unidade": "m",
+      "coeficiente": 1.3068,
+      "custo_unitario_orse_se": 6.12,
+      "custo_total_orse_se": 8.0
+    },
+    {
+      "classe_orse": "S",
+      "codigo": "10362",
+      "fonte": "ORSE",
+      "descricao": "Seguro de vida e acidente em grupo",
+      "unidade": "un",
+      "coeficiente": 0.1506438,
+      "custo_unitario_orse_se": 12.54,
+      "custo_total_orse_se": 1.89
+    },
+    {
+      "classe_orse": "E",
+      "codigo": "11249",
+      "fonte": "ORSE",
+      "descricao": "Serra circular eletrica portatil",
+      "unidade": "un",
+      "coeficiente": 0.00014508,
+      "custo_unitario_orse_se": 979.65,
+      "custo_total_orse_se": 0.14
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "11247",
+      "fonte": "ORSE",
+      "descricao": "Serra mármore",
+      "unidade": "un",
+      "coeficiente": 0.00112352,
+      "custo_unitario_orse_se": 319.9,
+      "custo_total_orse_se": 0.36
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "10577",
+      "fonte": "ORSE",
+      "descricao": "Serrote 40cm",
+      "unidade": "un",
+      "coeficiente": 0.00014508,
+      "custo_unitario_orse_se": 36.0,
+      "custo_total_orse_se": 0.01
+    },
+    {
+      "classe_orse": "P",
+      "codigo": "6111",
+      "fonte": "SINAPI",
+      "descricao": "Servente de obras (horista)",
+      "unidade": "h",
+      "coeficiente": 20.0008,
+      "custo_unitario_orse_se": 15.59,
+      "custo_total_orse_se": 311.78
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "44535",
+      "fonte": "SINAPI",
+      "descricao": "Servico de bombeamento de concreto com consumo minimo de 40 m3, (disponibilizacao de bomba), sem o lancamento",
+      "unidade": "m3",
+      "coeficiente": 0.12,
+      "custo_unitario_orse_se": 54.49,
+      "custo_total_orse_se": 6.54
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "6193",
+      "fonte": "SINAPI",
+      "descricao": "Tabua nao aparelhada *2,5 x 20* cm, em macaranduba/massaranduba, angelim ou equivalente da regiao - bruta",
+      "unidade": "m",
+      "coeficiente": 0.1464,
+      "custo_unitario_orse_se": 16.18,
+      "custo_total_orse_se": 2.37
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "4728",
+      "fonte": "ORSE",
+      "descricao": "Talhadeira chata 10\"",
+      "unidade": "un",
+      "coeficiente": 0.00600024,
+      "custo_unitario_orse_se": 18.58,
+      "custo_total_orse_se": 0.11
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "2212",
+      "fonte": "ORSE",
+      "descricao": "Tijolo cerâmico maciço 5 x 9 x 19cm",
+      "unidade": "un",
+      "coeficiente": 468.0,
+      "custo_unitario_orse_se": 0.7,
+      "custo_total_orse_se": 327.6
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "10586",
+      "fonte": "ORSE",
+      "descricao": "Torquesa",
+      "unidade": "un",
+      "coeficiente": 0.00015792,
+      "custo_unitario_orse_se": 39.0,
+      "custo_total_orse_se": 0.01
+    },
+    {
+      "classe_orse": "M",
+      "codigo": "2378",
+      "fonte": "ORSE",
+      "descricao": "Vale transporte",
+      "unidade": "un",
+      "coeficiente": 2.76337952,
+      "custo_unitario_orse_se": 4.5,
+      "custo_total_orse_se": 12.44
+    },
+    {
+      "classe_orse": "E",
+      "codigo": "4723",
+      "fonte": "ORSE",
+      "descricao": "Vibrador de imersão (com mangote)",
+      "unidade": "h",
+      "coeficiente": 0.269,
+      "custo_unitario_orse_se": 1.25,
+      "custo_total_orse_se": 0.34
+    }
+  ],
+  "totais": {
+    "Equipamento": 0.52,
+    "Material": 896.46,
+    "Mão-de-Obra": 278.43,
+    "Enc. Social": 310.47,
+    "Terçeiros": 22.95,
+    "Valor Total": 1508.83
+  },
+  "proveniencia": {
+    "url": "https://orse.cehop.se.gov.br/composicao.asp?font_sg_fonte=ORSE&serv_nr_codigo=5970&peri_nr_ano=2026&peri_nr_mes=6&peri_nr_ordem=1",
+    "sha256_html": "71fe111d23983ab5396e24968f6918852cf7ce90f1cd0d7f514508642fa2b967",
+    "capturado_em": "2026-09-05T03:15:07.118643+00:00",
+    "aviso": "Custos do ORSE/SE; uso como preço direto fora de SE exige autorização e justificativa expressas.",
+    "arquivo_html": "00-FONTES_OFICIAIS/ORSE-2026-06/raw/composicao-05970.html"
+  }
+}
