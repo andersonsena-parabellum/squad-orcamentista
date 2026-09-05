@@ -15,6 +15,7 @@ sys.path.insert(0, str(REPO_ROOT / "scripts"))
 
 from atualizar_estado import update
 from amostrar_codigos import audit_workbook
+from exportar_orse_mssql import portable_code
 from simulate_supat_preenvio import REQUIRED_HUMAN_ITEMS, audit_quotes, human_checkpoints, valid_cnpj
 from squad_common import atomic_write_json, sha256_file, source_is_releasable, validate_handoff_file
 from validate_repository import validate as validate_repository
@@ -29,6 +30,10 @@ def make_cnpj(base12: str) -> str:
 
 
 class SquadControlTests(unittest.TestCase):
+    def test_orse_portable_codes_preserve_source_without_collision(self) -> None:
+        self.assertEqual(portable_code("ORSE", 5970), "5970")
+        self.assertEqual(portable_code("SINAPI", "000123"), "SINAPI:123")
+
     def test_legacy_orse_source_is_fail_closed(self) -> None:
         released, reason = source_is_releasable("ORSE_LEGADO_QUARENTENA")
         self.assertFalse(released)

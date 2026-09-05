@@ -23,6 +23,7 @@ REQUIRED_SCRIPTS = {
     "migrate_db_schema.py",
     "importar_sinapi.py",
     "quarentenar_orse_legada.py",
+    "exportar_orse_mssql.py",
 }
 
 

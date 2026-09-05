@@ -43,6 +43,30 @@ python 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_orse_oficial.py --help
 python 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_cpu_propria.py --help
 ```
 
+## ORSE portátil e independente do portal
+
+O desenho-alvo é **offline-first**: a instalação Windows do ORSE importa o
+arquivo mensal proprietário uma vez e o exportador grava serviços, insumos,
+preços e vínculos analíticos no `base_precos.db`. Depois disso, Codex, Cursor,
+Grok e Gemini/Antigravity precisam apenas do repositório e de Python/SQLite;
+SQL Server, ORSE e acesso à internet não participam das consultas normais.
+
+O portal oficial permanece como contingência e conferência pontual. A consulta
+usa primeiro o SQLite íntegro e da mesma competência; `--web` força o portal e
+`--somente-local` comprova que nenhum acesso externo foi necessário.
+
+Conversão inicial no computador Windows que possui o ORSE instalado:
+
+```powershell
+python -m pip install -r requirements-orse-export.txt
+python scripts/exportar_orse_mssql.py --ask-password
+```
+
+O exportador exige por padrão pelo menos 15.000 composições e 12.000 insumos e
+rejeita descrições sintéticas. A senha SQL não é aceita como argumento nem deve
+ser versionada; use `ORSE_SQL_CONNECTION` ou `ORSE_SQL_PASSWORD` apenas no host
+de conversão.
+
 ## Estrutura
 
 - `01-PROMPTS/`: prompts mínimos; `AGENTS.md` é a fonte normativa.
