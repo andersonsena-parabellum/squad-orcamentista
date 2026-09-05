@@ -1,7 +1,4 @@
-* text=auto
-*.py text eol=lf
-*.md text eol=lf
-*.json text eol=lf
-*.db binary
-*.xlsx binary
-*.pdf binary
+# Artefatos de cadeia de custodia devem conservar os bytes originais.
+03-BASE_DE_PRECOS/00-FONTES_OFICIAIS/** -text
+03-BASE_DE_PRECOS/03-CPU_PROPRIAS/CATALOGO_CPU_PROPRIAS.json -text
+03-BASE_DE_PRECOS/03-CPU_PROPRIAS/_ORIGINAIS/** -text
