@@ -12,7 +12,7 @@ import sqlite3
 import sys
 from pathlib import Path
 
-from orse_oficial import fetch_composition, search_compositions
+from orse_oficial import fetch_composition, search_compositions, load_cached_composition
 
 
 BASE_DIR = Path(__file__).resolve().parents[1]
@@ -161,6 +161,8 @@ def main() -> int:
                 result = _local_exact(connection, args.consulta) if exact else _local_search(connection, args.consulta, args.pagina)
             finally:
                 connection.close()
+        if result is None and exact and not args.web:
+            result = load_cached_composition(args.consulta)
         if result is None and args.somente_local:
             raise RuntimeError("base ORSE local ausente, desatualizada ou sem o codigo solicitado")
         if result is None:
@@ -170,7 +172,7 @@ def main() -> int:
             if args.json:
                 print(json.dumps(result, ensure_ascii=False, indent=2))
             else:
-                mode_label = "LOCAL" if result.get("proveniencia", {}).get("modo") == "SQLITE_LOCAL" else "WEB"
+                mode_label = result.get("proveniencia", {}).get("modo", "WEB")
                 print(f"[ORSE OFICIAL {mode_label} | SE {result['competencia']}] {result['codigo_exibicao']} — {result['descricao']}")
                 print(f"Unidade: {result['unidade']} | Custo ORSE/SE: R$ {result['custo_total_orse_se']:.2f}")
                 print(f"Auxiliares: {len(result['composicoes_auxiliares'])} | Insumos detalhados: {len(result['insumos_detalhados'])}")

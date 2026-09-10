@@ -198,7 +198,21 @@ def load_cached_composition(code: str) -> dict[str, Any] | None:
     raw_path = BASE_DIR / raw_rel
     if not raw_path.is_file() or hashlib.sha256(raw_path.read_bytes()).hexdigest() != data["proveniencia"].get("sha256_html"):
         return None
-    return data
+    if data.get("competencia") != _registry()["competencia"]:
+        return None
+    expected_url = composition_url(code)
+    if data.get("proveniencia", {}).get("url") != expected_url:
+        return None
+    # Reconstroi os numeros da evidencia bruta: o JSON editavel nao e a fonte.
+    verified = parse_composition(raw_path.read_bytes(), expected_url)
+    if verified["codigo"] != (match.group(1).lstrip("0") or "0"):
+        return None
+    verified["proveniencia"].update({
+        "modo": "CACHE_LOCAL",
+        "arquivo_html": raw_rel,
+        "capturado_em": data["proveniencia"].get("capturado_em"),
+    })
+    return verified
 
 
 def search_compositions(description: str, page: int = 1) -> dict[str, Any]:
