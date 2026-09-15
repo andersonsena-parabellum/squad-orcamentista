@@ -6,7 +6,9 @@ from __future__ import annotations
 import hashlib
 import http.cookiejar
 import json
+import math
 import re
+import unicodedata
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -27,11 +29,24 @@ CODE_RE = re.compile(r"^(\d{1,5})(?:/ORSE)?$", re.IGNORECASE)
 
 
 def _registry() -> dict[str, Any]:
-    return json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))["fontes"]["ORSE"]
+    record = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))["fontes"]["ORSE"]
+    if record.get("status") != "LIBERADA" or record.get("capacidades", {}).get("consulta") != "LIBERADA":
+        raise ValueError("fonte ORSE sem capacidade de consulta liberada")
+    source = (BASE_DIR / record["arquivo_origem"]).resolve()
+    if not source.is_relative_to(BASE_DIR.resolve()) or not source.is_file():
+        raise ValueError("arquivo bruto ORSE ausente ou fora da base")
+    if hashlib.sha256(source.read_bytes()).hexdigest() != record.get("sha256_origem"):
+        raise ValueError("hash do arquivo bruto ORSE divergente")
+    return record
 
 
-def _period() -> tuple[int, int, int]:
-    record = _registry()
+def validate_source() -> dict[str, Any]:
+    """Valida capacidade, confinamento, existência e hash da publicação ORSE."""
+    return _registry()
+
+
+def _period(source: dict[str, Any] | None = None) -> tuple[int, int, int]:
+    record = source or _registry()
     year, month = (int(part) for part in record["competencia"].split("-"))
     return year, month, int(record.get("ordem_periodo", 1))
 
@@ -73,11 +88,11 @@ def _rows(table: Any) -> list[list[str]]:
     return result
 
 
-def composition_url(code: str) -> str:
+def composition_url(code: str, source: dict[str, Any] | None = None) -> str:
     match = CODE_RE.fullmatch(code.strip())
     if not match:
         raise ValueError("codigo ORSE invalido")
-    year, month, order = _period()
+    year, month, order = _period(source)
     query = urllib.parse.urlencode(
         {
             "font_sg_fonte": "ORSE",
@@ -90,7 +105,7 @@ def composition_url(code: str) -> str:
     return f"{PORTAL}/composicao.asp?{query}"
 
 
-def parse_composition(raw: bytes, url: str) -> dict[str, Any]:
+def parse_composition(raw: bytes, url: str, source: dict[str, Any] | None = None) -> dict[str, Any]:
     soup = BeautifulSoup(_decode(raw), "html.parser")
     tables = [_rows(table) for table in soup.find_all("table")]
     service_rows = next((rows for rows in tables if rows and rows[0] == ["Serviço"]), None)
@@ -147,7 +162,7 @@ def parse_composition(raw: bytes, url: str) -> dict[str, Any]:
         "schema_version": "1.0.0",
         "fonte": "ORSE",
         "uf": "SE",
-        "competencia": _registry()["competencia"],
+        "competencia": (source or _registry())["competencia"],
         "codigo": match.group(1).lstrip("0") or "0",
         "codigo_exibicao": code_label,
         "descricao": description,
@@ -184,7 +199,8 @@ def fetch_composition(code: str, save: bool = True) -> dict[str, Any]:
     return result
 
 
-def load_cached_composition(code: str) -> dict[str, Any] | None:
+def load_cached_composition(code: str, source: dict[str, Any] | None = None) -> dict[str, Any] | None:
+    source = source or _registry()
     match = CODE_RE.fullmatch(code.strip())
     if not match:
         return None
@@ -195,16 +211,18 @@ def load_cached_composition(code: str) -> dict[str, Any] | None:
     raw_rel = data.get("proveniencia", {}).get("arquivo_html")
     if not raw_rel:
         return None
-    raw_path = BASE_DIR / raw_rel
+    raw_path = (BASE_DIR / raw_rel).resolve()
+    if not raw_path.is_relative_to(BASE_DIR.resolve()):
+        return None
     if not raw_path.is_file() or hashlib.sha256(raw_path.read_bytes()).hexdigest() != data["proveniencia"].get("sha256_html"):
         return None
-    if data.get("competencia") != _registry()["competencia"]:
+    if data.get("competencia") != source["competencia"]:
         return None
-    expected_url = composition_url(code)
+    expected_url = composition_url(code, source)
     if data.get("proveniencia", {}).get("url") != expected_url:
         return None
     # Reconstroi os numeros da evidencia bruta: o JSON editavel nao e a fonte.
-    verified = parse_composition(raw_path.read_bytes(), expected_url)
+    verified = parse_composition(raw_path.read_bytes(), expected_url, source)
     if verified["codigo"] != (match.group(1).lstrip("0") or "0"):
         return None
     verified["proveniencia"].update({
@@ -213,6 +231,55 @@ def load_cached_composition(code: str) -> dict[str, Any] | None:
         "capturado_em": data["proveniencia"].get("capturado_em"),
     })
     return verified
+
+
+def _folded(value: str) -> str:
+    normalized = unicodedata.normalize("NFKD", value)
+    return " ".join("".join(char for char in normalized if not unicodedata.combining(char)).casefold().split())
+
+
+def search_cached_compositions(
+    description: str,
+    page: int = 1,
+    source: dict[str, Any] | None = None,
+) -> dict[str, Any] | None:
+    """Pesquisa somente evidências HTML locais cuja origem ainda seja verificável."""
+    term = _folded(description)
+    if not term:
+        raise ValueError("informe uma descricao para evitar varredura massiva do cache")
+    if page < 1:
+        raise ValueError("pagina deve ser maior ou igual a 1")
+    source = source or _registry()
+    found = []
+    for cache_path in sorted(CACHE_DIR.glob("composicao-*.json")):
+        code = cache_path.stem.removeprefix("composicao-")
+        item = load_cached_composition(code, source)
+        if item is None or term not in _folded(item["descricao"]):
+            continue
+        found.append(
+            {
+                "codigo": item["codigo"],
+                "descricao": item["descricao"],
+                "unidade": item["unidade"],
+                "custo_total_orse_se": item["custo_total_orse_se"],
+                "url": item["proveniencia"]["url"],
+            }
+        )
+    if not found:
+        return None
+    per_page = 20
+    start = (page - 1) * per_page
+    return {
+        "fonte": "ORSE",
+        "uf": source.get("uf", "SE"),
+        "competencia": source["competencia"],
+        "consulta": description,
+        "pagina": page,
+        "total": len(found),
+        "paginas": max(1, math.ceil(len(found) / per_page)),
+        "modo": "CACHE_LOCAL",
+        "resultados": found[start:start + per_page],
+    }
 
 
 def search_compositions(description: str, page: int = 1) -> dict[str, Any]:

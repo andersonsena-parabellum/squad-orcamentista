@@ -12,8 +12,10 @@ import argparse
 import getpass
 import json
 import os
+import subprocess
 import shutil
 import sqlite3
+import sys
 import tempfile
 import unicodedata
 from collections import defaultdict, deque
@@ -297,6 +299,28 @@ def update_registry(source: Path, source_hash: str, url: str, period: Period, da
     atomic_write_json(SOURCE_REGISTRY, registry)
 
 
+def resolve_server(server: str) -> str:
+    if server.lower() == "auto":
+        try:
+            subprocess.run(
+                ["sqllocaldb", "start", "ORSE"],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            info = subprocess.run(
+                ["sqllocaldb", "info", "ORSE"],
+                check=True,
+                capture_output=True,
+                text=True,
+            ).stdout
+            pipe_line = next(line for line in info.splitlines() if "np:\\" in line.lower())
+            server = pipe_line[pipe_line.lower().index("np:\\") :].strip()
+        except (FileNotFoundError, subprocess.CalledProcessError, StopIteration):
+            server = r"localhost\ORSE"
+    return server
+
+
 def connect(args: argparse.Namespace, password: str | None = None) -> Any:
     try:
         import pyodbc
@@ -322,13 +346,17 @@ def connect(args: argparse.Namespace, password: str | None = None) -> Any:
         )
         if not driver:
             raise RuntimeError(f"Driver ODBC SQL Server ausente; drivers encontrados: {sorted(installed)}")
+    server = resolve_server(args.server)
     password = password if password is not None else os.environ.get(args.password_env, "")
     auth = f"UID={args.user};PWD={password};" if args.user else "Trusted_Connection=yes;"
-    return pyodbc.connect(
-        f"DRIVER={{{driver}}};SERVER={args.server};DATABASE={args.database};"
-        f"{auth}TrustServerCertificate=yes;",
-        timeout=30,
-    )
+    try:
+        return pyodbc.connect(
+            f"DRIVER={{{driver}}};SERVER={server};DATABASE={args.database};"
+            f"{auth}TrustServerCertificate=yes;",
+            timeout=30,
+        )
+    except pyodbc.Error as exc:
+        raise RuntimeError(f"Falha ao conectar ao banco ORSE em {server}: {exc}") from exc
 
 
 def main() -> int:
@@ -338,13 +366,18 @@ def main() -> int:
     parser.add_argument("--url", default=DEFAULT_URL)
     parser.add_argument("--competencia", default="2026-06")
     parser.add_argument("--ordem", type=int, default=1)
-    parser.add_argument("--server", default=r"localhost\ORSE")
+    parser.add_argument(
+        "--server",
+        default="auto",
+        help="auto detecta LocalDB ORSE e recua para localhost\\ORSE",
+    )
     parser.add_argument("--database", default="ORSE")
     parser.add_argument("--driver", default="", help="vazio seleciona automaticamente um driver SQL Server instalado")
-    parser.add_argument("--user", default="sa", help="vazio para autenticacao integrada")
+    parser.add_argument("--user", default="", help="vazio usa autenticacao integrada; informe sa apenas no SQL Express")
     parser.add_argument("--password-env", default="ORSE_SQL_PASSWORD")
     parser.add_argument("--ask-password", action="store_true", help="solicita a senha sem exibi-la nem grava-la no historico")
     parser.add_argument("--connection-string", default=os.environ.get("ORSE_SQL_CONNECTION"))
+    parser.add_argument("--diagnostico", action="store_true", help="valida conexão, esquema, competência e volumes sem alterar o SQLite")
     parser.add_argument("--min-composicoes", type=int, default=15000)
     parser.add_argument("--min-insumos", type=int, default=12000)
     args = parser.parse_args()
@@ -368,6 +401,21 @@ def main() -> int:
         data = extract(connection.cursor(), period, args.min_composicoes, args.min_insumos)
     finally:
         connection.close()
+    if args.diagnostico:
+        print(
+            json.dumps(
+                {
+                    "status": "PRONTO_PARA_EXPORTAR",
+                    "fonte": "ORSE",
+                    "competencia": args.competencia,
+                    **data["contagens"],
+                    "sha256_origem": source_hash,
+                },
+                ensure_ascii=False,
+                indent=2,
+            )
+        )
+        return 0
     with exclusive_lock(PRICE_DB.with_suffix(".import.lock"), "exportar_orse_mssql"):
         import_database(data, period, source_hash)
         update_registry(source, source_hash, args.url, period, data)
@@ -389,4 +437,8 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    try:
+        raise SystemExit(main())
+    except Exception as exc:
+        print(f"BLOQUEADO: exportação ORSE não executada: {exc}", file=sys.stderr)
+        raise SystemExit(2)

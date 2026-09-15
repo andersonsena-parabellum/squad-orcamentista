@@ -59,13 +59,25 @@ Conversão inicial no computador Windows que possui o ORSE instalado:
 
 ```powershell
 python -m pip install -r requirements-orse-export.txt
-python scripts/exportar_orse_mssql.py --ask-password
+python scripts/exportar_orse_mssql.py --diagnostico
+python scripts/exportar_orse_mssql.py
 ```
 
 O exportador exige por padrão pelo menos 15.000 composições e 12.000 insumos e
-rejeita descrições sintéticas. A senha SQL não é aceita como argumento nem deve
-ser versionada; use `ORSE_SQL_CONNECTION` ou `ORSE_SQL_PASSWORD` apenas no host
-de conversão.
+rejeita descrições sintéticas. Ele detecta automaticamente a instância LocalDB
+`ORSE`, inicia-a e usa autenticação integrada; instalações SQL Express podem
+informar `--server localhost\ORSE --user sa --ask-password`. A senha SQL não é
+aceita como argumento nem deve ser versionada.
+
+`PRONTO_PARA_EXPORTAR` só é emitido quando o banco contém o esquema oficial,
+a competência solicitada e os volumes mínimos. Serviço Windows ativo ou banco
+SQL vazio não são tratados como instalação funcional.
+
+Até a conversão integral, códigos exatos já capturados e termos encontrados
+nessas capturas funcionam offline pelo cache validado contra o HTML bruto. Uma
+pesquisa sem correspondência local ou um código ainda não capturado usa o portal
+oficial, exceto com `--somente-local`. Esse modo bloqueia se não houver evidência
+local; ele não afirma que o catálogo mensal inteiro foi convertido.
 
 ## Estrutura
 

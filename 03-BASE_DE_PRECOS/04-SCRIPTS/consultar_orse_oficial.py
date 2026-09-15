@@ -12,7 +12,13 @@ import sqlite3
 import sys
 from pathlib import Path
 
-from orse_oficial import fetch_composition, search_compositions, load_cached_composition
+from orse_oficial import (
+    fetch_composition,
+    load_cached_composition,
+    search_cached_compositions,
+    search_compositions,
+    validate_source,
+)
 
 
 BASE_DIR = Path(__file__).resolve().parents[1]
@@ -150,9 +156,14 @@ def main() -> int:
     parser.add_argument("--json", action="store_true")
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--web", action="store_true", help="forca consulta ao portal oficial")
-    mode.add_argument("--somente-local", action="store_true", help="bloqueia se a base SQLite ORSE nao estiver carregada")
+    mode.add_argument(
+        "--somente-local",
+        action="store_true",
+        help="usa SQLite/cache verificado e bloqueia quando nao houver evidencia local",
+    )
     args = parser.parse_args()
     try:
+        source = validate_source()
         exact = bool(re.fullmatch(r"\d{1,5}(?:/ORSE)?", args.consulta.strip(), re.IGNORECASE))
         connection = None if args.web else _local_connection()
         result = None
@@ -162,7 +173,9 @@ def main() -> int:
             finally:
                 connection.close()
         if result is None and exact and not args.web:
-            result = load_cached_composition(args.consulta)
+            result = load_cached_composition(args.consulta, source)
+        if result is None and not exact and not args.web:
+            result = search_cached_compositions(args.consulta, args.pagina, source)
         if result is None and args.somente_local:
             raise RuntimeError("base ORSE local ausente, desatualizada ou sem o codigo solicitado")
         if result is None:
@@ -185,7 +198,7 @@ def main() -> int:
             if args.json:
                 print(json.dumps(result, ensure_ascii=False, indent=2))
             else:
-                mode_label = "LOCAL" if result.get("modo") == "SQLITE_LOCAL" else "WEB"
+                mode_label = result.get("modo", "WEB")
                 print(f"[ORSE OFICIAL {mode_label} | SE {result['competencia']}] {result['total']} resultado(s); página {result['pagina']}/{result['paginas']}")
                 for item in result["resultados"]:
                     print(f"  {item['codigo'].zfill(5)}/ORSE | {item['unidade']} | R$ {item['custo_total_orse_se']:.2f} | {item['descricao']}")
