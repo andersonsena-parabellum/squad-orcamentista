@@ -1,16 +1,16 @@
 {
   "schema_version": "1.1.0",
   "codigo": "PRP-BTR-001",
-  "descricao": "BATE-RODA DE CONCRETO PRÉ-MOLDADO 70 × 20 × 15 CM — FORNECIMENTO E ASSENTAMENTO COM ARGAMASSA, SOBRE PISO EXISTENTE",
+  "descricao": "BATE-RODA DE CONCRETO PRÉ-MOLDADO 70 × 20 × 15 CM — FORNECIMENTO (PEÇA RETANGULAR PRÉ-MOLDADA) E ASSENTAMENTO COM ARGAMASSA, SOBRE PISO EXISTENTE",
   "unidade": "UN",
   "dimensao_alvo": "70x20x15 cm",
   "volume_alvo_m3": 0.021,
-  "volume_alvo_memoria": "0.70 * 0.20 * 0.15 = 0.021",
+  "volume_alvo_litros": 21,
+  "volume_alvo_memoria": "0.70 * 0.20 * 0.15 = 0.021 m3 = 21 L (faixa 10-30 L da 97734)",
   "hipotese_recomendada": "A_PRE_MOLDADO_ASSENTAMENTO",
-  "natureza": "PROXY_VOLUMETRICO_ETAPA_2",
-  "cascata": "Etapa 2 SINAPI adaptável / de-para funcional: MO e argamassa da 94275; peça = insumo 41679 por volumetria × perda 1,005. Sem COT. 103734 rejeitada (resina/sem preço).",
-  "referencia_declarada": "REF. SINAPI 94275 (88309/88316/88629) + insumo SINAPI 41679 por proxy volumétrico. Função meio-fio ≠ bate-roda (risco registrado, preço não bloqueado).",
-  "risco_funcional": "meio-fio/guia pré-moldada (41679) não é bate-roda; seção trapezoidal 20×12/15 cm ≠ prisma 70×20×15 cm",
+  "natureza": "ETAPA_2_97734_POR_M3",
+  "cascata": "Peça = SINAPI 97734 (M3 × 0,021). Assentamento = 88309/88316/88629 da 94275. 41679 e COT retirados. 103734 rejeitada (resina/sem preço).",
+  "referencia_declarada": "REF. SINAPI 97734 AF_03/2024 (peça retangular pré-moldada 10-30 L) + REF. SINAPI 94275 (MO e argamassa de assentamento). Não é código específico de bate-roda.",
   "fonte_precos": {
     "fonte": "SINAPI",
     "uf": "BA",
@@ -26,49 +26,36 @@
     "restricoes_ativas": 5
   },
   "peca_sinapi": {
-    "code": "41679",
-    "description": "MEIO-FIO OU GUIA DE CONCRETO PRE-MOLDADO, COMP 1 M, *20 X 12/15* CM (H X L1/L2)",
-    "unit": "UN",
-    "tipo": "MATERIAL",
-    "dimensoes_oficiais": {
-      "comprimento_m": 1.0,
-      "H_m": 0.2,
-      "L1_m": 0.12,
-      "L2_m": 0.15
-    },
-    "volume_m3": 0.027,
-    "volume_memoria": "1.00 * 0.20 * (0.12 + 0.15) / 2 = 0.027",
-    "perda_paradigma_94275": 1.005,
-    "coeficiente_exato": 0.7816666666666667,
-    "coeficiente_exato_fracao": "469/600",
-    "coeficiente_adotado": 0.781667,
-    "coeficiente_memoria": "(0.021 / 0.027) * 1.005 = 0.781666... → 0.781667 ROUND_HALF_UP 6 casas",
-    "unit_price": 25.25,
-    "nota_ficha_94275": "Composição 94275 descreve 100X15X13X20 cm (volume 0,028 m³). Volume da peça usa a ficha do insumo 41679 (0,027 m³)."
+    "code": "97734",
+    "type": "Composição",
+    "description": "PEÇA RETANGULAR PRÉ-MOLDADA, VOLUME DE CONCRETO DE 10 A 30 LITROS, TAXA DE AÇO APROXIMADA DE 30KG/M³. AF_03/2024",
+    "unit": "M3",
+    "grupo": "Estruturas Pré-Fabricadas e Pré-Moldadas",
+    "unit_price_nao_desonerado": 3607.31,
+    "unit_price_desonerado": 3474.15,
+    "coeficiente": 0.021,
+    "perda_1_005_94275": false,
+    "motivo_sem_1_005": "97734 já é fornecimento/fabricação da peça; concreto 94971 entra com coef. 1.2 (perda interna de fabricação). O 1,005 da 94275 era perda do insumo 41679 (meio-fio UN), retirado.",
+    "concreto_interno_coef": 1.2,
+    "concreto_interno_codigo": "94971",
+    "inclui_fabricacao_mo_forma_aco": true,
+    "inclui_assentamento": false
   },
-  "alternativas_nao_adotadas": [
-    {
-      "code": "41683",
-      "description": "MEIO-FIO OU GUIA DE CONCRETO PRE MOLDADO, COMP 80 CM, *30 X 10/10* (H X L1/L2)",
-      "unit_price": 20.51,
-      "volume_m3": 0.024,
-      "motivo": "Volume mais próximo (0,024), mas seção 30×10 cm e não é o insumo da 94275"
-    },
-    {
-      "code": "41681",
-      "description": "MEIO-FIO OU GUIA DE CONCRETO PRE-MOLDADO, COMP 80 CM, *25 X 08/08* CM (H X L1/L2)",
-      "unit_price": 17.28,
-      "volume_m3": 0.016,
-      "motivo": "Seção 25×8 cm"
-    },
-    {
-      "code": "44729",
-      "description": "BATE-RODAS DE RESINA COM DOIS PINOS DE FIXACAO",
-      "unit_price": null,
-      "motivo": "Único insumo com nome bate-rodas; resina; SEM PREÇO BA — BLOQUEADO"
-    }
-  ],
   "itens": [
+    {
+      "type": "Composição Auxiliar",
+      "code": "97734",
+      "bank": "SINAPI",
+      "description": "PEÇA RETANGULAR PRÉ-MOLDADA, VOLUME DE CONCRETO DE 10 A 30 LITROS, TAXA DE AÇO APROXIMADA DE 30KG/M³. AF_03/2024",
+      "unit": "M3",
+      "coefficient": 0.021,
+      "coefficient_source": "0.70 * 0.20 * 0.15 = 0.021 m3 (21 L na faixa 10-30 L)",
+      "unit_price": 3607.31,
+      "regime": "nao_desonerado",
+      "competencia": "2026-07",
+      "line_total": 75.75,
+      "status": "PRECIFICAVEL"
+    },
     {
       "type": "Composição Auxiliar",
       "code": "88309",
@@ -76,7 +63,7 @@
       "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
       "unit": "H",
       "coefficient": 0.2151,
-      "coefficient_source": "SINAPI 94275 AF_01/2024",
+      "coefficient_source": "SINAPI 94275 AF_01/2024 (assentamento; não duplica a MO de moldagem da 97734)",
       "unit_price": 35.77,
       "regime": "nao_desonerado",
       "competencia": "2026-07",
@@ -90,7 +77,7 @@
       "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
       "unit": "H",
       "coefficient": 0.2151,
-      "coefficient_source": "SINAPI 94275 AF_01/2024",
+      "coefficient_source": "SINAPI 94275 AF_01/2024 (assentamento; não duplica a MO de moldagem da 97734)",
       "unit_price": 26.14,
       "regime": "nao_desonerado",
       "competencia": "2026-07",
@@ -104,68 +91,40 @@
       "description": "ARGAMASSA TRAÇO 1:3 (EM VOLUME DE CIMENTO E AREIA MÉDIA ÚMIDA), PREPARO MANUAL. AF_07/2026",
       "unit": "M3",
       "coefficient": 0.0012,
-      "coefficient_source": "SINAPI 94275 AF_01/2024; área de contato 0,14 m²",
+      "coefficient_source": "SINAPI 94275 AF_01/2024; 97734 não inclui argamassa de assentamento",
       "unit_price": 938.86,
       "regime": "nao_desonerado",
       "competencia": "2026-07",
       "line_total": 1.13,
       "status": "PRECIFICAVEL"
-    },
-    {
-      "type": "Insumo",
-      "code": "41679",
-      "bank": "SINAPI",
-      "description": "MEIO-FIO OU GUIA DE CONCRETO PRE-MOLDADO, COMP 1 M, *20 X 12/15* CM (H X L1/L2)",
-      "unit": "UN",
-      "coefficient": 0.781667,
-      "coefficient_source": "(0.021 / 0.027) * 1.005",
-      "unit_price": 25.25,
-      "regime": "nao_desonerado",
-      "competencia": "2026-07",
-      "line_total": 19.74,
-      "status": "PRECIFICAVEL",
-      "proxy": true
     }
   ],
   "custo_direto_total": {
-    "nao_desonerado": 34.18,
-    "desonerado": 33.49,
+    "nao_desonerado": 90.19,
+    "desonerado": 86.71,
     "moeda": "BRL",
     "unidade": "UN",
-    "observacao": "Soma ROUND(coef*preco, 2) das quatro linhas SINAPI. Sem BDI. Proxy volumétrico da peça."
+    "observacao": "Soma ROUND(coef*preco, 2). Sem BDI. 0,021 * 3607,31 = 75,75351 → 75,75."
   },
   "anexo_desonerado": [
+    {"code": "97734", "coefficient": 0.021, "unit_price": 3474.15, "line_total": 72.96},
     {"code": "88309", "coefficient": 0.2151, "unit_price": 33.84, "line_total": 7.28},
     {"code": "88316", "coefficient": 0.2151, "unit_price": 24.91, "line_total": 5.36},
-    {"code": "88629", "coefficient": 0.0012, "unit_price": 923.71, "line_total": 1.11},
-    {"code": "41679", "coefficient": 0.781667, "unit_price": 25.25, "line_total": 19.74}
+    {"code": "88629", "coefficient": 0.0012, "unit_price": 923.71, "line_total": 1.11}
   ],
   "uso_como_modelo": "LIBERADO",
-  "uso_direto": "PRECIFICAVEL_PROXY_VOLUMETRICO",
-  "preco": 34.18,
+  "uso_direto": "PRECIFICAVEL_ETAPA_2",
+  "preco": 90.19,
   "preco_regime": "nao_desonerado",
   "validacoes_pendentes": [
-    "PROXY_FUNCIONAL_MEIO_FIO_NAO_E_BATE_RODA",
-    "CONFIRMAR_PREMISSA_PISO_EXISTENTE_VS_ASFALTO_COM_PINOS",
-    "HIPOTESE_B_MOLDADO_IN_LOCO_BLOQUEADA_SEM_PARADIGMA_DE_FORMA_E_LANCAMENTO"
+    "97734_INCLUI_ACO_CA60_APROX_30KG_M3_PECA_COMERCIAL_PODE_SER_NAO_ARMADA",
+    "CONFIRMAR_PREMISSA_PISO_EXISTENTE_VS_ASFALTO_COM_PINOS"
   ],
-  "hipotese_b_moldado_in_loco": {
-    "recomendada": false,
-    "status": "BLOQUEADO",
-    "concreto_producao": {
-      "code": "94964",
-      "description": "CONCRETO FCK = 20MPA, TRAÇO 1:2,7:3 (EM MASSA SECA DE CIMENTO/ AREIA MÉDIA/ BRITA 1) - PREPARO MECÂNICO COM BETONEIRA 400 L. AF_05/2021",
-      "unit": "M3",
-      "coefficient": 0.021,
-      "unit_price_nao_desonerado": 639.03,
-      "line_total_nao_desonerado": 13.42,
-      "observacao": "Somente preparo. Não fecha execução."
-    }
-  },
   "nao_inclui": [
-    "370 AREIA MEDIA (leito de vala da 94275)",
+    "41679 e qualquer meio-fio",
+    "370 AREIA MEDIA",
     "qualquer código COT",
-    "103734/44729/44737 família resina sobre asfalto",
+    "103734/44729/44737 família resina",
     "pintura",
     "chumbador metálico",
     "BDI"
