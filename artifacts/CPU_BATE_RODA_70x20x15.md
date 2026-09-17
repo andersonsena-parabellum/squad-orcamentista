@@ -1,14 +1,13 @@
 # CPU PRP-BTR-001 — Bate-roda de concreto 70 × 20 × 15 cm
 
-**Status da ficha:** `MODELO ANALÍTICO — USO DIRETO BLOQUEADO`  
-**Motivo do bloqueio de preço total:** o insumo da peça pré-moldada 70 × 20 × 15 cm **não existe** na SINAPI BA 2026-07 com preço positivo; cotação (Etapa 7 / DC-007) **não foi executada** (proibido envio de e-mail).  
-**Não entra em catálogo oficial.** Artefato avulso em `artifacts/`. Não altera `FONTES_DADOS.json`.
+**Status da ficha:** `PRECIFÍCÁVEL — PROXY VOLUMÉTRICO (Etapa 2 / de-para funcional)`  
+**Custo direto total (hipótese A, não desonerado, sem BDI):** **R$ 34,18 / UN**  
+**Isto não é SINAPI exato de bate-roda 70 × 20 × 15 cm.** A peça é o insumo SINAPI `41679` (meio-fio/guia pré-moldada), convertido por volumetria. Função meio-fio ≠ bate-roda: risco registrado, **preço não bloqueado** (determinação explícita desta revisão).  
+**Não entra em catálogo oficial.** Artefato avulso em `artifacts/`. Não altera `FONTES_DADOS.json`. Sem COT. Sem e-mail.
 
 ---
 
 ## 0. Preflight do repositório
-
-Comando:
 
 ```bash
 python3 scripts/validate_repository.py
@@ -26,7 +25,7 @@ Resultado (2026-09-17T09:43:05.166989+00:00):
 | P1 | `INSUMOS_SEM_PRECO_NA_UF` = 1672 |
 | P1 | `COEFICIENTES_NAO_POSITIVOS` = 4 |
 
-As restrições P1 **não** paralisam este escopo: a fonte **SINAPI** está `LIBERADA` para consulta, paradigma de CPU e preço direto na BA. Cada linha sem preço positivo na UF permanece bloqueada individualmente. O corpus SUPAT em quarentena **não** foi citado como exigência.
+SINAPI BA 2026-07 permanece `LIBERADA` para consulta, paradigma e preço direto. Corpus SUPAT em quarentena não foi citado como exigência.
 
 ---
 
@@ -37,15 +36,14 @@ As restrições P1 **não** paralisam este escopo: a fonte **SINAPI** está `LIB
 | Código sugerido | `PRP-BTR-001` |
 | Descrição oficial proposta | `BATE-RODA DE CONCRETO PRÉ-MOLDADO 70 × 20 × 15 CM — FORNECIMENTO E ASSENTAMENTO COM ARGAMASSA, SOBRE PISO EXISTENTE` |
 | Unidade | `UN` |
-| Dimensão | 70 × 20 × 15 cm |
-| Volume unitário (informativo) | **0,021 m³** = 0,70 × 0,20 × 0,15 |
-| Massa aproximada (informativa) | ~50 kg se γ = 2.400 kg/m³ — **não usada para precificar** |
-| Regime adotado na ficha | **não desonerado** (comparativo desonerado na seção 8) |
+| Dimensão alvo | 70 × 20 × 15 cm |
+| Volume alvo | **0,021 m³** = 0,70 × 0,20 × 0,15 |
+| Peça SINAPI (proxy) | `41679` — MEIO-FIO OU GUIA DE CONCRETO PRE-MOLDADO, COMP 1 M, *20 X 12/15* CM (H X L1/L2) |
+| Regime da ficha | **não desonerado** (desonerado no anexo, seção 9) |
 | UF / competência / fonte | BA / 2026-07 / SINAPI `LIBERADA` |
-| BDI | não aplicável nesta ficha (custo direto) |
-| Disciplina típica | urbanização / estacionamento / sinalização de piso |
+| BDI | não aplicável (custo direto) |
 
-O volume 0,021 m³ **não converte** esta CPU para m³. A unidade remunerada é `UN`. O volume só sustenta (a) a comparação geométrica com o paradigma 94275 e (b) a hipótese B (moldado in loco), que permanece incompleta.
+A unidade remunerada da CPU é `UN` (1 bate-roda). O volume só define o coeficiente do insumo `41679`.
 
 ---
 
@@ -53,109 +51,179 @@ O volume 0,021 m³ **não converte** esta CPU para m³. A unidade remunerada é 
 
 | Etapa | Resultado |
 |---|---|
-| **0 — Fontes** | Serviço especificado: bate-roda de concreto 70 × 20 × 15 cm, UN. Sem LI/projeto desta tarefa. |
-| **1 — SINAPI exato** | Existe `103734` “FORNECIMENTO E INSTALAÇÃO DE BATE RODAS SOBRE ASFALTO. AF_03/2022”, UN. **Não serve como preço direto:** (i) o insumo é **resina com pinos**, não concreto; (ii) execução **sobre asfalto** com martelete e adesivo; (iii) custo BA **SEM PREÇO — USO BLOQUEADO** (insumos 44729 e 44737 sem preço). |
-| **2 — SINAPI adaptável** | **Adotada na hipótese A (recomendada).** Copia mão de obra, argamassa e perda da peça da família AF_01/2024, composição `94275` (assentamento de guia pré-fabricada de concreto). Troca só o insumo da peça. |
-| **2b — Sugestão ao projetista** | **Não adotada.** Substituir bate-roda por meio-fio 41679 mudaria a função (contenção linear ≠ batente de roda). |
-| **3 — ORSE paradigma** | **Não utilizada.** Partição `ORSE` no SQLite = 0 registros; script oficial exigiu `bs4` (ausente). Cache local não contém bate-roda. Preço ORSE direto fora de SE continuaria condicionado. |
-| **4 — CPU catálogo** | Modelo estrutural `PRH.019` (bate-roda 50 × 15 × 8 cm). Uso como modelo `LIBERADO`; uso direto `BLOQUEADO_ATE_REVALIDACAO`. Coeficiente histórico 0,3 H de servente **não** foi copiado (exige revalidação; não é caderno SINAPI). |
-| **5/6 — CPU nova** | Esta ficha. Coeficientes oficiais da 94275 + peça COT bloqueada. |
-| **7 — Cotação** | **Não executada.** Peça marcada `BLOQUEADO`. |
-| **8 — Minuta de e-mail** | **Não redigida / não enviada.** |
+| **0 — Fontes** | Serviço: bate-roda de concreto 70 × 20 × 15 cm, UN. |
+| **1 — SINAPI exato** | `103734` é bate-rodas de **resina** sobre asfalto, UN, **SEM PREÇO** (44729 e 44737). Insumo `44729` BATE-RODAS DE RESINA… **SEM PREÇO**. Não há insumo SINAPI “bate-roda de concreto”. |
+| **2 — SINAPI adaptável / de-para funcional** | **Adotada.** MO e argamassa da `94275`; peça = insumo `41679` da mesma composição, coeficiente por **volumetria** × perda 1,005. |
+| **2b** | Não se sugere ao projetista trocar o serviço por meio-fio linear. O 41679 entra só como **proxy de concreto pré-moldado**, não como substituição funcional. |
+| **3 — ORSE** | Não utilizada (partição local vazia; script ORSE sem `bs4`). |
+| **4 — CPU catálogo** | `PRH.019` (50 × 15 × 8 cm) só como modelo estrutural. Coef. histórico 0,3 H **não** copiado. |
+| **5/6 — CPU nova** | Esta ficha. |
+| **7 — Cotação** | **Não aplicável nesta revisão** — a peça tem preço SINAPI BA positivo. |
+| **8 — E-mail** | Não enviado. |
 
 ---
 
-## 3. Duas hipóteses técnicas (ambiguidade material)
+## 3. Escolha do insumo da peça (sem COT)
 
-A especificação “bate-roda de concreto 70 × 20 × 15 cm” é, no mercado, uma **peça pré-moldada comercial**. Também é possível moldar in loco o mesmo prisma. As duas hipóteses ficam registradas. **Preço inventado: zero.**
+Consulta CLI (2026-09-17), fonte SINAPI, regime não desonerado:
 
-### Hipótese A — RECOMENDADA — pré-moldado + assentamento (UN)
+```
+[FONTE LIBERADA] SINAPI 41679 — MEIO-FIO OU GUIA DE CONCRETO PRE-MOLDADO, COMP 1 M, *20 X 12/15* CM (H X L1/L2)
+UF BA | competência 2026-07 | Unidade: UN | Tipo: MATERIAL | R$ 25,25
+```
 
-- Fornecimento da peça 70 × 20 × 15 cm + assentamento sobre **piso existente**.
-- Junta/colchão de **argamassa 1:3** (SINAPI 88629), copiada da 94275.
-- Mão de obra SINAPI **88309** (pedreiro) e **88316** (servente), coeficientes oficiais da 94275.
-- **Não inclui:** vala, lastro de areia 370, pintura, chumbador metálico, furação de asfalto, armação, forma, concreto usinado.
+Mesmo preço no regime desonerado: **R$ 25,25** (insumo, sem encargos de MO).
 
-**Por que A e não a 103734:** a 103734 é bate-roda de **resina** sobre **asfalto**, com pinos, adesivo e martelete. A peça pedida é **concreto**. A 103734 permanece evidência de que o SINAPI trata “bate rodas” em UN, e reserva de MO caso o projeto seja asfalto+pinos (seção 6).
+**Adotado: `41679`.** Motivos, todos verificáveis:
 
-**Por que A e não usar 41679 como peça:** o insumo 41679 é meio-fio 1,00 m × 20 × 12/15 cm. Dimensão e função diferentes. Preço R$ 25,25/UN **não** pode ser adotado como proxy.
+1. É o insumo da peça na composição paradigma `94275` (CLI: `INSUMO 41679 | UN | coef. 1.005 | R$ 25,25`).
+2. Material: concreto pré-moldado, unidade `UN`, preço BA positivo.
+3. A descrição oficial traz **H = 20 cm** e **L2 = 15 cm**, as duas seções transversais do bate-roda 70 × 20 × 15 cm.
+4. Único insumo SINAPI cujo nome contém “BATE-RODAS” é `44729` (resina, SEM PREÇO) — material errado e linha bloqueada.
 
-### Hipótese B — NÃO RECOMENDADA PARA PREÇO — moldado in loco
+### Alternativas SINAPI de peça pré-moldada de concreto (não adotadas)
 
-- Prisma 0,70 × 0,20 × 0,15 m = 0,021 m³ de concreto.
-- Insumo de produção `94964` (concreto FCK 20 MPa, betoneira 400 L) tem preço BA positivo: R$ 639,03/m³ × 0,021 = **R$ 13,42** (não desonerado) — isso é **só preparo** do concreto, sem lançamento, forma nem acabamento.
-- Composições de concretagem disponíveis (`96555` bloco de coroamento FCK 30 com jerica; `94263` guia moldada com **extrusora**; `105021` verga pré-moldada com aço e forma de viga) **não** descrevem este prisma isolado. Copiá-las exigiria coeficiente de forma/reuso e/ou armação **não evidenciados** para bate-roda.
-- **Veredito B:** ficha de execução in loco **BLOQUEADA** até decisão humana de paradigma de forma + lançamento. Não se inventam horas.
+Volumes calculados só das dimensões *ipsis verbis* da descrição. Alvo = 0,021 m³.
+
+| Código | Descrição oficial (CLI) | Und | Preço BA | Volume da peça | \|Δ\| vs 0,021 | Por que não |
+|---|---|---|---:|---:|---:|---|
+| **41679** | COMP 1 M, *20 X 12/15* CM (H X L1/L2) | UN | R$ 25,25 | **0,027 m³** | 0,006 | **Adotado** |
+| 41683 | COMP 80 CM, *30 X 10/10* (H X L1/L2) | UN | R$ 20,51 | 0,024 m³ | 0,003 | Volume mais próximo, mas seção 30×10 cm não casa com 20×15; **não** é o insumo da 94275 |
+| 41681 | COMP 80 CM, *25 X 08/08* CM (H X L1/L2) | UN | R$ 17,28 | 0,016 m³ | 0,005 | Seção 25×8 cm |
+| 4062 | COMP 1 M, *30 X 15* CM (H X L) | UN | R$ 27,88 | 0,045 m³ | 0,024 | H = 30 cm |
+| 41680 | COMP *39* CM, *19 X 6,5/6,5* CM | UN | R$ 11,04 | 0,0048165 m³ | 0,016 | Guia de jardim |
+| 44729 | BATE-RODAS DE RESINA COM DOIS PINOS DE FIXACAO | UN | SEM PREÇO | — | — | Resina; **BLOQUEADO** |
+
+SQL somente leitura (insumos de meio-fio / bate-roda / guia de concreto):
+
+```sql
+SELECT codigo, unidade, tipo, preco_nao_deson, descricao
+FROM insumos
+WHERE fonte = 'SINAPI'
+  AND (
+    UPPER(descricao) LIKE '%MEIO-FIO%'
+    OR UPPER(descricao) LIKE '%BATE-RODA%'
+    OR UPPER(descricao) LIKE '%BATE RODA%'
+    OR (UPPER(descricao) LIKE '%GUIA%' AND UPPER(descricao) LIKE '%CONCRETO%' AND UPPER(descricao) LIKE '%PRE%')
+  )
+ORDER BY codigo;
+```
 
 ---
 
-## 4. Paradigma geométrico da hipótese A (94275)
+## 4. Conta de volumetria (aberta)
 
-Composição paradigma (consulta CLI, fonte SINAPI, regime não desonerado):
+### 4.1 Volume alvo (1 UN de bate-roda)
 
-`94275` — ASSENTAMENTO DE GUIA (MEIO-FIO) EM TRECHO RETO, CONFECCIONADA EM CONCRETO PRÉ-FABRICADO, DIMENSÕES 100X15X13X20 CM (COMPRIMENTO X BASE INFERIOR X BASE SUPERIOR X ALTURA). AF_01/2024  
-Unidade: **M** | Grupo: Guias e sarjetas | **R$ 40,71** (BA 2026-07, não desonerado)
+\[
+V_{\text{alvo}} = 0{,}70 \times 0{,}20 \times 0{,}15 = 0{,}021\ \mathrm{m}^{3}
+\]
 
-| Grandeza | 94275 (por m = 1 peça de 1,00 m) | PRP-BTR-001 (1 UN = 1 peça) |
+Prisma retangular. Nenhuma perda geométrica extra.
+
+### 4.2 Volume da peça SINAPI 41679
+
+Ficha do insumo: `COMP 1 M, *20 X 12/15* CM (H X L1/L2)`.
+
+| Símbolo | Origem na descrição | Valor |
 |---|---|---|
-| Área de contato no piso | 1,00 × (0,15+0,13)/2 = **0,14 m²** | 0,70 × 0,20 = **0,14 m²** |
-| Volume da peça | 1,00 × 0,14 × 0,20 = **0,028 m³** | **0,021 m³** |
-| Argamassa 88629 | 0,0012 m³/m → ~8,6 mm sobre 0,14 m² | **0,0012 m³/UN** (mesma área de contato) |
-| Pedreiro / servente | 0,2151 H/m cada | **0,2151 H/UN** cada (mesmo contato; peça ~25% mais leve) |
-| Perda da peça | 1,005 | **1,005** (mesmo fator AF_01/2024) |
-| Areia 370 | 0,0066 m³/m (leito de vala de guia) | **excluída** (assento sobre piso existente) |
+| Comprimento | COMP 1 M | 1,00 m |
+| H | 20 cm | 0,20 m |
+| L1 | 12 cm | 0,12 m |
+| L2 | 15 cm | 0,15 m |
 
-Não se converteu M→UN por 0,70 m de comprimento: a área de junta é idêntica à do metro da 94275. Converter por 0,70 subestimaria argamassa e MO sem evidência de caderno.
+Seção trapezoidal (L1/L2):
 
-A 94275 **não é lançada como serviço** nesta CPU (seria meio-fio). Só se copiam coeficientes oficiais e se troca o material da peça.
+\[
+V_{41679} = 1{,}00 \times 0{,}20 \times \frac{0{,}12 + 0{,}15}{2} = 1{,}00 \times 0{,}20 \times 0{,}135 = 0{,}027\ \mathrm{m}^{3}
+\]
+
+**Nota de ficha (não misturar):** a composição `94275` descreve a guia como `100X15X13X20 CM` (C × base inf. × base sup. × altura) → volume 1,00 × 0,20 × (0,15+0,13)/2 = **0,028 m³**. O coeficiente da peça usa as dimensões do **insumo 41679** (0,027 m³), como pedido. A MO/argamassa continuam copiadas da 94275.
+
+### 4.3 Fator de perda
+
+Na 94275 o insumo 41679 entra com **coef. 1,005** (perda 0,5%). O mesmo fator multiplica a razão volumétrica.
+
+### 4.4 Coeficiente do insumo 41679 nesta CPU
+
+\[
+k = \frac{V_{\text{alvo}}}{V_{41679}} \times 1{,}005 = \frac{0{,}021}{0{,}027} \times 1{,}005
+\]
+
+\[
+\frac{0{,}021}{0{,}027} = 0{,}777\overline{7} = \frac{7}{9}
+\]
+
+\[
+k = 0{,}777\overline{7} \times 1{,}005 = 0{,}7816\overline{6} = \frac{469}{600}
+\]
+
+**Coeficiente adotado na planilha:** `0,781667` (6 casas, `ROUND_HALF_UP` de 0,781666…).  
+Conferência: \(0{,}781667 \times 25{,}25 = 19{,}737092\ldots \rightarrow\) **R$ 19,74** — igual a \(0{,}7816\overline{6} \times 25{,}25 = 19{,}73708\ldots\) arredondado a 2 casas.
+
+### 4.5 Preço da linha da peça
+
+| Item | Valor | Fonte |
+|---|---|---|
+| Preço unitário 41679 | R$ 25,25 / UN | CLI SINAPI BA 2026-07, ambos os regimes |
+| Coeficiente | 0,781667 UN/UN | seção 4.4 |
+| Total da linha | **R$ 19,74** | `ROUND(0,781667 × 25,25; 2)` |
 
 ---
 
-## 5. Quadro analítico — hipótese A recomendada
+## 5. Premissa e risco do proxy (não bloqueia preço)
 
-**Unidade da CPU:** 1 UN  
-**Regime:** não desonerado  
-**Fonte / UF / competência:** SINAPI BA 2026-07  
-**Totais de linha:** `ROUND(coeficiente × preço_unitário, 2)` com os preços devolvidos pelo script.
+- **Premissa:** o concreto pré-moldado da guia `41679` remunera, por m³, o concreto da peça de bate-roda, após igualar volumes e aplicar a perda oficial 1,005.
+- **Risco:** meio-fio é contenção linear de pavimento; bate-roda é batente isolado de estacionamento. Seção trapezoidal 12/15 cm ≠ retângulo 20 × 15 cm. Acabamento, armação e fôrma de fábrica podem diferir.
+- **O que o proxy não faz:** não transforma o serviço orçado em “assentamento de meio-fio 94275”; a 94275 não é lançada. Areia 370 (leito de vala) permanece fora.
+- Determinação desta revisão: registrar o risco e **precificar**.
 
-| Tipo | Banco | Código | Descrição (*ipsis verbis* da consulta, ou proposta COT) | Und | Coef. | Origem do coef. | Preço unit. BA | Regime | Competência | Total linha | Status |
+---
+
+## 6. Quadro analítico — hipótese A (recomendada)
+
+**Unidade:** 1 UN · **Regime:** não desonerado · **Fonte:** SINAPI BA 2026-07  
+Totais de linha: `ROUND(coeficiente × preço_unitário; 2)` com preços do CLI.
+
+| Tipo | Banco | Código | Descrição (*ipsis verbis* da consulta) | Und | Coef. | Origem do coef. | Preço unit. BA | Regime | Competência | Total linha | Status |
 |---|---|---|---|---|---:|---|---:|---|---|---:|---|
-| MO (comp. aux.) | SINAPI | `88309` | PEDREIRO COM ENCARGOS COMPLEMENTARES | H | 0,2151 | 94275 | R$ 35,77 | nao_desonerado | 2026-07 | R$ 7,69 | PRECIFÍCÁVEL |
-| MO (comp. aux.) | SINAPI | `88316` | SERVENTE COM ENCARGOS COMPLEMENTARES | H | 0,2151 | 94275 | R$ 26,14 | nao_desonerado | 2026-07 | R$ 5,62 | PRECIFÍCÁVEL |
-| Comp. aux. | SINAPI | `88629` | ARGAMASSA TRAÇO 1:3 (EM VOLUME DE CIMENTO E AREIA MÉDIA ÚMIDA), PREPARO MANUAL. AF_07/2026 | M3 | 0,0012 | 94275 | R$ 938,86 | nao_desonerado | 2026-07 | R$ 1,13 | PRECIFÍCÁVEL |
-| Insumo | COT | `COT-BTR-70X20X15` | BATE-RODA DE CONCRETO PRÉ-MOLDADO 70 × 20 × 15 CM | UN | 1,005 | perda 94275 / AF_01/2024 | — | — | — | — | **BLOQUEADO** |
+| MO | SINAPI | `88309` | PEDREIRO COM ENCARGOS COMPLEMENTARES | H | 0,2151 | 94275 | R$ 35,77 | nao_desonerado | 2026-07 | R$ 7,69 | PRECIFÍCÁVEL |
+| MO | SINAPI | `88316` | SERVENTE COM ENCARGOS COMPLEMENTARES | H | 0,2151 | 94275 | R$ 26,14 | nao_desonerado | 2026-07 | R$ 5,62 | PRECIFÍCÁVEL |
+| Comp. aux. | SINAPI | `88629` | ARGAMASSA TRAÇO 1:3 (EM VOLUME DE CIMENTO E AREIA MÉDIA ÚMIDA), PREPARO MANUAL. AF_07/2026 | M3 | 0,0012 | 94275 (área de contato 0,14 m²) | R$ 938,86 | nao_desonerado | 2026-07 | R$ 1,13 | PRECIFÍCÁVEL |
+| Insumo | SINAPI | `41679` | MEIO-FIO OU GUIA DE CONCRETO PRE-MOLDADO, COMP 1 M, *20 X 12/15* CM (H X L1/L2) | UN | 0,781667 | (0,021/0,027)×1,005 | R$ 25,25 | nao_desonerado | 2026-07 | R$ 19,74 | PRECIFÍCÁVEL |
 
-**Parcela precificável (sem a peça):** R$ 7,69 + R$ 5,62 + R$ 1,13 = **R$ 14,44 / UN** (custo direto, sem BDI).  
-**Custo direto total da CPU:** **BLOQUEADO** — falta preço da peça com evidência (Etapa 7: três fornecedores com CNPJ, mediana FOB, DC-007).
+**Custo direto total hipótese A:** R$ 7,69 + R$ 5,62 + R$ 1,13 + R$ 19,74 = **R$ 34,18 / UN** (sem BDI).
 
-A argamassa `88629` já embute servente de preparo (coef. 12,3150605 H/m³ na própria composição). Não se soma outra hora de preparo.
+A `88629` já embute servente de preparo (12,3150605 H/m³). Não se soma outra hora de preparo.
 
-### Linhas deliberadamente fora da CPU A
+MO da 94275 permanece **por UN** (0,2151 H), não escalada pela volumetria: a área de junta do bate-roda (0,70 × 0,20 = 0,14 m²) coincide com a da guia 94275 medida pelas bases 15/13 cm da composição (1,00 × 0,14 = 0,14 m²). A peça é mais leve (~0,021 vs 0,027 m³); não se inventou redução de hora.
 
-| Código | Motivo da exclusão |
+### Fora da CPU A
+
+| Código | Motivo |
 |---|---|
-| `370` AREIA MEDIA | Leito de vala da guia 94275; premissa A é piso existente. |
-| `41679` MEIO-FIO … 20 X 12/15 CM | Peça de função e dimensão diferentes. Preço R$ 25,25 **não** é proxy. |
-| `103734` / `44729` / `44737` / `102274` / `102275` | Família resina + asfalto + pinos + martelete. Ver seção 6. |
-| `102498` PINTURA DE MEIO-FIO (caiação) | Pintura de guia com cal, por metro; não é acabamento de bate-roda. |
-| `94964` concreto FCK 20 | Pertence à hipótese B (produção in loco). |
+| `370` AREIA MEDIA | Leito de vala da 94275; premissa = piso existente. |
+| `103734` / `44729` / `44737` / `102274` / `102275` | Família resina + asfalto. |
+| `102498` | Caiação de meio-fio, por metro. |
+| `94964` | Hipótese B (preparo in loco). |
+| Qualquer `COT-*` | Proibido nesta revisão. |
 
 ---
 
-## 6. Evidência SINAPI de mão de obra (obrigatória)
+## 7. Evidência SINAPI de mão de obra
 
-Nenhuma hora foi inventada. Os códigos de MO são composições SINAPI com encargos complementares.
+Nenhuma hora inventada.
 
-### 6.1 Coeficientes adotados (94275) — hipótese A
-
-Consulta: `python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py 94275 --fonte SINAPI --regime nao_desonerado`
+Consulta `94275 --fonte SINAPI --regime nao_desonerado`:
 
 ```
 COMPOSICAO 88316 | H | coef. 0.2151 | R$ 26,14 | SERVENTE COM ENCARGOS COMPLEMENTARES
 COMPOSICAO 88309 | H | coef. 0.2151 | R$ 35,77 | PEDREIRO COM ENCARGOS COMPLEMENTARES
+INSUMO 41679 | UN | coef. 1.005 | R$ 25,25 | MEIO-FIO OU GUIA DE CONCRETO PRE-MOLDADO, COMP 1 M, *20 X 12/15* CM (H X L1/L2)
+COMPOSICAO 88629 | M3 | coef. 0.0012 | R$ 938,86 | ARGAMASSA TRAÇO 1:3 …
 ```
 
-Consulta direta dos códigos de MO:
+Consultas diretas:
 
 ```
 [FONTE LIBERADA] SINAPI 88309 — PEDREIRO COM ENCARGOS COMPLEMENTARES
@@ -163,201 +231,96 @@ UF BA | competência 2026-07 | Unidade: H | R$ 35,77
 
 [FONTE LIBERADA] SINAPI 88316 — SERVENTE COM ENCARGOS COMPLEMENTARES
 UF BA | competência 2026-07 | Unidade: H | R$ 26,14
+
+[FONTE LIBERADA] SINAPI 88629 — ARGAMASSA TRAÇO 1:3 (EM VOLUME DE CIMENTO E AREIA MÉDIA ÚMIDA), PREPARO MANUAL. AF_07/2026
+UF BA | competência 2026-07 | Unidade: M3 | R$ 938,86
 ```
 
-### 6.2 Coeficientes da 103734 — reserva (não adotados na A)
+Reserva 103734 (não adotada na A): servente 0,2599 H; pedreiro 0,0113 H; peça e adesivo SEM PREÇO.
 
-Consulta: `python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py 103734 --fonte SINAPI --regime nao_desonerado`  
-Saída: composição **SEM PREÇO — USO BLOQUEADO**, mas o analítico oficial existe:
-
-| Código | Und | Coef. | Preço unit. BA (não desonerado) | Descrição | Uso nesta ficha |
-|---|---|---:|---|---|---|
-| `88316` | H | 0,2599 | R$ 26,14 | SERVENTE COM ENCARGOS COMPLEMENTARES | Reserva se execução = asfalto+pinos |
-| `88309` | H | 0,0113 | R$ 35,77 | PEDREIRO COM ENCARGOS COMPLEMENTARES | Idem |
-| `102275` | CHP | 0,0137 | R$ 43,63 | MARTELO DEMOLIDOR ELÉTRICO … 30 KG - CHP DIURNO. AF_01/2021 | Só asfalto; não entra na A |
-| `102274` | CHI | 0,0353 | R$ 40,77 | MARTELO DEMOLIDOR ELÉTRICO … 30 KG - CHI DIURNO. AF_01/2021 | Só asfalto; não entra na A |
-| `44737` | UN | 0,218 | SEM PREÇO | ADESIVO (COLA) DE RESINA COM CATALISADOR | **BLOQUEADO** |
-| `44729` | UN | 1,0 | SEM PREÇO | BATE-RODAS DE RESINA COM DOIS PINOS DE FIXACAO | **BLOQUEADO** (material errado) |
-
-Parcela de MO+equipamento da 103734, se um dia o projeto for asfalto: R$ 6,79 + R$ 0,40 + R$ 0,60 + R$ 1,44 = **R$ 9,23 / UN**, ainda **sem** peça e adesivo (ambos bloqueados).
-
-### 6.3 Modelo de catálogo PRH.019 — não revalidado
-
-`consultar_cpu_propria.py bate-roda` → `PRH.019` | UN | BATE-RODA 50×15×8 cm — FORNECIMENTO E FIXAÇÃO  
-Referência declarada: `REF. SINAPI 88316 (fixação de peça pré-moldada)`  
-Itens: 88316 coef. **0,3 H** + insumo próprio `INS.035`.  
-`uso_direto = BLOQUEADO_ATE_REVALIDACAO`. O 0,3 H **não** foi usado.
+`PRH.019` (catálogo): servente 0,3 H — **não copiado**.
 
 ---
 
-## 7. Premissas explícitas (hipótese A)
+## 8. Premissas da hipótese A
 
-1. A peça é **pré-moldada de concreto**, dimensões 70 × 20 × 15 cm, fornecida pronta.
-2. Assentamento **sobre piso existente** (concreto, intertravado ou equivalente), sem vala.
-3. Fixação por **argamassa 1:3** (88629), não por pinos/resina/chumbador.
-4. Sem pintura (faixa amarela etc.). Se o projeto exigir, é item à parte — não usar 102498 (caiação de meio-fio).
-5. Sem armação, forma, concreto usinado ou extrusora.
-6. Quantidade na planilha = **líquida em UN**. A perda 0,5% (coef. 1,005) fica **dentro** da CPU, copiada da 94275.
-7. Areia 370 da 94275 **não** entra.
-8. Frete da peça, descarga e içamento mecanizado: fora do escopo (a 94275 também não traz caminhão).
-9. Se o projeto for **asfalto + pinos**, abandonar esta CPU e reabrir a família 103734 (ainda bloqueada nos insumos).
+1. Peça alvo: concreto pré-moldado 70 × 20 × 15 cm, 1 UN.
+2. Material da peça orçado por proxy volumétrico `41679` (não se instala 0,78 m de meio-fio).
+3. Assentamento sobre piso existente, argamassa 1:3 (`88629`).
+4. Sem vala, areia 370, pintura, chumbador, furação de asfalto, armação, forma de obra.
+5. Quantidade na planilha = líquida em UN. Perda 0,5% só no coeficiente da peça.
+6. Se o projeto for asfalto + pinos: abandonar esta CPU e reabrir a 103734 (ainda bloqueada nos insumos).
 
 ---
 
-## 8. Comparativo desonerado (somente linhas precificáveis)
+## 9. Anexo — regime desonerado
 
-Mesmos coeficientes; preços do script `--regime desonerado`.
+Mesmos coeficientes; preços CLI `--regime desonerado`. Insumo 41679: R$ 25,25 (igual).
 
 | Código | Coef. | Preço unit. desonerado | Total linha |
 |---|---:|---:|---:|
 | 88309 | 0,2151 | R$ 33,84 | R$ 7,28 |
 | 88316 | 0,2151 | R$ 24,91 | R$ 5,36 |
 | 88629 | 0,0012 | R$ 923,71 | R$ 1,11 |
-| **Parcela precificável** | | | **R$ 13,75** |
-| Peça COT | 1,005 | — | **BLOQUEADO** |
+| 41679 | 0,781667 | R$ 25,25 | R$ 19,74 |
+| **Custo direto total** | | | **R$ 33,49 / UN** |
 
-A ficha oficial desta CPU permanece no regime **não desonerado**, alinhada ao uso mais comum em obras públicas da pasta. Troca de regime é decisão de obra, não desta ficha.
-
-Insumo 41679 (não usado): R$ 25,25 nos dois regimes.
+A ficha principal permanece **não desonerada** (R$ 34,18 / UN).
 
 ---
 
-## 9. Hipótese B — quadro incompleto (não precificar)
+## 10. Hipótese B — moldado in loco (não precificar o serviço completo)
 
-Volume: 0,70 × 0,20 × 0,15 = **0,021 m³/UN**.
-
-| Código | Papel | Evidência | Status |
-|---|---|---|---|
-| `94964` CONCRETO FCK = 20MPA … BETONEIRA 400 L | Produção do concreto | R$ 639,03/m³ × 0,021 = R$ 13,42 (não desonerado). Desonerado: R$ 631,72/m³. A 94964 **já contém** servente 2,5333 H/m³ e operador de betoneira — só preparo. | PRECIFÍCÁVEL isoladamente; **não fecha** o serviço |
-| `92270` FABRICAÇÃO DE FÔRMA PARA VIGAS … E = 25 MM | Forma | Área lateral do prisma = 2×(0,70×0,15)+2×(0,20×0,15) = **0,27 m²**, sem fundo (piso existente). Falta fator de reuso do caderno de formas. 105021 usa 0,04 m²/m para verga — outra peça. | **BLOQUEADO** (coef. de reuso sem evidência) |
-| `88309` / `88316` lançamento | MO de concretagem | 96555 (bloco de coroamento FCK 30 + jerica) e 94263 (guia com extrusora) são serviços distintos. | **BLOQUEADO** (horas não copiadas de serviço incompatível) |
-| Armação | — | Bate-roda comercial típico é não armado; 105021 inclui CA-50. Sem projeto estrutural. | Fora / não inventar |
-
-**Veredito B:** `BLOQUEADO`. Não publicar preço in loco.
+Volume 0,021 m³. `94964` CONCRETO FCK = 20MPA … BETONEIRA 400 L: R$ 639,03/m³ × 0,021 = **R$ 13,42** — só preparo. Forma (`92270`) e lançamento sem paradigma compatível → **BLOQUEADO**. Não se inventam horas.
 
 ---
 
-## 10. Buscas realizadas (catálogo, SINAPI, SQL)
+## 11. Proveniência e hashes
 
-### 10.1 Catálogo CPU (`consultar_cpu_propria.py`)
+De `FONTES_DADOS.json` (não alterado). Conferidos localmente:
 
-| Termo | Resultado relevante |
+| Artefato | SHA-256 |
 |---|---|
-| `bate-roda` | **PRH.019** UN — BATE-RODA 50×15×8 cm (modelo; uso direto bloqueado) |
-| `guia` / `meio-fio` | nenhum |
-| `pré-moldado` / `pre-moldado` | PRH.003 pisante 60×60; PRH.004 banco |
-| `assentamento` | PRH.003, PRH.015, PRH.017, PRH.047 |
-| `concreto` | PRH.054 base 40×40×20 (MO 0,25/0,4 H **não revalidadas** + insumo próprio); PRH.060/061 usam 94964 |
+| `base_precos.db` | `a59957251f947dc83f7439d379fbbd1bc1b6d08337fe0cf776d174aff747be34` |
+| ZIP SINAPI 2026-07 | `58c131f997560332cf2d7f7f90644790d5c6e2a909a2963b18f136779312b14f` |
+| `CATALOGO_CPU_PROPRIAS.json` | `6040320ea4a55e2f511f497785613fca585a6e97eb2a365dd5d574f70db73f35` |
 
-Não há CPU catalogada 70 × 20 × 15 cm.
-
-### 10.2 Script `consultar_composicao.py` (SINAPI)
-
-Códigos consultados com `--fonte SINAPI` e `--regime nao_desonerado` (e desonerado nos da seção 8):  
-`103734`, `94275`, `94273`, `94277`, `94279`, `94294`, `103296`, `103293`, `103300`, `105021`, `105022`, `94964`, `88309`, `88316`, `88629`, `41679`, `44729`, `44737`, `370`, `92270`, `96555`, `102274`, `102275`, `102498`.
-
-Busca textual: `BATE RODA` → só 103734. `BATE-RODA` → nenhum. `BATE` → ruído de “batente”.
-
-### 10.3 SQL somente leitura (documentado)
-
-Banco: `03-BASE_DE_PRECOS/base_precos.db` (SHA-256 conferido, seção 11).
-
-```sql
--- composições SINAPI de bate-roda / meio-fio / guia
-SELECT codigo, unidade, grupo, custo_nao_deson, descricao
-FROM composicoes
-WHERE fonte = 'SINAPI'
-  AND (
-    descricao LIKE '%BATE RODA%' OR descricao LIKE '%BATE-RODA%'
-    OR descricao LIKE '%MEIO-FIO%' OR descricao LIKE '%MEIO FIO%'
-    OR descricao LIKE '%GUIA (MEIO%'
-  )
-ORDER BY codigo;
-
--- insumos SINAPI de bate-roda / guia de concreto
-SELECT codigo, unidade, tipo, preco_nao_deson, descricao
-FROM insumos
-WHERE fonte = 'SINAPI'
-  AND (
-    UPPER(descricao) LIKE '%BATE-RODA%'
-    OR UPPER(descricao) LIKE '%BATE RODA%'
-    OR UPPER(descricao) LIKE '%MEIO-FIO%'
-    OR (UPPER(descricao) LIKE '%GUIA%' AND UPPER(descricao) LIKE '%CONCRETO%')
-  )
-ORDER BY codigo;
-
--- ORSE na partição local (resultado: 0 composições)
-SELECT count(*) FROM composicoes WHERE fonte = 'ORSE';
-```
-
-Achados materiais extra (não usados como preço):
-
-- `103296` INSTALAÇÃO DE BALIZADOR PRÉ-FABRICADO DE CONCRETO … SOBRE PISO DE CONCRETO EXISTENTE — UN, **SEM PREÇO** (insumo 44452 bloqueado). MO 1,2308 H servente + 1,8461 H pedreiro + martelete + concreto FCK 15 de chumbamento. Serviço mais pesado (peça 30×60 cm chumbada). Não copiado.
-- Família 94273–94280: assentamento de guias pré-fabricadas com preço BA positivo.
-- Insumo `44729` BATE-RODAS DE RESINA COM DOIS PINOS DE FIXACAO — **SEM PREÇO**.
+Capacidades SINAPI: consulta, paradigma_cpu e preco_direto = `LIBERADA`.
 
 ---
 
-## 11. Proveniência, hashes e competência
-
-De `03-BASE_DE_PRECOS/FONTES_DADOS.json` (não alterado). Hashes conferidos em 2026-09-17 contra os arquivos locais:
-
-| Artefato | Status | Competência | SHA-256 |
-|---|---|---|---|
-| SQLite `base_precos.db` | índice válido | schema 2.0.0 | `a59957251f947dc83f7439d379fbbd1bc1b6d08337fe0cf776d174aff747be34` |
-| ZIP SINAPI origem | `LIBERADA` | 2026-07 | `58c131f997560332cf2d7f7f90644790d5c6e2a909a2963b18f136779312b14f` |
-| `CATALOGO_CPU_PROPRIAS.json` | modelo `LIBERADA`; preço direto bloqueado até revalidação | CATALOGO-2026-09-05 | `6040320ea4a55e2f511f497785613fca585a6e97eb2a365dd5d574f70db73f35` |
-| JSON original PRH.019 | origem do modelo 50×15×8 | Praça do Hospital R01 | `23fceea78548ce3255ae470bbe64073283617de542b677de5081ea61048797fa` |
-
-URL oficial SINAPI registrada: `https://www.caixa.gov.br/Downloads/sinapi-relatorios-mensais/SINAPI-2026-07-formato-xlsx.zip`.
-
-Capacidades SINAPI: `consulta`, `paradigma_cpu` e `preco_direto` = `LIBERADA`. Linha sem preço positivo na UF continua bloqueada (caso 103734 / 44729 / 44737).
-
----
-
-## 12. Comandos de consulta (reprodução)
+## 12. Comandos de consulta (reprodução desta revisão)
 
 ```bash
 python3 scripts/validate_repository.py
 
-python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_cpu_propria.py bate-roda
-python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_cpu_propria.py guia
-python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_cpu_propria.py "meio-fio"
-python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_cpu_propria.py "pré-moldado"
-python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_cpu_propria.py "pre-moldado"
-python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_cpu_propria.py bloco
-python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_cpu_propria.py assentamento
-python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_cpu_propria.py concreto
-
-python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py 103734 --fonte SINAPI --regime nao_desonerado
-python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py 103734 --fonte SINAPI --regime desonerado
-python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py "BATE RODA" --fonte SINAPI --regime nao_desonerado
+python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py 41679 --fonte SINAPI --regime nao_desonerado
+python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py 41679 --fonte SINAPI --regime desonerado
 python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py 94275 --fonte SINAPI --regime nao_desonerado
 python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py 88309 --fonte SINAPI --regime nao_desonerado
 python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py 88316 --fonte SINAPI --regime nao_desonerado
 python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py 88629 --fonte SINAPI --regime nao_desonerado
+python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py 41683 --fonte SINAPI --regime nao_desonerado
+python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py 41681 --fonte SINAPI --regime nao_desonerado
+python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py 4062 --fonte SINAPI --regime nao_desonerado
 python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py 44729 --fonte SINAPI --regime nao_desonerado
-python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py 94964 --fonte SINAPI --regime nao_desonerado
+python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py 88309 --fonte SINAPI --regime desonerado
+python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py 88316 --fonte SINAPI --regime desonerado
+python3 03-BASE_DE_PRECOS/04-SCRIPTS/consultar_composicao.py 88629 --fonte SINAPI --regime desonerado
 ```
-
-ORSE: `consultar_orse_oficial.py "bate-roda"` falhou com `ModuleNotFoundError: No module named 'bs4'`. Não foi instalado pacote para forçar consulta. SQL local `fonte='ORSE'` = 0 linhas.
 
 ---
 
-## 13. Gate desta ficha (fail-closed)
+## 13. Gate desta ficha
 
 | Controle | Resultado |
 |---|---|
-| Repositório `validate_repository.py` | `LIBERADO` (P1 conhecidas) |
-| Fonte de cada linha de preço | SINAPI BA 2026-07 `LIBERADA`, hash conferido |
-| Mão de obra | Códigos SINAPI 88309 e 88316; coeficientes da 94275 (não inventados) |
-| Peça 70 × 20 × 15 cm | **BLOQUEADO** — sem código SINAPI correspondente com preço > 0 |
-| Hipótese B (in loco) | **BLOQUEADO** — forma e lançamento sem paradigma compatível |
-| Cotação / e-mail | não executados |
-| `FONTES_DADOS.json` | não alterado |
-| Catálogo oficial CPU | não alterado |
-| Uso direto em planilha de envio | **BLOQUEADO** até DC-007 da peça + revalidação humana |
-
-**Para destravar uso direto:** (1) três cotações da peça com CNPJ e âncora 70 × 20 × 15 cm, mediana FOB no DC-007; (2) confirmar premissa de assentamento (argamassa em piso × pinos em asfalto); (3) revalidar coeficientes no projeto; (4) se asfalto+pinos, reciclar 103734 e cotar também adesivo 44737.
+| `validate_repository.py` | `LIBERADO` |
+| Linhas de preço | só SINAPI BA 2026-07 com preço > 0 |
+| MO | 88309 e 88316, coef. 94275 |
+| Peça | 41679, R$ 25,25, coef. volumétrico 0,781667 |
+| COT / e-mail / `FONTES_DADOS` | não utilizados / não alterado |
+| Custo direto A (não desonerado) | **R$ 34,18 / UN** |
+| Natureza | proxy volumétrico Etapa 2; risco funcional registrado |
 
 Espelho JSON: `artifacts/CPU_BATE_RODA_70x20x15.json`.
