@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.1.0",
+  "codigo": "PRP-BTR-001",
+  "descricao": "BATE-RODA DE CONCRETO PRÉ-MOLDADO 70 × 20 × 15 CM — FORNECIMENTO E ASSENTAMENTO COM ARGAMASSA, SOBRE PISO EXISTENTE",
+  "unidade": "UN",
+  "dimensao": "70x20x15 cm",
+  "volume_unitario_m3": 0.021,
+  "volume_unitario_memoria": "0.70 * 0.20 * 0.15",
+  "hipotese_recomendada": "A_PRE_MOLDADO_ASSENTAMENTO",
+  "cascata": "Etapa 2 SINAPI adaptável (paradigma 94275) + Etapa 6 CPU nova; Etapa 1 103734 rejeitada (resina/asfalto/sem preço); Etapa 7 peça BLOQUEADA",
+  "referencia_declarada": "REF. SINAPI 94275 (MO 88309/88316 + argamassa 88629, coeficientes AF_01/2024). Peça COT-BTR-70X20X15 sem preço SINAPI BA.",
+  "fonte_precos": {
+    "fonte": "SINAPI",
+    "uf": "BA",
+    "competencia": "2026-07",
+    "regime_ficha": "nao_desonerado",
+    "status": "LIBERADA",
+    "sha256_origem": "58c131f997560332cf2d7f7f90644790d5c6e2a909a2963b18f136779312b14f",
+    "sha256_sqlite": "a59957251f947dc83f7439d379fbbd1bc1b6d08337fe0cf776d174aff747be34"
+  },
+  "validate_repository": {
+    "generated_at": "2026-09-17T09:43:05.166989+00:00",
+    "gate": "LIBERADO",
+    "restricoes_ativas": 5
+  },
+  "itens": [
+    {
+      "type": "Composição Auxiliar",
+      "code": "88309",
+      "bank": "SINAPI",
+      "description": "PEDREIRO COM ENCARGOS COMPLEMENTARES",
+      "unit": "H",
+      "coefficient": 0.2151,
+      "coefficient_source": "SINAPI 94275 AF_01/2024",
+      "unit_price": 35.77,
+      "regime": "nao_desonerado",
+      "competencia": "2026-07",
+      "line_total": 7.69,
+      "status": "PRECIFICAVEL"
+    },
+    {
+      "type": "Composição Auxiliar",
+      "code": "88316",
+      "bank": "SINAPI",
+      "description": "SERVENTE COM ENCARGOS COMPLEMENTARES",
+      "unit": "H",
+      "coefficient": 0.2151,
+      "coefficient_source": "SINAPI 94275 AF_01/2024",
+      "unit_price": 26.14,
+      "regime": "nao_desonerado",
+      "competencia": "2026-07",
+      "line_total": 5.62,
+      "status": "PRECIFICAVEL"
+    },
+    {
+      "type": "Composição Auxiliar",
+      "code": "88629",
+      "bank": "SINAPI",
+      "description": "ARGAMASSA TRAÇO 1:3 (EM VOLUME DE CIMENTO E AREIA MÉDIA ÚMIDA), PREPARO MANUAL. AF_07/2026",
+      "unit": "M3",
+      "coefficient": 0.0012,
+      "coefficient_source": "SINAPI 94275 AF_01/2024; área de contato 0,14 m² idêntica à da guia paradigma",
+      "unit_price": 938.86,
+      "regime": "nao_desonerado",
+      "competencia": "2026-07",
+      "line_total": 1.13,
+      "status": "PRECIFICAVEL"
+    },
+    {
+      "type": "Insumo",
+      "code": "COT-BTR-70X20X15",
+      "bank": "COT",
+      "description": "BATE-RODA DE CONCRETO PRÉ-MOLDADO 70 × 20 × 15 CM",
+      "unit": "UN",
+      "coefficient": 1.005,
+      "coefficient_source": "perda oficial da peça na 94275 (AF_01/2024)",
+      "unit_price": null,
+      "regime": null,
+      "competencia": null,
+      "line_total": null,
+      "status": "BLOQUEADO",
+      "motivo_bloqueio": "Insumo sem código SINAPI BA com preço positivo para 70x20x15 cm. 44729 é resina. 41679 é meio-fio 100x20x12/15. Cotação Etapa 7 não executada."
+    }
+  ],
+  "parcela_precificavel_sem_peca": {
+    "nao_desonerado": 14.44,
+    "desonerado": 13.75,
+    "moeda": "BRL",
+    "observacao": "Soma ROUND(coef*preco, 2) das três linhas SINAPI. Não é custo direto total da CPU."
+  },
+  "custo_direto_total": "BLOQUEADO",
+  "uso_como_modelo": "LIBERADO",
+  "uso_direto": "BLOQUEADO_ATE_COTACAO_E_REVALIDACAO",
+  "preco": "RECALCULAR_NA_DATA_BASE_DA_OBRA",
+  "validacoes_pendentes": [
+    "PECA_PRE_MOLDADA_SEM_PRECO_SINAPI_BA_POSITIVO",
+    "COTACAO_DC007_NAO_EXECUTADA",
+    "CONFIRMAR_PREMISSA_PISO_EXISTENTE_VS_ASFALTO_COM_PINOS",
+    "HIPOTESE_B_MOLDADO_IN_LOCO_BLOQUEADA_SEM_PARADIGMA_DE_FORMA_E_LANCAMENTO"
+  ],
+  "hipotese_b_moldado_in_loco": {
+    "recomendada": false,
+    "status": "BLOQUEADO",
+    "concreto_producao": {
+      "code": "94964",
+      "description": "CONCRETO FCK = 20MPA, TRAÇO 1:2,7:3 (EM MASSA SECA DE CIMENTO/ AREIA MÉDIA/ BRITA 1) - PREPARO MECÂNICO COM BETONEIRA 400 L. AF_05/2021",
+      "unit": "M3",
+      "coefficient": 0.021,
+      "unit_price_nao_desonerado": 639.03,
+      "line_total_nao_desonerado": 13.42,
+      "observacao": "Somente preparo. Não fecha execução."
+    }
+  },
+  "nao_inclui": [
+    "370 AREIA MEDIA (leito de vala da 94275)",
+    "41679 meio-fio como proxy da peça",
+    "103734/44729/44737 família resina sobre asfalto",
+    "pintura",
+    "chumbador metálico",
+    "BDI"
+  ],
+  "catalogo_oficial": false,
+  "origem_modelo_estrutural": {
+    "codigo": "PRH.019",
+    "descricao": "BATE-RODA 50×15×8 cm — FORNECIMENTO E FIXAÇÃO",
+    "uso_direto": "BLOQUEADO_ATE_REVALIDACAO",
+    "coeficiente_historico_nao_copiado": "88316 coef 0.3 H"
+  }
+}
